@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,42 +7,168 @@
 
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f9;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6fb;
+    }
+
+    header {
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: white;
+      padding: 20px;
       text-align: center;
-      padding: 30px;
     }
 
     h1 {
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .subject {
+      margin-bottom: 30px;
+    }
+
+    .subject-title {
+      font-size: 22px;
+      margin-bottom: 10px;
       color: #2c3e50;
     }
 
-    .card {
-      display: inline-block;
-      background: white;
-      padding: 20px;
-      margin: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 250px;
+    .section-title {
+      font-size: 16px;
+      margin: 10px 0;
+      color: #555;
     }
 
-    a {
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 16px;
+      color: #34495e;
+    }
+
+    .card a {
       text-decoration: none;
-      color: #2980b9;
-      font-weight: bold;
+      color: inherit;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 12px;
+      color: #888;
     }
   </style>
 </head>
 
 <body>
 
+<header>
   <h1>📚 My Learning Hub</h1>
+  <p>Concepts • Diagrams • Revision</p>
+</header>
 
-  <div class="card">
-    <h2>Class 9 - Science</h2>
-    <a href="class9/science/cell/">🧬 Cell - Fundamental Unit of Life</a>
-  </div>
+<div class="container" id="app"></div>
+
+<footer>
+  Made for learning ❤️
+</footer>
+
+<script>
+fetch('content.json')
+  .then(res => res.json())
+  .then(data => {
+    const app = document.getElementById('app');
+
+    const classData = data.class9;
+
+    Object.keys(classData).forEach(subjectName => {
+      const subject = classData[subjectName];
+
+      const subjectDiv = document.createElement('div');
+      subjectDiv.className = 'subject';
+
+      subjectDiv.innerHTML = `
+        <div class="subject-title">
+          ${subject.icon || ''} ${subjectName}
+        </div>
+      `;
+
+      // CASE 1: Simple chapters
+      if (subject.chapters) {
+        const grid = document.createElement('div');
+        grid.className = 'grid';
+
+        subject.chapters.forEach(chapter => {
+          const card = document.createElement('div');
+          card.className = 'card';
+
+          card.innerHTML = `
+            <a href="${chapter.path}">
+              <h3>${chapter.name}</h3>
+            </a>
+          `;
+
+          grid.appendChild(card);
+        });
+
+        subjectDiv.appendChild(grid);
+      }
+
+      // CASE 2: Sections (like English / Social Science)
+      if (subject.sections) {
+        Object.keys(subject.sections).forEach(sectionName => {
+          const sectionTitle = document.createElement('div');
+          sectionTitle.className = 'section-title';
+          sectionTitle.innerText = sectionName;
+
+          const grid = document.createElement('div');
+          grid.className = 'grid';
+
+          subject.sections[sectionName].forEach(chapter => {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            card.innerHTML = `
+              <a href="${chapter.path}">
+                <h3>${chapter.name}</h3>
+              </a>
+            `;
+
+            grid.appendChild(card);
+          });
+
+          subjectDiv.appendChild(sectionTitle);
+          subjectDiv.appendChild(grid);
+        });
+      }
+
+      app.appendChild(subjectDiv);
+    });
+  });
+</script>
 
 </body>
 </html>
