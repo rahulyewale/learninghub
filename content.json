@@ -1,0 +1,98 @@
+{
+  "class9": {
+    "Science": {
+      "icon": "🔬",
+      "chapters": [
+        { "name": "Matter in Our Surroundings", "path": "class9/science/matter/" },
+        { "name": "Is Matter Around Us Pure", "path": "class9/science/pure-matter/" },
+        { "name": "Atoms and Molecules", "path": "class9/science/atoms/" },
+        { "name": "Structure of the Atom", "path": "class9/science/atom-structure/" },
+        { "name": "The Fundamental Unit of Life (Cell)", "path": "class9/science/cell/" },
+        { "name": "Tissues", "path": "class9/science/tissues/" },
+        { "name": "Diversity in Living Organisms", "path": "class9/science/diversity/" },
+        { "name": "Motion", "path": "class9/science/motion/" },
+        { "name": "Force and Laws of Motion", "path": "class9/science/force/" },
+        { "name": "Gravitation", "path": "class9/science/gravitation/" },
+        { "name": "Work and Energy", "path": "class9/science/work-energy/" },
+        { "name": "Sound", "path": "class9/science/sound/" },
+        { "name": "Why Do We Fall Ill", "path": "class9/science/health/" },
+        { "name": "Natural Resources", "path": "class9/science/resources/" },
+        { "name": "Improvement in Food Resources", "path": "class9/science/food/" }
+      ]
+    },
+
+    "Mathematics": {
+      "icon": "📐",
+      "chapters": [
+        { "name": "Number Systems", "path": "class9/math/number-system/" },
+        { "name": "Polynomials", "path": "class9/math/polynomials/" },
+        { "name": "Coordinate Geometry", "path": "class9/math/coordinate-geometry/" },
+        { "name": "Linear Equations in Two Variables", "path": "class9/math/linear-equations/" },
+        { "name": "Introduction to Euclid's Geometry", "path": "class9/math/euclid/" },
+        { "name": "Lines and Angles", "path": "class9/math/lines-angles/" },
+        { "name": "Triangles", "path": "class9/math/triangles/" },
+        { "name": "Quadrilaterals", "path": "class9/math/quadrilaterals/" },
+        { "name": "Areas of Parallelograms and Triangles", "path": "class9/math/areas/" },
+        { "name": "Circles", "path": "class9/math/circles/" },
+        { "name": "Constructions", "path": "class9/math/constructions/" },
+        { "name": "Heron's Formula", "path": "class9/math/heron/" },
+        { "name": "Surface Areas and Volumes", "path": "class9/math/volumes/" },
+        { "name": "Statistics", "path": "class9/math/statistics/" },
+        { "name": "Probability", "path": "class9/math/probability/" }
+      ]
+    },
+
+    "English": {
+      "icon": "📘",
+      "sections": {
+        "Beehive": [
+          { "name": "The Fun They Had", "path": "class9/english/beehive/fun-they-had/" },
+          { "name": "The Sound of Music", "path": "class9/english/beehive/sound-of-music/" }
+        ],
+        "Moments": [
+          { "name": "The Lost Child", "path": "class9/english/moments/lost-child/" }
+        ],
+        "Grammar": [
+          { "name": "Tenses", "path": "class9/english/grammar/tenses/" },
+          { "name": "Modals", "path": "class9/english/grammar/modals/" }
+        ]
+      }
+    },
+
+    "Social Science": {
+      "icon": "🌍",
+      "sections": {
+        "History": [
+          { "name": "The French Revolution", "path": "class9/social/history/french-revolution/" },
+          { "name": "Socialism in Europe", "path": "class9/social/history/socialism/" }
+        ],
+        "Geography": [
+          { "name": "India - Size and Location", "path": "class9/social/geography/india-location/" },
+          { "name": "Physical Features of India", "path": "class9/social/geography/physical-features/" }
+        ],
+        "Civics": [
+          { "name": "What is Democracy", "path": "class9/social/civics/democracy/" }
+        ],
+        "Economics": [
+          { "name": "The Story of Village Palampur", "path": "class9/social/economics/palampur/" }
+        ]
+      }
+    },
+
+    "Hindi": {
+      "icon": "📕",
+      "chapters": [
+        { "name": "गिल्लू", "path": "class9/hindi/gillu/" },
+        { "name": "दो बैलों की कथा", "path": "class9/hindi/do-bailon-ki-katha/" }
+      ]
+    },
+
+    "Computer": {
+      "icon": "💻",
+      "chapters": [
+        { "name": "Introduction to Computers", "path": "class9/computer/introduction/" },
+        { "name": "MS Office Basics", "path": "class9/computer/ms-office/" }
+      ]
+    }
+  }
+}
