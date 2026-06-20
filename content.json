@@ -20,6 +20,12 @@
         { "name": "Improvement in Food Resources", "path": "class9/science/food/" }
       ]
     },
+	"Ict": {
+      "icon": "🔬",
+      "chapters": [
+        { "name": "PARTA-B", "path": "class9/ict/partab/" },
+      ]
+    },
 
     "Mathematics": {
       "icon": "📐",
