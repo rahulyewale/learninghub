@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class 9 Mathematics - Number Systems</title>
+  <style>
+    :root{--p:#1e88e5;--p2:#1565c0;--bg:#f4f8fd;--card:#fff;--line:#dbe7f7;--good:#2e7d32;--warn:#f9a825}
+    *{box-sizing:border-box} body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:#222;line-height:1.7}
+    header{background:linear-gradient(135deg,#0d47a1,#42a5f5);color:#fff;padding:28px 18px;text-align:center}
+    header h1{margin:0 0 6px;font-size:1.75rem} header p{margin:0;opacity:.95}
+    .wrap{max-width:1100px;margin:auto;padding:20px}.nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}.nav a{text-decoration:none;background:#e3f2fd;color:#0d47a1;padding:6px 12px;border-radius:999px;font-size:.9rem}
+    .card{background:var(--card);border:1px solid #edf2fb;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.08);padding:22px;margin-bottom:20px}
+    h2{margin:0 0 16px;background:var(--p2);color:#fff;padding:10px 14px;border-radius:8px;font-size:1.1rem} h3{color:var(--p2);margin:18px 0 8px}
+    p,li{font-size:1rem} ul,ol{padding-left:22px} table{width:100%;border-collapse:collapse;margin:14px 0} th,td{border:1px solid var(--line);padding:9px 10px;vertical-align:top;text-align:left} th{background:#eaf3ff;color:#0d47a1} tr:nth-child(even) td{background:#fbfdff}
+    .note{background:#fffde7;border-left:5px solid var(--warn);padding:12px 14px;border-radius:6px;margin:14px 0}.tip{background:#e8f5e9;border-left:5px solid var(--good);padding:12px 14px;border-radius:6px;margin:14px 0}.formula{font-family:Consolas,monospace;background:#f7f9fc;border:1px dashed #c6d3ea;padding:10px 12px;border-radius:8px}.qa{border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:14px}.q{background:#eaf2ff;padding:10px 14px;font-weight:700}.a{padding:12px 14px}.badge{display:inline-block;background:#0d47a1;color:#fff;border-radius:999px;padding:2px 10px;font-size:.78rem;margin-left:8px} footer{text-align:center;color:#777;padding:18px 10px;font-size:.85rem}
+  </style>
+</head>
+<body>
+<header><h1>📐 Class 9 Mathematics — Chapter 1</h1><p>Number Systems | NCERT study notes, formulas, examples, tips and questions</p></header>
+<div class="wrap">
+  <div class="nav"><a href="#system">Number sets</a><a href="#irrational">Irrational numbers</a><a href="#real">Real numbers</a><a href="#decimal">Decimal expansion</a><a href="#questions">Questions</a></div>
+  <div class="card" id="system">
+    <h2>1. Introduction to Number Systems</h2>
+    <p>Numbers are classified into different sets based on their properties. The number system used in Class 9 is mainly the set of <strong>real numbers</strong>.</p>
+    <table>
+      <tr><th>Set</th><th>Meaning</th><th>Examples</th></tr>
+      <tr><td>Natural numbers (N)</td><td>Counting numbers</td><td>1, 2, 3, ...</td></tr>
+      <tr><td>Whole numbers (W)</td><td>Natural numbers plus zero</td><td>0, 1, 2, 3, ...</td></tr>
+      <tr><td>Integers (Z)</td><td>Positive, negative whole numbers and zero</td><td>-3, -2, -1, 0, 1, 2...</td></tr>
+      <tr><td>Rational numbers (Q)</td><td>Numbers of the form p/q, q ≠ 0</td><td>3/5, -7/2, 0.25</td></tr>
+      <tr><td>Irrational numbers</td><td>Cannot be written as p/q</td><td>√2, π, √3</td></tr>
+      <tr><td>Real numbers (R)</td><td>All rational and irrational numbers</td><td>All above numbers</td></tr>
+    </table>
+    <div class="tip"><strong>Memory tip:</strong> Natural ⊂ Whole ⊂ Integers ⊂ Rational ⊂ Real.</div>
+  </div>
+  <div class="card" id="irrational">
+    <h2>2. Irrational Numbers</h2>
+    <p>An irrational number cannot be expressed in the form <strong>p/q</strong>, where p and q are integers and q ≠ 0.</p>
+    <h3>Examples</h3>
+    <ul>
+      <li>√2, √3, √5</li>
+      <li>π</li>
+      <li>Non-terminating, non-repeating decimals</li>
+    </ul>
+    <h3>How to prove a number is irrational?</h3>
+    <p>Usually by contradiction. For example, √2 is irrational because if it were rational, it would lead to a contradiction in parity (even/odd) arguments.</p>
+    <div class="note"><strong>Exam point:</strong> A decimal expansion that neither terminates nor repeats is irrational.</div>
+  </div>
+  <div class="card" id="real">
+    <h2>3. Real Numbers and Their Properties</h2>
+    <p>Real numbers are all numbers that can be represented on the number line.</p>
+    <h3>Properties</h3>
+    <table>
+      <tr><th>Property</th><th>Description</th></tr>
+      <tr><td>Closure</td><td>Sum, difference, product of rational numbers is rational</td></tr>
+      <tr><td>Commutative</td><td>a + b = b + a and a × b = b × a</td></tr>
+      <tr><td>Associative</td><td>(a + b) + c = a + (b + c)</td></tr>
+      <tr><td>Distributive</td><td>a(b + c) = ab + ac</td></tr>
+    </table>
+    <h3>Euclid’s Division Lemma</h3>
+    <p>For any two positive integers a and b, there exist unique integers q and r such that:</p>
+    <p class="formula">a = bq + r, where 0 ≤ r &lt; b</p>
+    <div class="tip"><strong>Use:</strong> This lemma is a base for finding HCF and proving number properties.</div>
+  </div>
+  <div class="card" id="decimal">
+    <h2>4. Decimal Expansion of Rational Numbers</h2>
+    <table>
+      <tr><th>Type of decimal</th><th>Example</th><th>Nature</th></tr>
+      <tr><td>Terminating</td><td>0.25, 1.75</td><td>Rational</td></tr>
+      <tr><td>Repeating</td><td>0.333..., 0.142857...</td><td>Rational</td></tr>
+      <tr><td>Non-terminating, non-repeating</td><td>√2, π</td><td>Irrational</td></tr>
+    </table>
+    <h3>Key rule</h3>
+    <p>A rational number <strong>p/q</strong> has a terminating decimal expansion if, after simplification, the denominator contains only factors 2 and/or 5.</p>
+    <div class="formula">If q = 2^m × 5^n, then decimal expansion terminates.</div>
+  </div>
+  <div class="card" id="questions">
+    <h2>5. Sample Questions with Answers</h2>
+    <div class="qa"><div class="q">Q1. Define a rational number. <span class="badge">1 Mark</span></div><div class="a"><strong>Answer:</strong> A rational number is any number that can be written in the form p/q, where p and q are integers and q ≠ 0.</div></div>
+    <div class="qa"><div class="q">Q2. Is √2 rational or irrational? Give reason. <span class="badge">2 Marks</span></div><div class="a"><strong>Answer:</strong> √2 is irrational because it cannot be expressed as p/q and its decimal expansion is non-terminating and non-repeating.</div></div>
+    <div class="qa"><div class="q">Q3. State Euclid’s division lemma. <span class="badge">2 Marks</span></div><div class="a"><strong>Answer:</strong> For any positive integers a and b, there exist unique integers q and r such that a = bq + r, where 0 ≤ r &lt; b.</div></div>
+    <div class="qa"><div class="q">Q4. When does a rational number have a terminating decimal expansion? <span class="badge">2 Marks</span></div><div class="a"><strong>Answer:</strong> When the denominator in simplest form is of the form 2^m × 5^n.</div></div>
+    <div class="qa"><div class="q">Q5. Differentiate between rational and irrational numbers. <span class="badge">3 Marks</span></div><div class="a"><strong>Answer:</strong> Rational numbers can be expressed as p/q and have terminating or repeating decimals; irrational numbers cannot be expressed as p/q and have non-terminating, non-repeating decimals.</div></div>
+  </div>
+  <div class="card"><h2>6. Quick Revision Tips</h2><ul><li>Check if numbers can be written as p/q</li><li>Terminating or repeating decimal = rational</li><li>Non-terminating non-repeating = irrational</li><li>Use Euclid’s lemma for HCF and proofs</li><li>Remember the hierarchy of number sets</li></ul></div>
+</div>
+<footer>CBSE Class 9 Mathematics | Chapter 1 | NCERT-aligned study material</footer>
+</body>
+</html>

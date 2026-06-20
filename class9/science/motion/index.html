@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class 9 Science Ch 7 - Motion</title>
+  <style>
+    :root{--p:#1e88e5;--p2:#1565c0;--bg:#f4f8fd;--card:#fff;--line:#dbe7f7;--good:#2e7d32;--warn:#f9a825}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:#222;line-height:1.7}
+    header{background:linear-gradient(135deg,#0d47a1,#42a5f5);color:#fff;padding:28px 18px;text-align:center}
+    header h1{margin:0 0 6px;font-size:1.75rem}
+    header p{margin:0;opacity:.95}
+    .wrap{max-width:1100px;margin:auto;padding:20px}
+    .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+    .tabs a{text-decoration:none;background:#e3f2fd;color:#0d47a1;padding:6px 12px;border-radius:999px;font-size:.9rem}
+    .card{background:var(--card);border:1px solid #edf2fb;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.08);padding:22px;margin-bottom:20px}
+    h2{margin:0 0 16px;background:var(--p2);color:#fff;padding:10px 14px;border-radius:8px;font-size:1.1rem}
+    h3{color:var(--p2);margin:18px 0 8px}
+    p,li{font-size:1rem}
+    ul,ol{padding-left:22px}
+    table{width:100%;border-collapse:collapse;margin:14px 0}
+    th,td{border:1px solid var(--line);padding:9px 10px;vertical-align:top;text-align:left}
+    th{background:#eaf3ff;color:#0d47a1}
+    tr:nth-child(even) td{background:#fbfdff}
+    .note{background:#fffde7;border-left:5px solid var(--warn);padding:12px 14px;border-radius:6px;margin:14px 0}
+    .tip{background:#e8f5e9;border-left:5px solid var(--good);padding:12px 14px;border-radius:6px;margin:14px 0}
+    .formula{font-family:Consolas,monospace;background:#f7f9fc;border:1px dashed #c6d3ea;padding:10px 12px;border-radius:8px}
+    .qa{border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:14px}
+    .q{background:#eaf2ff;padding:10px 14px;font-weight:700}
+    .a{padding:12px 14px}
+    .badge{display:inline-block;background:#0d47a1;color:#fff;border-radius:999px;padding:2px 10px;font-size:.78rem;margin-left:8px}
+    footer{text-align:center;color:#777;padding:18px 10px;font-size:.85rem}
+  </style>
+</head>
+<body>
+<header>
+  <h1>🚗 Class 9 Science – Chapter 7</h1>
+  <p>Motion | NCERT-based revision notes, formulas, examples, tips and exam questions</p>
+</header>
+<div class="wrap">
+  <div class="tabs">
+    <a href="#basics">Basics</a><a href="#speed">Speed</a><a href="#velocity">Velocity</a><a href="#acceleration">Acceleration</a><a href="#equations">Equations</a><a href="#questions">Questions</a>
+  </div>
+
+  <div class="card" id="basics">
+    <h2>1. What is Motion?</h2>
+    <p><strong>Motion</strong> is the change in position of an object with time.</p>
+    <p>An object is said to be in motion if its position changes relative to a reference point.</p>
+    <div class="tip"><strong>Reference point matters:</strong> A passenger sitting in a moving bus is at rest with respect to the bus, but in motion with respect to the road.</div>
+    <h3>Types of Motion</h3>
+    <table>
+      <tr><th>Type</th><th>Meaning</th><th>Example</th></tr>
+      <tr><td><strong>Rectilinear</strong></td><td>Motion in a straight line</td><td>Train on a straight track</td></tr>
+      <tr><td><strong>Circular</strong></td><td>Motion along a circular path</td><td>Hands of a clock</td></tr>
+      <tr><td><strong>Periodic</strong></td><td>Repeats after equal intervals of time</td><td>Pendulum of a clock</td></tr>
+      <tr><td><strong>Uniform</strong></td><td>Covers equal distances in equal intervals</td><td>Car moving at constant speed</td></tr>
+      <tr><td><strong>Non-uniform</strong></td><td>Covers unequal distances in equal intervals</td><td>Bus in traffic</td></tr>
+    </table>
+  </div>
+
+  <div class="card" id="speed">
+    <h2>2. Distance, Displacement and Speed</h2>
+    <h3>Distance</h3>
+    <p><strong>Distance</strong> is the total path length covered by an object.</p>
+    <h3>Displacement</h3>
+    <p><strong>Displacement</strong> is the shortest distance from initial to final position in a specified direction.</p>
+    <table>
+      <tr><th>Distance</th><th>Displacement</th></tr>
+      <tr><td>Scalar quantity</td><td>Vector quantity</td></tr>
+      <tr><td>Always positive</td><td>Can be positive, negative or zero</td></tr>
+      <tr><td>Depends on path</td><td>Depends only on initial and final positions</td></tr>
+    </table>
+    <h3>Speed</h3>
+    <p><strong>Speed</strong> is the distance covered per unit time.</p>
+    <p class="formula">Speed = Distance / Time</p>
+    <p><strong>SI unit:</strong> m/s</p>
+    <p><strong>Other common unit:</strong> km/h</p>
+    <h3>Average Speed</h3>
+    <p class="formula">Average Speed = Total Distance / Total Time</p>
+    <div class="note"><strong>Tip:</strong> If a body covers different distances in different time intervals, use average speed.</div>
+  </div>
+
+  <div class="card" id="velocity">
+    <h2>3. Velocity and Acceleration</h2>
+    <h3>Velocity</h3>
+    <p><strong>Velocity</strong> is the displacement per unit time in a given direction.</p>
+    <p class="formula">Velocity = Displacement / Time</p>
+    <p>Velocity is a vector quantity, so direction is important.</p>
+    <h3>Acceleration</h3>
+    <p><strong>Acceleration</strong> is the rate of change of velocity.</p>
+    <p class="formula">Acceleration = (Final velocity - Initial velocity) / Time</p>
+    <p><strong>SI unit:</strong> m/s²</p>
+    <h3>Uniform Acceleration</h3>
+    <p>When velocity changes by equal amounts in equal intervals of time, the motion has uniform acceleration.</p>
+    <h3>Retardation / Deceleration</h3>
+    <p>When velocity decreases with time, acceleration is negative. This is called retardation or deceleration.</p>
+    <div class="tip"><strong>Exam point:</strong> If an object is moving with constant velocity, acceleration is zero.</div>
+  </div>
+
+  <div class="card" id="acceleration">
+    <h2>4. Graphs of Motion</h2>
+    <h3>Distance-Time Graph</h3>
+    <ul>
+      <li>Slope gives speed</li>
+      <li>Horizontal line means object at rest</li>
+      <li>Steeper graph means greater speed</li>
+    </ul>
+    <h3>Velocity-Time Graph</h3>
+    <ul>
+      <li>Slope gives acceleration</li>
+      <li>Area under graph gives displacement</li>
+      <li>Horizontal line means uniform velocity</li>
+    </ul>
+    <table>
+      <tr><th>Graph</th><th>What the slope gives</th><th>What the area gives</th></tr>
+      <tr><td>Distance-Time</td><td>Speed</td><td>Not commonly used here</td></tr>
+      <tr><td>Velocity-Time</td><td>Acceleration</td><td>Displacement</td></tr>
+    </table>
+  </div>
+
+  <div class="card" id="equations">
+    <h2>5. Equations of Motion (Till This Topic)</h2>
+    <p>For uniformly accelerated motion, the three equations are:</p>
+    <div class="formula">
+      v = u + at<br>
+      s = ut + 1/2 at²<br>
+      v² = u² + 2as
+    </div>
+    <h3>Where:</h3>
+    <ul>
+      <li><strong>u</strong> = initial velocity</li>
+      <li><strong>v</strong> = final velocity</li>
+      <li><strong>a</strong> = acceleration</li>
+      <li><strong>t</strong> = time</li>
+      <li><strong>s</strong> = displacement</li>
+    </ul>
+    <h3>How to remember them</h3>
+    <ul>
+      <li><strong>1st equation:</strong> velocity after time</li>
+      <li><strong>2nd equation:</strong> displacement from time</li>
+      <li><strong>3rd equation:</strong> relation without time</li>
+    </ul>
+    <div class="note"><strong>Important:</strong> Use consistent units. If speed is in km/h, convert to m/s for calculations in SI units.</div>
+  </div>
+
+  <div class="card">
+    <h2>6. Quick Conversion and Formula Tips</h2>
+    <table>
+      <tr><th>Conversion</th><th>Rule</th></tr>
+      <tr><td>km/h to m/s</td><td>Multiply by 5/18</td></tr>
+      <tr><td>m/s to km/h</td><td>Multiply by 18/5</td></tr>
+    </table>
+    <div class="tip"><strong>Trick:</strong> In equations of motion, use <strong>u, v, a, t, s</strong> carefully and keep units in the same system.</div>
+  </div>
+
+  <div class="card" id="questions">
+    <h2>7. Sample Questions with Answers</h2>
+    <div class="qa"><div class="q">Q1. Define motion. <span class="badge">1 Mark</span></div><div class="a"><strong>Answer:</strong> Motion is the change in position of an object with time.</div></div>
+    <div class="qa"><div class="q">Q2. What is the difference between distance and displacement? <span class="badge">2 Marks</span></div><div class="a"><strong>Answer:</strong> Distance is the total path length covered, while displacement is the shortest straight-line distance from initial to final position in a given direction.</div></div>
+    <div class="qa"><div class="q">Q3. Write the formula for speed and mention its SI unit. <span class="badge">1 Mark</span></div><div class="a"><strong>Answer:</strong> Speed = Distance / Time. SI unit is m/s.</div></div>
+    <div class="qa"><div class="q">Q4. Why is velocity a vector quantity? <span class="badge">2 Marks</span></div><div class="a"><strong>Answer:</strong> Velocity has both magnitude and direction. Since direction is included, it is a vector quantity.</div></div>
+    <div class="qa"><div class="q">Q5. What is acceleration? <span class="badge">2 Marks</span></div><div class="a"><strong>Answer:</strong> Acceleration is the rate of change of velocity with time. Its SI unit is m/s².</div></div>
+    <div class="qa"><div class="q">Q6. State any two features of a distance-time graph for uniform motion. <span class="badge">2 Marks</span></div><div class="a"><strong>Answer:</strong> For uniform motion, the distance-time graph is a straight line and its slope gives speed.</div></div>
+    <div class="qa"><div class="q">Q7. Write the three equations of motion. <span class="badge">3 Marks</span></div><div class="a"><strong>Answer:</strong> v = u + at; s = ut + 1/2 at²; v² = u² + 2as.</div></div>
+    <div class="qa"><div class="q">Q8. A body starts from rest and attains a velocity of 20 m/s in 5 s. Find acceleration. <span class="badge">3 Marks</span></div><div class="a"><strong>Answer:</strong> u = 0, v = 20 m/s, t = 5 s. Using a = (v-u)/t = (20-0)/5 = 4 m/s².</div></div>
+    <div class="qa"><div class="q">Q9. What does the slope of a velocity-time graph represent? <span class="badge">1 Mark</span></div><div class="a"><strong>Answer:</strong> The slope of a velocity-time graph represents acceleration.</div></div>
+    <div class="qa"><div class="q">Q10. State one difference between uniform and non-uniform motion. <span class="badge">2 Marks</span></div><div class="a"><strong>Answer:</strong> In uniform motion, equal distances are covered in equal intervals of time. In non-uniform motion, unequal distances are covered in equal intervals of time.</div></div>
+  </div>
+
+  <div class="card">
+    <h2>8. Remember These Points</h2>
+    <ul>
+      <li>Distance is always greater than or equal to displacement.</li>
+      <li>Speed is scalar; velocity is vector.</li>
+      <li>Acceleration can be negative when speed decreases.</li>
+      <li>Uniform motion means constant speed in a straight line.</li>
+      <li>Use SI units in formulas.</li>
+      <li>v = u + at is the most basic motion equation.</li>
+    </ul>
+  </div>
+</div>
+<footer>CBSE Class 9 Science | Chapter 7 | NCERT-aligned study material</footer>
+</body>
+</html>

@@ -5,6 +5,8 @@
       "chapters": [
         { "name": "Matter in Our Surroundings", "path": "class9/science/matter/" },
         { "name": "Is Matter Around Us Pure", "path": "class9/science/pure-matter/" },
+        { "name": "Chapter 5 - Fundamental Unit of Life", "path": "class9/science/cell/" },
+        { "name": "Chapter 7 - Motion (Till Equations of Motion)", "path": "class9/science/motion/" },
         { "name": "Atoms and Molecules", "path": "class9/science/atoms/" },
         { "name": "Structure of the Atom", "path": "class9/science/atom-structure/" },
         { "name": "The Fundamental Unit of Life (Cell)", "path": "class9/science/cell/" },
@@ -38,8 +40,8 @@
     "Mathematics": {
       "icon": "📐",
       "chapters": [
-        { "name": "Number Systems", "path": "class9/math/number-system/" },
-        { "name": "Polynomials", "path": "class9/math/polynomials/" },
+        { "name": "Ch 1 - Number System", "path": "class9/math/number-system/" },
+        { "name": "Ch 2 - Polynomials", "path": "class9/math/polynomials/" },
         { "name": "Coordinate Geometry", "path": "class9/math/coordinate-geometry/" },
         { "name": "Linear Equations in Two Variables", "path": "class9/math/linear-equations/" },
         { "name": "Introduction to Euclid's Geometry", "path": "class9/math/euclid/" },
@@ -60,6 +62,9 @@
       "icon": "📘",
       "sections": {
         "Beehive": [
+          { "name": "Ch 5 - The Little Girl", "path": "class9/english/beehive/little-girl/" },
+          { "name": "Ch 6 - My Childhood", "path": "class9/english/beehive/my-childhood/" },
+          { "name": "Ch 7 - Reach for the Top", "path": "class9/english/beehive/reach-for-the-top/" },
           { "name": "The Fun They Had", "path": "class9/english/beehive/fun-they-had/" },
           { "name": "The Sound of Music", "path": "class9/english/beehive/sound-of-music/" }
         ],
@@ -67,8 +72,13 @@
           { "name": "The Lost Child", "path": "class9/english/moments/lost-child/" }
         ],
         "Grammar": [
+          { "name": "Integrated Grammar", "path": "class9/english/grammar/integrated-grammar/" },
           { "name": "Tenses", "path": "class9/english/grammar/tenses/" },
           { "name": "Modals", "path": "class9/english/grammar/modals/" }
+        ],
+        "Writing": [
+          { "name": "Notice Writing", "path": "class9/english/writing/notice-writing/" },
+          { "name": "Letter to the Editor", "path": "class9/english/writing/letter-to-editor/" }
         ]
       }
     },
@@ -81,11 +91,12 @@
           { "name": "Socialism in Europe", "path": "class9/social/history/socialism/" }
         ],
         "Geography": [
+          { "name": "Ch 4 - Climate", "path": "class9/social/geography/climate/" },
           { "name": "India - Size and Location", "path": "class9/social/geography/india-location/" },
           { "name": "Physical Features of India", "path": "class9/social/geography/physical-features/" }
         ],
         "Civics": [
-          { "name": "What is Democracy", "path": "class9/social/civics/democracy/" }
+          { "name": "Ch 1 - Democracy", "path": "class9/social/civics/democracy/" }
         ],
         "Economics": [
           { "name": "The Story of Village Palampur", "path": "class9/social/economics/palampur/" }
@@ -95,9 +106,47 @@
 
     "Hindi": {
       "icon": "📕",
+      "sections": {
+        "स्पर्श": [
+          { "name": "पाठ 1: दुःख का अधिकार", "path": "class9/hindi/sparsh-dukh-ka-adhikar/" },
+          { "name": "कविता 6: रैदास के पद", "path": "class9/hindi/sparsh-raidas-ke-pad/" }
+        ],
+        "संचयन भाग 1": [
+          { "name": "पाठ 1: गिल्लू", "path": "class9/hindi/sanchayan-gillu/" }
+        ],
+        "व्याकरण": [
+          { "name": "प्रत्यय, उपसर्ग, शब्द और पद, अनुस्वार, अनुनासिक", "path": "class9/hindi/vyakaran-core/" }
+        ],
+        "रचनात्मक लेखन": [
+          { "name": "अनुच्छेद लेखन और संवाद लेखन", "path": "class9/hindi/rachanatmak-lekhan/" }
+        ],
+        "गद्यांश": [
+          { "name": "अपठित/पठित गद्यांश और पद्यांश", "path": "class9/hindi/gadyansh-abhyas/" }
+        ]
+      }
+    },
+
+    "Marathi": {
+      "icon": "🟠",
+      "sections": {
+        "पाठ": [
+          { "name": "पाठ 2: संतवाणी (भेटीलागी जीवा, संकल्प झाली)", "path": "class9/marathi/path-santvani/" },
+          { "name": "पाठ 3: बेटा, मी ऐकतो आहे!", "path": "class9/marathi/path-beta-mi-aikto-ahe/" },
+          { "name": "पाठ 4: जी आय पी रेल्वे", "path": "class9/marathi/path-gip-railway/" }
+        ],
+        "व्याकरण": [
+          { "name": "शब्दांच्या जाती, विकारी-अविकारी, वाक्यांचे प्रकार, वाक्प्रचार", "path": "class9/marathi/vyakaran-core/" }
+        ],
+        "उपयोजित लेखन": [
+          { "name": "जाहिरात लेखन, अपठित गद्यांश/पद्यांश, निबंध", "path": "class9/marathi/upyojit-lekhan/" }
+        ]
+      }
+    },
+
+    "Sample Papers": {
+      "icon": "📝",
       "chapters": [
-        { "name": "गिल्लू", "path": "class9/hindi/gillu/" },
-        { "name": "दो बैलों की कथा", "path": "class9/hindi/do-bailon-ki-katha/" }
+        { "name": "All Subjects Sample Papers (With Answers)", "path": "class9/sample-papers/" }
       ]
     },
 

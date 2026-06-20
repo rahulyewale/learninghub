@@ -29,6 +29,55 @@
       padding: 20px;
     }
 
+    .timetable-card {
+      max-width: 1100px;
+      margin: 20px auto 0;
+      padding: 16px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .timetable-card h2 {
+      margin: 0 0 8px;
+      color: #1f3b57;
+      font-size: 22px;
+    }
+
+    .timetable-card p {
+      margin: 0 0 12px;
+      color: #5a6d7f;
+      font-size: 14px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    .timetable {
+      width: 100%;
+      min-width: 900px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .timetable th,
+    .timetable td {
+      border: 1px solid #dbe5ef;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .timetable th {
+      background: #eaf4ff;
+      color: #234b72;
+    }
+
+    .timetable tr:nth-child(even) td {
+      background: #fbfdff;
+    }
+
     .subject {
       margin-bottom: 30px;
     }
@@ -89,6 +138,91 @@
   <h1>📚 Devanshi's Learning Hub</h1>
   <p>Concepts • Diagrams • Revision</p>
 </header>
+
+<section class="timetable-card">
+  <h2>🗓️ Exam Timetable</h2>
+  <p>Follow this schedule for revision and daily practice.</p>
+  <div class="table-wrap">
+    <table class="timetable">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Day</th>
+          <th>Subject</th>
+          <th>Marks</th>
+          <th>Duration</th>
+          <th>Assessment Portion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>22.06.2026</td>
+          <td>Monday</td>
+          <td>ICT - Theory</td>
+          <td>30</td>
+          <td>50 mins</td>
+          <td>Part A - Unit 1: Communication Skills<br>Part B - Unit 3: Digital Documentation</td>
+        </tr>
+        <tr>
+          <td>22.06.2026</td>
+          <td>Monday</td>
+          <td>ICT - Practicals</td>
+          <td>10</td>
+          <td>-</td>
+          <td>Part B - Unit 3: Digital Documentation</td>
+        </tr>
+        <tr>
+          <td>23.06.2026</td>
+          <td>Tuesday</td>
+          <td>Science</td>
+          <td>40</td>
+          <td>1 hr 30 mins</td>
+          <td>Ch 2: Is Matter Around Us Pure<br>Ch 5: Fundamental Unit of Life<br>Ch 7: Motion (Till equations of Motion)</td>
+        </tr>
+        <tr>
+          <td>24.06.2026</td>
+          <td>Wednesday</td>
+          <td>English</td>
+          <td>40</td>
+          <td>1 hr 30 mins</td>
+          <td><strong>Main Reader</strong><br>Ch 6: My Childhood<br>Ch 3: The Little Girl<br>Ch 7: Reach For the Top<br><br><strong>Integrated Grammar</strong><br>Notice Writing<br>Letter to the Editor</td>
+        </tr>
+        <tr>
+          <td>25.06.2026</td>
+          <td>Thursday</td>
+          <td>Mathematics</td>
+          <td>40</td>
+          <td>1 hr 30 mins</td>
+          <td>Ch 1: Number System<br>Ch 2: Polynomials</td>
+        </tr>
+        <tr>
+          <td>29.06.2026</td>
+          <td>Monday</td>
+          <td>SST</td>
+          <td>40</td>
+          <td>1 hr 30 mins</td>
+          <td><strong>Geo:</strong> Ch 4: Climate<br><strong>Civics:</strong> Ch 1: Democracy</td>
+        </tr>
+        <tr>
+          <td>30.06.2026</td>
+          <td>Tuesday</td>
+          <td>Hindi</td>
+          <td>40</td>
+          <td>1 hr 30 mins</td>
+          <td><strong>स्पर्श</strong><br>पाठ 1: दुःख का अधिकार, स्पर्श<br>कविता 6: रैदास के पद<br><br><strong>संचयन भाग 1</strong><br>पाठ 1: गिल्लू<br><br><strong>व्याकरण</strong><br>प्रत्यय, उपसर्ग, शब्द और पद, अनुस्वार, अनुनासिक<br><br><strong>रचनात्मक लेखन</strong><br>अनुच्छेद लेखन, संवाद लेखन, अपठित गद्यांश, पठित गद्यांश, पद्यांश</td>
+        </tr>
+        <tr>
+          <td>30.06.2026</td>
+          <td>Tuesday</td>
+          <td>Marathi</td>
+          <td>40</td>
+          <td>1 hr 30 mins</td>
+          <td>पाठ 2: संतवाणी - अ) भेटीलागी जीवा आ) संकल्प झाली<br>पाठ 3: बेटा, मी ऐकतो आहे!<br>पाठ 4: जी आय पी रेल्वे<br><br><strong>व्याकरण</strong><br>शब्दांच्या जाती - विकारी-अविकारी, वाक्याचे प्रकार, वाक्प्रचार<br><br><strong>उपयोजित लेखन</strong><br>जाहिरात लेखन, अपठित गद्यांश, अपठित पद्यांश, निबंध</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
 <div class="container" id="app"></div>
 
