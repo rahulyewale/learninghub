@@ -20,11 +20,19 @@
         { "name": "Improvement in Food Resources", "path": "class9/science/food/" }
       ]
     },
-	"Ict": {
-      "icon": "🔬",
-      "chapters": [
-        { "name": "PARTA-B", "path": "class9/ict/partab/" }
-      ]
+	"ICT (Code 402)": {
+      "icon": "💻",
+      "sections": {
+        "Part A": [
+          { "name": "Unit 1 – Communication Skills", "path": "class9/ict/parta-unit1/" }
+        ],
+        "Part B": [
+          { "name": "Unit 3 – Digital Communication", "path": "class9/ict/partb-unit3/" }
+        ],
+        "Combined Notes": [
+          { "name": "Part A + Part B Revision", "path": "class9/ict/partab/" }
+        ]
+      }
     },
 
     "Mathematics": {

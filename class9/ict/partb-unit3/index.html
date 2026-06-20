@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Part B – Unit 3: Digital Communication | Class 9 ICT (402)</title>
+  <style>
+    :root {
+      --primary: #00695c;
+      --primary-light: #00897b;
+      --accent: #e65100;
+      --bg: #f0fdf8;
+      --white: #ffffff;
+      --border: #b2dfdb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--bg);
+      color: #222;
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(135deg, #00695c, #26a69a);
+      color: white;
+      padding: 28px 20px 18px;
+      text-align: center;
+    }
+    header h1 { font-size: 1.7rem; margin-bottom: 4px; }
+    header p  { font-size: 0.95rem; opacity: 0.9; }
+    nav {
+      background: var(--primary);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a {
+      color: #b2ffe8;
+      text-decoration: none;
+      font-size: 0.82rem;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.12);
+      transition: background 0.2s;
+    }
+    nav a:hover { background: rgba(255,255,255,0.28); color: #fff; }
+    .container { max-width: 1050px; margin: auto; padding: 22px 16px 40px; }
+    .section {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    h2 {
+      background: var(--primary-light);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      font-size: 1.15rem;
+    }
+    h3 { color: var(--primary); margin: 18px 0 8px; font-size: 1rem; }
+    h4 { color: #444; margin: 12px 0 6px; font-size: 0.95rem; }
+    p  { margin-bottom: 10px; }
+    ul, ol { padding-left: 22px; margin-bottom: 10px; }
+    li { margin-bottom: 4px; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.92rem; }
+    th { background: var(--primary-light); color: white; padding: 9px 12px; text-align: left; }
+    td { padding: 8px 12px; border: 1px solid var(--border); }
+    tr:nth-child(even) td { background: #f0fdf8; }
+    .tip {
+      background: #fffde7;
+      border-left: 5px solid #f9a825;
+      padding: 12px 16px;
+      margin: 14px 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.93rem;
+    }
+    .tip strong { color: #e65100; }
+    .keyterm {
+      display: inline-block;
+      background: #e0f2f1;
+      color: #004d40;
+      border-radius: 4px;
+      padding: 1px 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .email-box {
+      font-family: monospace;
+      background: #f8f8f8;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 14px 18px;
+      font-size: 0.88rem;
+      line-height: 1.9;
+      margin: 12px 0;
+    }
+    .email-box .label { color: #00695c; font-weight: 700; }
+    .q-block {
+      background: #f9fffc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .q-header {
+      background: #e0f2f1;
+      padding: 10px 16px;
+      font-weight: 600;
+      font-size: 0.93rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .q-header:hover { background: #b2dfdb; }
+    .q-marks { font-size: 0.78rem; background: var(--primary); color: white; border-radius: 10px; padding: 2px 8px; }
+    .q-body {
+      padding: 14px 16px;
+      display: none;
+      border-top: 1px solid var(--border);
+      font-size: 0.92rem;
+    }
+    .q-body.open { display: block; }
+    .answer-label { color: #2e7d32; font-weight: 700; margin-bottom: 6px; font-size: 0.85rem; text-transform: uppercase; }
+    .mcq-option { padding: 2px 0; }
+    .correct-option { color: #1b5e20; font-weight: 700; }
+    .marks-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      padding: 2px 10px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 0.8rem;
+      color: #888;
+    }
+    @media(max-width:600px){
+      header h1 { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>💬 Part B – Unit 3: Digital Communication</h1>
+  <p>CBSE Class 9 &nbsp;|&nbsp; Information Technology (Code 402) &nbsp;|&nbsp; NCERT &nbsp;|&nbsp; 30-Mark Exam Prep</p>
+</header>
+
+<nav>
+  <a href="#intro">Introduction</a>
+  <a href="#internet">Internet</a>
+  <a href="#email">Email</a>
+  <a href="#etiquette">Netiquette</a>
+  <a href="#socialmedia">Social Media</a>
+  <a href="#tools">Tools</a>
+  <a href="#safety">Safety</a>
+  <a href="#questions">Questions</a>
+</nav>
+
+<div class="container">
+
+  <!-- ========== SECTION 1 ========== -->
+  <div class="section" id="intro">
+    <h2>1. Introduction to Digital Communication</h2>
+    <p>
+      <span class="keyterm">Digital Communication</span> is the process of exchanging information using digital devices and the internet — including emails, social media, messaging apps, and video conferencing.
+    </p>
+    <h3>Traditional vs Digital Communication</h3>
+    <table>
+      <tr><th>Traditional</th><th>Digital</th></tr>
+      <tr><td>Postal letters (slow)</td><td>Email (instant)</td></tr>
+      <tr><td>Landline telephone</td><td>VoIP / Video call</td></tr>
+      <tr><td>Newspaper / Notice board</td><td>Social media / website</td></tr>
+      <tr><td>Physical meetings only</td><td>Online video conferencing</td></tr>
+    </table>
+    <h3>Advantages of Digital Communication</h3>
+    <ul>
+      <li>Very fast – messages reach in seconds</li>
+      <li>Inexpensive – low cost compared to postal mail</li>
+      <li>Global reach – communicate across the world</li>
+      <li>Multimedia support – text, images, audio, video</li>
+      <li>Stored records – messages can be saved and retrieved</li>
+      <li>Accessible 24/7</li>
+    </ul>
+    <h3>Disadvantages</h3>
+    <ul>
+      <li>Requires internet connectivity</li>
+      <li>Risk of hacking and privacy breach</li>
+      <li>Spread of misinformation (fake news)</li>
+      <li>Reduced face-to-face interaction</li>
+      <li>Digital addiction / screen time issues</li>
+    </ul>
+  </div>
+
+  <!-- ========== SECTION 2 ========== -->
+  <div class="section" id="internet">
+    <h2>2. The Internet — Foundation of Digital Communication</h2>
+    <p>The <span class="keyterm">Internet</span> is a global network of millions of computers and devices connected together to share information and resources.</p>
+    <h3>Key Internet Terminology</h3>
+    <table>
+      <tr><th>Term</th><th>Full Form / Meaning</th></tr>
+      <tr><td><strong>WWW</strong></td><td>World Wide Web – collection of web pages on the internet</td></tr>
+      <tr><td><strong>URL</strong></td><td>Uniform Resource Locator – web address (e.g., https://www.google.com)</td></tr>
+      <tr><td><strong>HTTP/HTTPS</strong></td><td>HyperText Transfer Protocol (Secure) – protocol for web pages</td></tr>
+      <tr><td><strong>Browser</strong></td><td>Software to view web pages (Chrome, Firefox, Edge)</td></tr>
+      <tr><td><strong>Search Engine</strong></td><td>Tool to search information (Google, Bing)</td></tr>
+      <tr><td><strong>ISP</strong></td><td>Internet Service Provider – company providing internet access</td></tr>
+      <tr><td><strong>Bandwidth</strong></td><td>Speed/capacity of internet connection (Mbps)</td></tr>
+      <tr><td><strong>IP Address</strong></td><td>Unique numerical address of a device on the internet</td></tr>
+      <tr><td><strong>Domain Name</strong></td><td>Readable name for IP address (e.g., google.com)</td></tr>
+      <tr><td><strong>Hyperlink</strong></td><td>Clickable link connecting to another web page</td></tr>
+    </table>
+    <h3>Types of Internet Connections</h3>
+    <table>
+      <tr><th>Type</th><th>Description</th></tr>
+      <tr><td>Broadband</td><td>High-speed wired connection via DSL or cable</td></tr>
+      <tr><td>Wi-Fi</td><td>Wireless internet using radio waves</td></tr>
+      <tr><td>Mobile Data (4G/5G)</td><td>Internet via cellular network</td></tr>
+      <tr><td>Dial-up</td><td>Old slow connection via telephone line</td></tr>
+      <tr><td>Fibre Optic</td><td>Very high speed; uses light signals</td></tr>
+    </table>
+    <div class="tip">
+      <strong>Remember:</strong> Web ≠ Internet. The <em>Internet</em> is the physical network of computers; the <em>World Wide Web (WWW)</em> is just one of the services that runs on the internet.
+    </div>
+  </div>
+
+  <!-- ========== SECTION 3 ========== -->
+  <div class="section" id="email">
+    <h2>3. Electronic Mail (Email)</h2>
+    <p><span class="keyterm">Email</span> (Electronic Mail) is a method of exchanging digital messages over the internet. It is fast, reliable, and supports attachments.</p>
+
+    <h3>Parts of an Email Address</h3>
+    <div class="email-box">
+      <span style="color:#00695c; font-size:1.1rem;"><strong>username</strong> @ <strong>domain</strong> . <strong>extension</strong></span><br>
+      Example: <strong>devanshi@gmail.com</strong><br>
+      &nbsp;&nbsp;• <em>devanshi</em> = username (unique to the user)<br>
+      &nbsp;&nbsp;• <em>@</em> = 'at' symbol separating user and domain<br>
+      &nbsp;&nbsp;• <em>gmail</em> = email service provider / domain<br>
+      &nbsp;&nbsp;• <em>.com</em> = domain extension (type of organisation)
+    </div>
+
+    <h3>Structure of an Email</h3>
+    <div class="email-box">
+      <span class="label">From:</span> sender@example.com<br>
+      <span class="label">To:</span> receiver@example.com<br>
+      <span class="label">CC:</span> carbon copy – other recipients who receive a copy<br>
+      <span class="label">BCC:</span> blind carbon copy – hidden recipients<br>
+      <span class="label">Subject:</span> Brief topic of the email<br>
+      <span class="label">Attachment:</span> Files attached (documents, images, PDFs)<br>
+      <span class="label">Body:</span> The main content / message<br>
+      <span class="label">Signature:</span> Sender's name, designation, contact
+    </div>
+
+    <h3>To vs CC vs BCC</h3>
+    <table>
+      <tr><th>Field</th><th>Full Form</th><th>Use</th></tr>
+      <tr><td><strong>To</strong></td><td>—</td><td>Primary recipient of the email</td></tr>
+      <tr><td><strong>CC</strong></td><td>Carbon Copy</td><td>Others who should be informed; all recipients can see CC addresses</td></tr>
+      <tr><td><strong>BCC</strong></td><td>Blind Carbon Copy</td><td>Recipients are hidden from others; useful for privacy/bulk mailing</td></tr>
+    </table>
+
+    <h3>How to Compose a Formal Email</h3>
+    <div class="email-box">
+      <span class="label">To:</span> principal@school.edu<br>
+      <span class="label">Subject:</span> Request for Leave<br><br>
+      Dear Sir/Madam,<br><br>
+      I am writing to request a leave of two days (12–13 June 2026) due to a family function. I will complete all missed assignments on my return.<br><br>
+      Thank you for your consideration.<br><br>
+      Yours sincerely,<br>
+      Devanshi Sharma<br>
+      Class 9 – Section A
+    </div>
+
+    <h3>Popular Email Services</h3>
+    <ul>
+      <li>Gmail (Google)</li>
+      <li>Outlook / Hotmail (Microsoft)</li>
+      <li>Yahoo Mail</li>
+      <li>Rediff Mail (India)</li>
+    </ul>
+
+    <h3>Email Attachment Tips</h3>
+    <ul>
+      <li>Keep attachment size small (compress if needed)</li>
+      <li>Mention the attachment in the email body</li>
+      <li>Use common formats: PDF, DOCX, JPG, PNG, ZIP</li>
+      <li>Do NOT open attachments from unknown senders</li>
+    </ul>
+  </div>
+
+  <!-- ========== SECTION 4 ========== -->
+  <div class="section" id="etiquette">
+    <h2>4. Netiquette – Online Etiquette</h2>
+    <p><span class="keyterm">Netiquette</span> (Network + Etiquette) refers to the accepted rules of behaviour for communication on the internet.</p>
+
+    <h3>Rules of Netiquette</h3>
+    <table>
+      <tr><th>#</th><th>Rule</th><th>Description</th></tr>
+      <tr><td>1</td><td>Be Respectful</td><td>Treat others online as you would in person</td></tr>
+      <tr><td>2</td><td>No SHOUTING</td><td>AVOID TYPING IN ALL CAPS — it implies shouting</td></tr>
+      <tr><td>3</td><td>Be Clear &amp; Concise</td><td>Write clear, short and meaningful messages</td></tr>
+      <tr><td>4</td><td>Respect Privacy</td><td>Do not share others' personal information without permission</td></tr>
+      <tr><td>5</td><td>No Cyberbullying</td><td>Do not send hurtful or threatening messages</td></tr>
+      <tr><td>6</td><td>Proofread before sending</td><td>Check for errors and tone before sending an email</td></tr>
+      <tr><td>7</td><td>Reply Promptly</td><td>Respond to emails/messages within a reasonable time</td></tr>
+      <tr><td>8</td><td>Use Correct Subject Line</td><td>Email subject should clearly describe the content</td></tr>
+      <tr><td>9</td><td>Avoid Spam</td><td>Don't send unnecessary bulk or repetitive messages</td></tr>
+      <tr><td>10</td><td>Respect Intellectual Property</td><td>Give credit when sharing others' work</td></tr>
+    </table>
+
+    <h3>Email Etiquette Specifically</h3>
+    <ul>
+      <li>Always fill in a meaningful <strong>Subject</strong> line</li>
+      <li>Start with a proper <strong>greeting</strong> (Dear Sir/Hello Rahul)</li>
+      <li>Keep the language <strong>formal</strong> in official emails</li>
+      <li>End with a <strong>closing</strong> (Regards / Yours sincerely)</li>
+      <li>Do not forward chain mails or hoaxes</li>
+      <li>Reply to all only when everyone needs to know</li>
+    </ul>
+    <div class="tip">
+      <strong>Cyberbullying:</strong> Using the internet to harass, threaten, or harm someone. It is ILLEGAL and should be reported immediately.
+    </div>
+  </div>
+
+  <!-- ========== SECTION 5 ========== -->
+  <div class="section" id="socialmedia">
+    <h2>5. Social Media &amp; Instant Messaging</h2>
+    <p><span class="keyterm">Social Media</span> are online platforms that allow users to create, share content, and interact with others.</p>
+
+    <h3>Popular Social Media Platforms</h3>
+    <table>
+      <tr><th>Platform</th><th>Primary Use</th></tr>
+      <tr><td>Facebook</td><td>Friends, family, group discussions, news</td></tr>
+      <tr><td>Instagram</td><td>Photo and video sharing</td></tr>
+      <tr><td>Twitter / X</td><td>Short posts (tweets), news, opinions</td></tr>
+      <tr><td>YouTube</td><td>Video sharing and streaming</td></tr>
+      <tr><td>LinkedIn</td><td>Professional networking</td></tr>
+      <tr><td>WhatsApp</td><td>Instant messaging, calls, file sharing</td></tr>
+      <tr><td>Telegram</td><td>Messaging, channels, large groups</td></tr>
+    </table>
+
+    <h3>Instant Messaging (IM)</h3>
+    <p>Instant Messaging is the exchange of text messages in real time over the internet.</p>
+    <ul>
+      <li><strong>Examples:</strong> WhatsApp, Telegram, Signal, Google Chat</li>
+      <li>Supports text, voice, video, images, documents</li>
+      <li>Group chats allow multiple people to communicate together</li>
+    </ul>
+
+    <h3>Advantages of Social Media</h3>
+    <ul>
+      <li>Connects people globally</li>
+      <li>Fast spread of news and information</li>
+      <li>Business promotion and marketing</li>
+      <li>Educational content (YouTube, blogs)</li>
+    </ul>
+    <h3>Disadvantages / Risks</h3>
+    <ul>
+      <li>Fake news and misinformation</li>
+      <li>Privacy threats (data misuse)</li>
+      <li>Cyberbullying and online harassment</li>
+      <li>Addiction and reduced productivity</li>
+      <li>Phishing and fraud through fake accounts</li>
+    </ul>
+  </div>
+
+  <!-- ========== SECTION 6 ========== -->
+  <div class="section" id="tools">
+    <h2>6. Digital Communication Tools</h2>
+
+    <h3>A. Video Conferencing</h3>
+    <p><span class="keyterm">Video Conferencing</span> is a live audio-video call between two or more participants over the internet.</p>
+    <table>
+      <tr><th>Tool</th><th>Provider</th><th>Use</th></tr>
+      <tr><td>Zoom</td><td>Zoom Video Communications</td><td>Meetings, webinars, online classes</td></tr>
+      <tr><td>Google Meet</td><td>Google</td><td>Online meetings, school/office</td></tr>
+      <tr><td>Microsoft Teams</td><td>Microsoft</td><td>Enterprise collaboration</td></tr>
+      <tr><td>Skype</td><td>Microsoft</td><td>Personal and business calls</td></tr>
+    </table>
+
+    <h3>B. Blogs</h3>
+    <p>A <span class="keyterm">Blog</span> (web log) is an informational website written in a conversational style, typically maintained by an individual or small group.</p>
+    <ul>
+      <li>Content is displayed in reverse chronological order</li>
+      <li>Allows comments and interaction with readers</li>
+      <li>Examples: WordPress, Blogger, Medium</li>
+    </ul>
+
+    <h3>C. Wikis</h3>
+    <p>A <span class="keyterm">Wiki</span> is a website that allows any user to add, edit, or delete content collaboratively.</p>
+    <ul>
+      <li>Best example: <strong>Wikipedia</strong></li>
+      <li>Used in schools and businesses for collaborative documentation</li>
+    </ul>
+
+    <h3>D. Online Forums &amp; Discussion Boards</h3>
+    <p>Online spaces where users can post questions, answers and participate in discussions. Example: Quora, Reddit, Stack Overflow.</p>
+
+    <h3>E. VoIP (Voice Over Internet Protocol)</h3>
+    <p><span class="keyterm">VoIP</span> allows making voice calls using the internet instead of a traditional phone line.</p>
+    <ul>
+      <li><strong>Examples:</strong> WhatsApp calls, Google Voice, Skype</li>
+      <li>Much cheaper than traditional STD/ISD calls</li>
+    </ul>
+
+    <h3>Comparison of Communication Tools</h3>
+    <table>
+      <tr><th>Tool</th><th>Type</th><th>Real-time?</th><th>Examples</th></tr>
+      <tr><td>Email</td><td>Asynchronous</td><td>No</td><td>Gmail, Outlook</td></tr>
+      <tr><td>Instant Messaging</td><td>Synchronous</td><td>Yes</td><td>WhatsApp, Telegram</td></tr>
+      <tr><td>Video Call</td><td>Synchronous</td><td>Yes</td><td>Zoom, Meet</td></tr>
+      <tr><td>Blog</td><td>Asynchronous</td><td>No</td><td>WordPress</td></tr>
+      <tr><td>Social Media Post</td><td>Asynchronous</td><td>No</td><td>Facebook, Instagram</td></tr>
+    </table>
+    <div class="tip">
+      <strong>Synchronous</strong> = happens in real time (live chat, video call) &nbsp;|&nbsp;
+      <strong>Asynchronous</strong> = not in real time (email, blog; can reply later)
+    </div>
+  </div>
+
+  <!-- ========== SECTION 7 ========== -->
+  <div class="section" id="safety">
+    <h2>7. Online Safety &amp; Digital Footprint</h2>
+
+    <h3>Digital Footprint</h3>
+    <p>A <span class="keyterm">Digital Footprint</span> is the trail of data you leave behind while using the internet — including posts, searches, emails, photos, and purchases.</p>
+    <table>
+      <tr><th>Type</th><th>Description</th><th>Example</th></tr>
+      <tr><td><strong>Active Footprint</strong></td><td>Data you intentionally share</td><td>Social media posts, emails sent</td></tr>
+      <tr><td><strong>Passive Footprint</strong></td><td>Data collected without your direct input</td><td>Browser cookies, IP address tracking</td></tr>
+    </table>
+    <div class="tip"><strong>Remember:</strong> Once posted online, information is hard to remove. Think before you post!</div>
+
+    <h3>Cyber Safety Rules</h3>
+    <ul>
+      <li>Use strong passwords (mix of letters, numbers, symbols)</li>
+      <li>Never share passwords with anyone</li>
+      <li>Do not click on suspicious links or attachments</li>
+      <li>Log out from accounts on shared devices</li>
+      <li>Enable two-factor authentication (2FA)</li>
+      <li>Do not share personal info (address, phone, school name) with strangers online</li>
+      <li>Report cyberbullying to a trusted adult or authority</li>
+    </ul>
+
+    <h3>Common Online Threats</h3>
+    <table>
+      <tr><th>Threat</th><th>Description</th></tr>
+      <tr><td><strong>Phishing</strong></td><td>Fake emails/websites tricking users into giving personal/financial info</td></tr>
+      <tr><td><strong>Malware</strong></td><td>Malicious software (virus, worm, spyware) that damages devices</td></tr>
+      <tr><td><strong>Spam</strong></td><td>Unwanted bulk email, often for advertising or fraud</td></tr>
+      <tr><td><strong>Hacking</strong></td><td>Unauthorised access to someone's account or device</td></tr>
+      <tr><td><strong>Cyberbullying</strong></td><td>Harassment, threats, or humiliation using digital means</td></tr>
+      <tr><td><strong>Identity Theft</strong></td><td>Stealing someone's personal information to impersonate them</td></tr>
+    </table>
+
+    <h3>Strong Password Tips</h3>
+    <ul>
+      <li>At least 8 characters long</li>
+      <li>Mix of UPPERCASE, lowercase, numbers (0-9), symbols (!@#$)</li>
+      <li>Do not use your name, birth date, or easy words</li>
+      <li>Use different passwords for different accounts</li>
+      <li>Change passwords regularly</li>
+    </ul>
+  </div>
+
+  <!-- ========== SECTION 8: QUESTIONS ========== -->
+  <div class="section" id="questions">
+    <h2>📝 Sample Exam Questions &amp; Answers <span class="marks-badge">30 Marks</span></h2>
+    <p style="font-size:0.85rem; color:#555; margin-bottom:16px;">Click each question to see the model answer. Questions cover all exam paper patterns.</p>
+
+    <!-- MCQ -->
+    <h3>Section A – Multiple Choice Questions <span class="marks-badge">1 mark each</span></h3>
+
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">
+        Q1. What does 'CC' stand for in an email? <span class="q-marks">1 Mark</span>
+      </div>
+      <div class="q-body">
+        <div class="mcq-option">a) Copy Content</div>
+        <div class="mcq-option correct-option">b) Carbon Copy</div>
+        <div class="mcq-option">c) Cloud Copy</div>
+        <div class="mcq-option">d) Current Contact</div>
+        <br><div class="answer-label">✔ Correct Answer:</div>
+        <div class="correct-option">b) Carbon Copy — used to send a copy of the email to additional recipients; all recipients can see the CC addresses.</div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">
+        Q2. Which of the following is an example of asynchronous digital communication? <span class="q-marks">1 Mark</span>
+      </div>
+      <div class="q-body">
+        <div class="mcq-option">a) Video call on Zoom</div>
+        <div class="mcq-option">b) WhatsApp voice call</div>
+        <div class="mcq-option correct-option">c) Sending an email</div>
+        <div class="mcq-option">d) Google Meet</div>
+        <br><div class="answer-label">✔ Correct Answer:</div>
+        <div class="correct-option">c) Sending an email — it is asynchronous because the reply does not have to come immediately.</div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">
+        Q3. 'Netiquette' means: <span class="q-marks">1 Mark</span>
+      </div>
+      <div class="q-body">
+        <div class="mcq-option">a) Internet speed</div>
+        <div class="mcq-option">b) Network hardware</div>
+        <div class="mcq-option correct-option">c) Accepted rules of behaviour for communication on the internet</div>
+        <div class="mcq-option">d) Online game etiquette</div>
+        <br><div class="answer-label">✔ Correct Answer:</div>
+        <div class="correct-option">c) Accepted rules of behaviour for communication on the internet</div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">
+        Q4. The trail of data a user leaves while using the internet is called: <span class="q-marks">1 Mark</span>
+      </div>
+      <div class="q-body">
+        <div class="mcq-option">a) Data packet</div>
+        <div class="mcq-option">b) Browser history</div>
+        <div class="mcq-option correct-option">c) Digital Footprint</div>
+        <div class="mcq-option">d) Cache memory</div>
+        <br><div class="answer-label">✔ Correct Answer:</div>
+        <div class="correct-option">c) Digital Footprint</div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">
+        Q5. Which attack involves tricking a user into giving their password through a fake website? <span class="q-marks">1 Mark</span>
+      </div>
+      <div class="q-body">
+        <div class="mcq-option">a) Spam</div>
+        <div class="mcq-option">b) Malware</div>
+        <div class="mcq-option correct-option">c) Phishing</div>
+        <div class="mcq-option">d) VoIP</div>
+        <br><div class="answer-label">✔ Correct Answer:</div>
+        <div class="correct-option">c) Phishing — fake emails or websites designed to steal your personal/financial information.</div>
+      </div>
+    </div>
+
+    <!-- Short Answer -->
+    <h3 style="margin-top:20px;">Section B – Short Answer Questions <span class="marks-badge">2 marks each</span></h3>
+
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">
+        Q6. What is an email? Name any three parts of an email message. <span class="q-marks">2 Marks</span>
+      </div>
+      <div class="q-body">
+        <div class="answer-label">Model Answer:</div>
+        <p><strong>Email</strong> (Electronic Mail) is a method of exchanging digital messages over the internet. It can contain text, images, and file attachments.</p>
+        <p><strong>Three parts of an email:</strong></p>
+        <ol>
+          <li><strong>Subject:</strong> Brief description of the email topic</li>
+          <li><strong>Body:</strong> The main content or message of the email</li>
+          <li><strong>Attachment:</strong> Files (documents, images, PDFs) sent along with the email</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">
+        Q7. What is the difference between CC and BCC in email? <span class="q-marks">2 Marks</span>
+      </div>
+      <div class="q-body">
+        <div class="answer-label">Model Answer:</div>
+        <table>
+          <tr><th>CC (Carbon Copy)</th><th>BCC (Blind Carbon Copy)</th></tr>
+          <tr><td>All recipients can see the CC email addresses.</td><td>BCC recipients are hidden from other recipients.</td></tr>
+          <tr><td>Used when you want people to be visibly informed.</td><td>Used for privacy or mass mailing without exposing all addresses.</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">
+        Q8. What is netiquette? State any four rules of netiquette. <span class="q-marks">2 Marks</span>
+      </div>
+      <div class="q-body">
+        <div class="answer-label">Model Answer:</div>
+        <p><strong>Netiquette</strong> = Network + Etiquette. It refers to the code of polite behaviour accepted for online communication.</p>
+        <p><strong>Four Rules:</strong></p>
+        <ol>
+          <li>Be respectful and polite in all online communication</li>
+          <li>Avoid typing in ALL CAPS (it implies shouting)</li>
+          <li>Do not share others' personal information without permission</li>
+          <li>Do not send spam or chain messages</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">
+        Q9. What is a digital footprint? Give one example each of active and passive digital footprint. <span class="q-marks">2 Marks</span>
+      </div>
+      <div class="q-body">
+        <div class="answer-label">Model Answer:</div>
+        <p>A <strong>digital footprint</strong> is the trail of data/information left behind by a user on the internet.</p>
+        <ul>
+          <li><strong>Active footprint:</strong> Data shared intentionally — e.g., posting a photo on Instagram</li>
+          <li><strong>Passive footprint:</strong> Data collected without direct knowledge — e.g., website cookies tracking your browsing</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3-Mark -->
+    <h3 style="margin-top:20px;">Section C – Answer in Brief <span class="marks-badge">3 marks each</span></h3>
+
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">
+        Q10. Explain three common online threats and how to protect yourself from each. <span class="q-marks">3 Marks</span>
+      </div>
+      <div class="q-body">
+        <div class="answer-label">Model Answer:</div>
+        <table>
+          <tr><th>Threat</th><th>Description</th><th>Protection</th></tr>
+          <tr>
+            <td><strong>Phishing</strong></td>
+            <td>Fake emails/sites to steal passwords</td>
+            <td>Never click suspicious links; check the URL carefully</td>
+          </tr>
+          <tr>
+            <td><strong>Malware</strong></td>
+            <td>Harmful software damaging the system</td>
+            <td>Install antivirus; do not download from untrusted sources</td>
+          </tr>
+          <tr>
+            <td><strong>Cyberbullying</strong></td>
+            <td>Harassment or threats online</td>
+            <td>Block the bully; report to adult/authority; do not respond</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">
+        Q11. What is video conferencing? Name any two tools. State three advantages of video conferencing for students. <span class="q-marks">3 Marks</span>
+      </div>
+      <div class="q-body">
+        <div class="answer-label">Model Answer:</div>
+        <p><strong>Video Conferencing</strong> is a real-time, live audio-video communication between two or more participants using the internet.</p>
+        <p><strong>Tools:</strong> Zoom, Google Meet</p>
+        <p><strong>Three advantages for students:</strong></p>
+        <ol>
+          <li>Attend classes from home during emergencies (like COVID-19)</li>
+          <li>Interact with teachers and classmates face-to-face virtually</li>
+          <li>Record sessions for later revision</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Long Answer -->
+    <h3 style="margin-top:20px;">Section D – Long Answer Questions <span class="marks-badge">5 marks each</span></h3>
+
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">
+        Q12. What is email? Explain its structure and write a formal email to your school principal requesting a leave of 2 days. <span class="q-marks">5 Marks</span>
+      </div>
+      <div class="q-body">
+        <div class="answer-label">Model Answer:</div>
+        <p><strong>Email</strong> (Electronic Mail) is the exchange of digital messages over the internet. It can include text, images, and attachments. It is fast, cheap and available 24/7.</p>
+        <p><strong>Structure of Email:</strong></p>
+        <table>
+          <tr><th>Field</th><th>Purpose</th></tr>
+          <tr><td>From</td><td>Sender's email address</td></tr>
+          <tr><td>To</td><td>Recipient's email address</td></tr>
+          <tr><td>CC / BCC</td><td>Additional recipients (visible / hidden)</td></tr>
+          <tr><td>Subject</td><td>Brief description of email topic</td></tr>
+          <tr><td>Body</td><td>Main message content</td></tr>
+          <tr><td>Attachment</td><td>Attached files</td></tr>
+          <tr><td>Signature</td><td>Sender's name &amp; details</td></tr>
+        </table>
+        <p><strong>Sample Formal Email:</strong></p>
+        <div class="email-box">
+          <span class="label">From:</span> devanshi.sharma@gmail.com<br>
+          <span class="label">To:</span> principal@dvschool.edu<br>
+          <span class="label">Subject:</span> Application for Two-Day Leave<br><br>
+          Dear Sir/Madam,<br><br>
+          I am Devanshi Sharma, a student of Class 9-A (Roll No. 12). I am writing to request a leave of two days (20–21 June 2026) due to a family function that requires my presence out of the city.<br><br>
+          I assure you that I will complete all the work missed during this period upon my return. I have also arranged for notes from my classmates.<br><br>
+          Kindly grant me the leave.<br><br>
+          Yours sincerely,<br>
+          Devanshi Sharma<br>
+          Class 9 – Section A | Roll No. 12
+        </div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">
+        Q13. Explain the advantages and disadvantages of social media. Also describe any five rules of netiquette a student should follow online. <span class="q-marks">5 Marks</span>
+      </div>
+      <div class="q-body">
+        <div class="answer-label">Model Answer:</div>
+        <p><strong>Social Media</strong> are internet-based platforms that allow users to create, share, and interact with content.</p>
+
+        <p><strong>Advantages:</strong></p>
+        <ol>
+          <li>Connects people globally regardless of location</li>
+          <li>Instant spread of news and awareness</li>
+          <li>Platform for education (YouTube tutorials, study groups)</li>
+          <li>Business promotion and digital marketing</li>
+          <li>Helps maintain relationships with family and friends</li>
+        </ol>
+
+        <p><strong>Disadvantages:</strong></p>
+        <ol>
+          <li>Spread of fake news and misinformation</li>
+          <li>Privacy issues and data misuse by platforms</li>
+          <li>Cyberbullying and online harassment</li>
+          <li>Addiction causing reduced focus on studies</li>
+          <li>Exposure to inappropriate content</li>
+        </ol>
+
+        <p><strong>Five Netiquette Rules for Students:</strong></p>
+        <ol>
+          <li><strong>Be respectful:</strong> Treat others online as you would in person — no insults or hate speech</li>
+          <li><strong>No CAPS:</strong> Typing in ALL CAPITALS is considered shouting — avoid it</li>
+          <li><strong>Protect privacy:</strong> Do not share others' personal details without consent</li>
+          <li><strong>Think before posting:</strong> Online posts are permanent; once posted they are hard to remove</li>
+          <li><strong>Avoid cyberbullying:</strong> Do not send hurtful, threatening, or embarrassing messages/images</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="tip" style="margin-top:20px;">
+      <strong>📊 Marks Distribution (30-mark paper):</strong><br>
+      Section A – MCQ: 5 × 1 = 5 marks &nbsp;|&nbsp;
+      Section B – Short: 4 × 2 = 8 marks &nbsp;|&nbsp;
+      Section C – Brief: 2 × 3 = 6 marks &nbsp;|&nbsp;
+      Section D – Long: 2 × 5 = 10 marks &nbsp;|&nbsp;
+      Practical/Activity = 1 mark &nbsp; ≈ <strong>30 marks total</strong>
+    </div>
+  </div>
+
+  <!-- Quick Revision -->
+  <div class="section">
+    <h2>⚡ Quick Revision Box</h2>
+    <ul>
+      <li><strong>Email</strong> = Electronic Mail — To, CC (visible), BCC (hidden), Subject, Body, Attachment, Signature</li>
+      <li><strong>Netiquette</strong> = online etiquette — be respectful, no CAPS, no spam, protect privacy</li>
+      <li><strong>Synchronous</strong> = real-time (video call) &nbsp;|&nbsp; <strong>Asynchronous</strong> = delayed (email, blog)</li>
+      <li><strong>Digital Footprint</strong> = Active (posts you make) + Passive (cookies, tracking)</li>
+      <li><strong>Common Threats:</strong> Phishing, Malware, Spam, Hacking, Cyberbullying, Identity Theft</li>
+      <li><strong>Strong Password:</strong> 8+ chars, UPPER + lower + number + symbol, unique for each account</li>
+      <li><strong>Video Conferencing:</strong> Zoom, Google Meet, Microsoft Teams, Skype</li>
+      <li><strong>Blog</strong> = web log (individual writer) | <strong>Wiki</strong> = collaborative editing (Wikipedia)</li>
+      <li><strong>VoIP</strong> = Voice over Internet Protocol — WhatsApp calls, Skype</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  CBSE Class 9 | Information Technology (402) | Part B – Unit 3 | NCERT | Devanshi's Learning Hub ❤️
+</footer>
+
+<script>
+  function toggle(header) {
+    const body = header.nextElementSibling;
+    body.classList.toggle('open');
+    header.querySelector('.q-marks').style.background =
+      body.classList.contains('open') ? '#2e7d32' : 'var(--primary)';
+  }
+</script>
+</body>
+</html>
+
