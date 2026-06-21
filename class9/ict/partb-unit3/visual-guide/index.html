@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visual Step-by-Step Guide | Part B Unit 3 | Class 9 ICT</title>
+<style>
+/* ═══ RESET & BASE ═══ */
+:root {
+  --g:#00695c; --gl:#00897b; --bg:#f0fdf8; --white:#fff;
+  --border:#b2dfdb; --warn:#f9a825; --acc:#e65100;
+  --step:#1565c0; --dialog-bg:#f5f5f5; --dialog-border:#aaa;
+  --toolbar-bg:#f0f0f0; --toolbar-border:#c8c8c8;
+  --menu-bg:#f9f9f9; --win-title:#1e3a5f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#1a1a1a;line-height:1.6}
+.wrap{max-width:1060px;margin:auto;padding:20px 14px 50px}
+header{background:linear-gradient(135deg,#00695c,#26a69a);color:#fff;padding:28px 20px;text-align:center}
+header h1{font-size:1.6rem;margin-bottom:4px}
+header p{font-size:.9rem;opacity:.9}
+nav{background:var(--g);display:flex;flex-wrap:wrap;gap:6px;padding:10px 18px;position:sticky;top:0;z-index:50}
+nav a{color:#b2ffe8;text-decoration:none;font-size:.8rem;padding:4px 9px;border-radius:10px;background:rgba(255,255,255,.12)}
+nav a:hover{background:rgba(255,255,255,.28)}
+
+/* ═══ SECTION CARDS ═══ */
+.sec{background:var(--white);border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.08);margin-bottom:28px;overflow:hidden}
+.sec-hdr{background:var(--gl);color:#fff;padding:12px 20px;font-size:1.05rem;font-weight:700}
+.sec-body{padding:22px}
+h3{color:var(--g);margin:20px 0 10px;font-size:.98rem}
+p{margin-bottom:10px;font-size:.93rem}
+ul,ol{padding-left:22px;margin-bottom:10px;font-size:.93rem}
+li{margin-bottom:4px}
+
+/* ═══ STEP-BY-STEP ═══ */
+.steps{counter-reset:step}
+.step{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px;padding:14px;background:#f9fffc;border:1px solid var(--border);border-radius:10px}
+.step-num{min-width:32px;height:32px;background:var(--step);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0}
+.step-body{flex:1}
+.step-body strong{display:block;margin-bottom:4px;color:#1a1a1a}
+.step-body p{margin:0;font-size:.9rem;color:#444}
+.arrow-right{color:var(--g);font-size:1.1rem;margin:0 6px}
+.path{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px;background:#e0f2f1;border-radius:6px;padding:5px 10px;font-size:.88rem;margin:6px 0;font-family:Consolas,monospace}
+.path .sep{color:var(--g);font-weight:700}
+
+/* ═══ TIP / NOTE ═══ */
+.tip{background:#fffde7;border-left:5px solid var(--warn);padding:11px 14px;border-radius:0 8px 8px 0;font-size:.9rem;margin:12px 0}
+.tip strong{color:var(--acc)}
+.note{background:#e3f2fd;border-left:5px solid #1565c0;padding:11px 14px;border-radius:0 8px 8px 0;font-size:.9rem;margin:12px 0}
+.note strong{color:#0d47a1}
+
+/* ═══ KEYBOARD KEY ═══ */
+kbd{display:inline-block;background:#263238;color:#b2dfdb;border-radius:4px;padding:2px 8px;font-family:Consolas,monospace;font-size:.84rem;border:1px solid #37474f}
+
+/* ════════════════════════════════════════
+   WRITER WINDOW MOCKUP
+════════════════════════════════════════ */
+.writer-window{
+  border:2px solid #888; border-radius:6px;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+  overflow:hidden; font-size:.8rem;
+  max-width:100%;
+}
+/* Title bar */
+.w-titlebar{
+  background:var(--win-title); color:#fff;
+  padding:6px 12px; display:flex; align-items:center;
+  justify-content:space-between;
+}
+.w-titlebar .icon{margin-right:6px;font-size:.9rem}
+.w-titlebar .wbtns{display:flex;gap:6px}
+.w-titlebar .wbtns span{width:12px;height:12px;border-radius:50%;display:inline-block}
+.w-titlebar .wbtns .wmin{background:#fbc02d}
+.w-titlebar .wbtns .wmax{background:#388e3c}
+.w-titlebar .wbtns .wcls{background:#d32f2f}
+/* Menu bar */
+.w-menu{
+  background:var(--menu-bg); border-bottom:1px solid var(--toolbar-border);
+  display:flex; gap:0; padding:0 4px;
+}
+.w-menu span{
+  padding:5px 9px; cursor:pointer; font-size:.8rem; color:#222;
+  border-radius:4px 4px 0 0;
+}
+.w-menu span:hover,.w-menu span.active{background:#d0e9f5}
+/* Toolbar */
+.w-toolbar{
+  background:var(--toolbar-bg); border-bottom:1px solid var(--toolbar-border);
+  display:flex; align-items:center; gap:2px; padding:3px 6px; flex-wrap:wrap;
+}
+.tbtn{
+  padding:4px 6px; border-radius:4px; cursor:pointer;
+  font-size:.75rem; color:#333; border:1px solid transparent;
+  display:flex; align-items:center; gap:3px;
+}
+.tbtn:hover{background:#d0e9f5; border-color:#90caf9}
+.tbtn.active{background:#bbdefb; border-color:#64b5f6}
+.tbtn.separator{width:1px;height:20px;background:#c8c8c8;margin:0 4px;padding:0;border:none;cursor:default}
+.w-format-bar{
+  background:var(--toolbar-bg); border-bottom:1px solid var(--toolbar-border);
+  display:flex; align-items:center; gap:3px; padding:3px 6px; flex-wrap:wrap;
+}
+.fselect{
+  border:1px solid var(--toolbar-border); background:#fff;
+  padding:3px 6px; font-size:.78rem; border-radius:3px; color:#333;
+  min-width:80px; cursor:pointer;
+}
+.fbtn{
+  padding:3px 7px; border-radius:3px; cursor:pointer;
+  font-size:.82rem; border:1px solid transparent; color:#333;
+}
+.fbtn:hover{background:#d0e9f5}
+.fbtn.b{font-weight:bold}
+.fbtn.i{font-style:italic}
+.fbtn.u{text-decoration:underline}
+.fbtn.active{background:#bbdefb; border-color:#64b5f6}
+/* Ruler */
+.w-ruler{
+  background:#e8e8e8; height:18px;
+  border-bottom:1px solid #ccc;
+  font-size:.6rem; color:#666;
+  display:flex; align-items:center; padding:0 8px;
+  background: repeating-linear-gradient(90deg, #e8e8e8 0px, #e8e8e8 9px, #ccc 9px, #ccc 10px);
+}
+/* Document area */
+.w-doc-area{
+  display:flex;
+  background:#888;
+  min-height:180px;
+}
+.w-scroll{width:14px;background:#d0d0d0;border-left:1px solid #aaa;display:flex;flex-direction:column;align-items:center;padding-top:2px}
+.w-scroll span{font-size:.6rem;color:#666}
+.w-page{
+  flex:1; background:#fff;
+  margin:10px auto; padding:16px 20px;
+  box-shadow:0 2px 6px rgba(0,0,0,.3);
+  min-height:160px; max-width:420px;
+  font-size:.85rem; line-height:1.6;
+}
+/* Status bar */
+.w-status{
+  background:#f0f0f0; border-top:1px solid #c8c8c8;
+  display:flex; gap:20px; padding:4px 10px;
+  font-size:.72rem; color:#555;
+}
+
+/* Selected text effect */
+.sel-text{background:#3399ff;color:#fff;border-radius:2px;padding:0 1px}
+.cursor{display:inline-block;width:2px;height:14px;background:#333;vertical-align:middle;animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ═══ DIALOG MOCKUP ═══ */
+.dialog-wrap{display:flex;justify-content:center;margin:14px 0}
+.dialog{
+  background:#f0f0f0;
+  border:1px solid #888;
+  border-radius:4px;
+  box-shadow:4px 4px 12px rgba(0,0,0,.35);
+  min-width:280px; max-width:460px; width:100%;
+  font-size:.82rem;
+}
+.dlg-title{
+  background:linear-gradient(to bottom,#4a6fa5,#2c4e87);
+  color:#fff; padding:6px 12px;
+  display:flex; justify-content:space-between; align-items:center;
+  border-radius:3px 3px 0 0; font-size:.84rem; font-weight:600;
+}
+.dlg-body{padding:14px 16px; background:#fff;}
+.dlg-footer{
+  padding:8px 12px; background:#f0f0f0;
+  display:flex; justify-content:flex-end; gap:8px;
+  border-top:1px solid #ccc;
+}
+.dlg-btn{
+  padding:5px 14px; border:1px solid #888; border-radius:3px;
+  background:linear-gradient(to bottom,#f9f9f9,#e0e0e0);
+  cursor:pointer; font-size:.8rem;
+}
+.dlg-btn.primary{background:linear-gradient(to bottom,#4a90d9,#2563ae);color:#fff;border-color:#1e5799}
+.dlg-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.dlg-label{min-width:80px;font-size:.8rem;color:#333}
+.dlg-input{
+  flex:1;border:1px solid #aaa;border-radius:2px;
+  padding:4px 6px;font-size:.8rem;background:#fff;
+}
+.dlg-input.highlight{border-color:#4a90d9;outline:2px solid rgba(74,144,217,.4)}
+
+/* ═══ BEFORE/AFTER ═══ */
+.ba-wrap{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+.ba-box{border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+.ba-label{padding:6px 12px;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.ba-before .ba-label{background:#ffebee;color:#c62828}
+.ba-after .ba-label{background:#e8f5e9;color:#2e7d32}
+.ba-content{padding:12px;background:#fff;font-size:.88rem;line-height:1.7}
+
+/* ═══ TABLE MOCKUP ═══ */
+.tbl-mock{border-collapse:collapse;margin:12px auto;font-size:.83rem}
+.tbl-mock th,.tbl-mock td{border:1px solid #555;padding:8px 12px}
+.tbl-mock th{background:#00695c;color:#fff}
+.tbl-mock .sel{background:#bbdefb}
+.tbl-mock .merge-h{background:#e0f2f1;font-style:italic}
+.cell-hint{font-size:.7rem;color:#888;display:block}
+
+/* ═══ SHORTCUT TABLE ═══ */
+.sc-table{width:100%;border-collapse:collapse;font-size:.88rem;margin:10px 0}
+.sc-table th{background:var(--gl);color:#fff;padding:8px 10px;text-align:left}
+.sc-table td{padding:7px 10px;border:1px solid var(--border)}
+.sc-table tr:nth-child(even) td{background:#f0fdf8}
+
+/* labels */
+.label-arrow{
+  display:flex;align-items:center;gap:6px;
+  font-size:.8rem;color:#c62828;font-weight:600;
+  margin:2px 0;
+}
+.label-arrow::before{content:'▶';font-size:.7rem}
+
+/* callout */
+.callout{
+  position:relative; background:#fff3e0;
+  border:2px solid var(--warn); border-radius:8px;
+  padding:10px 14px; margin:8px 0; font-size:.88rem;
+}
+.callout::before{content:'💡';margin-right:6px}
+
+/* mail merge flow */
+.mm-flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin:14px 0}
+.mm-box{
+  background:var(--white);border:2px solid var(--gl);
+  border-radius:10px;padding:12px 16px;text-align:center;
+  min-width:120px;font-size:.85rem;
+}
+.mm-box h4{color:var(--g);margin-bottom:4px;font-size:.9rem}
+.mm-arrow{font-size:1.4rem;color:var(--g)}
+.mm-result{background:#e0f2f1;border-color:#00695c}
+
+footer{text-align:center;color:#666;font-size:.78rem;padding:16px;background:#e0f2f1}
+</style>
+</head>
+<body>
+<header>
+  <h1>📖 Visual Step-by-Step Guide — Part B Unit 3</h1>
+  <p>CBSE Class 9 IT (Code 402) | LibreOffice Writer | Illustrated procedures with UI mockups</p>
+</header>
+<nav>
+  <a href="#writer-window">Writer Window</a>
+  <a href="#ch4">Ch4 Getting Started</a>
+  <a href="#ch5">Ch5 Editing</a>
+  <a href="#ch6">Ch6 Formatting</a>
+  <a href="#ch7">Ch7 Tables</a>
+  <a href="#ch8">Ch8 Printing</a>
+  <a href="#ch9">Ch9 Mail Merge</a>
+  <a href="index.html">← Unit 3 Hub</a>
+  <a href="../../../../index.html">🏠 Home</a>
+</nav>
+<div class="wrap">
+
+<!-- ══════════════════════════════════════ -->
+<!-- WRITER WINDOW LABELED -->
+<!-- ══════════════════════════════════════ -->
+<div class="sec" id="writer-window">
+  <div class="sec-hdr">🖥️ LibreOffice Writer — Parts of the Window</div>
+  <div class="sec-body">
+    <p>Study the annotated Writer window below. Every part is labeled. This is the first thing you see when you open Writer.</p>
+
+    <div class="writer-window">
+      <div class="w-titlebar">
+        <span><span class="icon">📄</span><strong>Untitled 1 – LibreOffice Writer</strong></span>
+        <div class="wbtns"><span class="wmin"></span><span class="wmax"></span><span class="wcls"></span></div>
+      </div>
+      <div class="w-menu">
+        <span>File</span><span>Edit</span><span>View</span><span>Insert</span>
+        <span>Format</span><span class="active">Styles</span><span>Table</span><span>Tools</span><span>Window</span><span>Help</span>
+      </div>
+      <div class="w-toolbar">
+        <span class="tbtn">🆕 New</span><span class="tbtn">📂 Open</span><span class="tbtn active">💾 Save</span>
+        <span class="tbtn separator"></span>
+        <span class="tbtn">🖨️ Print</span><span class="tbtn">👁️ Preview</span>
+        <span class="tbtn separator"></span>
+        <span class="tbtn">✂️ Cut</span><span class="tbtn">📋 Copy</span><span class="tbtn">📌 Paste</span>
+        <span class="tbtn separator"></span>
+        <span class="tbtn">↩️ Undo</span><span class="tbtn">↪️ Redo</span>
+        <span class="tbtn separator"></span>
+        <span class="tbtn">🔍 Find</span>
+      </div>
+      <div class="w-format-bar">
+        <select aria-label="Font name" class="fselect"><option>Times New Roman</option><option>Arial</option></select>
+        <select aria-label="Font size" class="fselect" style="min-width:45px"><option>12</option><option>14</option></select>
+        <span class="fbtn b active">B</span>
+        <span class="fbtn i">I</span>
+        <span class="fbtn u">U</span>
+        <span class="tbtn separator"></span>
+        <span class="fbtn active">≡ Left</span>
+        <span class="fbtn">≡ Centre</span>
+        <span class="fbtn">≡ Right</span>
+        <span class="fbtn">≡ Justify</span>
+        <span class="tbtn separator"></span>
+        <span class="fbtn">A▾ Colour</span>
+        <span class="fbtn">☰ Lists</span>
+      </div>
+      <div class="w-ruler">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6│</div>
+      <div class="w-doc-area">
+        <div class="w-page">
+          <p style="text-align:center;font-size:1rem;font-weight:bold">My First Document</p>
+          <p>This is the <strong>Work Area</strong> where you type your document. The white area represents a sheet of paper.</p>
+          <p>The cursor <span class="cursor"></span> blinks here showing where your next character will appear.</p>
+        </div>
+        <div class="w-scroll"><span>▲</span><span style="margin-top:auto">▼</span></div>
+      </div>
+      <div class="w-status">
+        <span>Page 1 of 1</span>
+        <span>Words: 34</span>
+        <span>English (India)</span>
+        <span style="margin-left:auto">100% ——⬜——</span>
+      </div>
+    </div>
+
+    <h3>Labeled Parts</h3>
+    <table class="sc-table">
+      <tr><th>Part</th><th>Location</th><th>What it does</th></tr>
+      <tr><td><strong>Title Bar</strong></td><td>Top (dark blue)</td><td>Shows document name + app name. Shows "Untitled 1" until saved.</td></tr>
+      <tr><td><strong>Menu Bar</strong></td><td>Below Title Bar</td><td>File, Edit, View, Insert, Format, Styles, Table, Tools, Window, Help</td></tr>
+      <tr><td><strong>Standard Toolbar</strong></td><td>Row of icons (top)</td><td>New, Open, Save, Print, Cut, Copy, Paste, Undo, Redo, Find</td></tr>
+      <tr><td><strong>Formatting Toolbar</strong></td><td>Row below Standard</td><td>Font name, Font size, Bold, Italic, Underline, Alignment, Colour</td></tr>
+      <tr><td><strong>Ruler</strong></td><td>Horizontal bar</td><td>Shows margins, indents and tab stops</td></tr>
+      <tr><td><strong>Work Area</strong></td><td>White area</td><td>The "paper" where you type your document</td></tr>
+      <tr><td><strong>Scroll Bar</strong></td><td>Right side</td><td>Scroll up/down through a long document</td></tr>
+      <tr><td><strong>Status Bar</strong></td><td>Bottom</td><td>Page number, word count, language, zoom level</td></tr>
+      <tr><td><strong>Insertion Point</strong></td><td>Blinking cursor in text</td><td>Shows where the next typed character will appear</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- CHAPTER 4 -->
+<!-- ══════════════════════════════════════ -->
+<div class="sec" id="ch4">
+  <div class="sec-hdr">📄 Chapter 4 — Getting Started with Word Processor</div>
+  <div class="sec-body">
+
+    <h3>How to Start LibreOffice Writer</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Click the Start menu</strong><p>In Windows, click the Start button (Windows icon) at the bottom-left of the screen.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Navigate to LibreOffice</strong><p>Go to: All Programs → LibreOffice → LibreOffice Writer</p><div class="path"><span>Start</span><span class="sep">›</span><span>All Programs</span><span class="sep">›</span><span>LibreOffice</span><span class="sep">›</span><span>LibreOffice Writer</span></div></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Writer opens</strong><p>A blank document named "Untitled 1" appears, ready for typing.</p></div></div>
+    </div>
+
+    <h3>How to Save a Document for the First Time</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Press Ctrl+S or go to File → Save</strong><p>Since this is a new document, the <strong>Save As dialog</strong> opens automatically.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>The Save As dialog opens</strong>
+        <div class="dialog-wrap">
+          <div class="dialog">
+            <div class="dlg-title">Save As <span>✕</span></div>
+            <div class="dlg-body">
+              <div class="dlg-row"><span class="dlg-label">Save in:</span><span class="dlg-input" style="flex:1">Documents ▾</span></div>
+              <div style="background:#fff;border:1px solid #ccc;padding:8px;min-height:50px;margin-bottom:10px;font-size:.78rem;color:#555">
+                📁 Class9 &nbsp; 📁 Projects &nbsp; 📄 Notes.odt
+              </div>
+              <div class="dlg-row"><span class="dlg-label">File Name:</span><input aria-label="File name" class="dlg-input highlight" value="My First Document" style="font-size:.8rem"></div>
+              <div class="dlg-row"><span class="dlg-label">File Type:</span><select aria-label="File type" class="dlg-input" style="font-size:.78rem"><option>ODF Text Document (.odt) ← Default</option><option>Microsoft Word (.docx)</option><option>PDF (.pdf)</option></select></div>
+            </div>
+            <div class="dlg-footer"><button class="dlg-btn">Cancel</button><button class="dlg-btn primary">Save</button></div>
+          </div>
+        </div>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Type the file name</strong><p>Click the File Name field and type a meaningful name like "My First Document".</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Choose file type</strong><p>Keep it as <strong>.odt</strong> (default) for LibreOffice, or choose <strong>.docx</strong> if you need to share with Microsoft Word users.</p></div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Click Save</strong><p>The document is saved. The title bar now shows "My First Document – LibreOffice Writer".</p></div></div>
+    </div>
+    <div class="tip"><strong>Remember:</strong> Press <kbd>Ctrl+S</kbd> regularly while working to keep saving your changes. You'll never lose work again!</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- CHAPTER 5 -->
+<!-- ══════════════════════════════════════ -->
+<div class="sec" id="ch5">
+  <div class="sec-hdr">✏️ Chapter 5 — Editing a Document</div>
+  <div class="sec-body">
+
+    <h3>Insert Mode vs Overtype Mode — Visual Comparison</h3>
+    <div class="ba-wrap">
+      <div class="ba-box ba-before">
+        <div class="ba-label">Insert Mode (Default)</div>
+        <div class="ba-content">
+          <p>Before typing "quick ":</p>
+          <p>The <span class="cursor"></span>brown fox</p>
+          <br>
+          <p>After typing "quick ":</p>
+          <p>The quick <span class="cursor"></span>brown fox</p>
+          <p style="font-size:.8rem;color:#2e7d32;margin-top:6px">✔ Existing text shifts right — nothing is lost</p>
+        </div>
+      </div>
+      <div class="ba-box ba-after">
+        <div class="ba-label">Overtype Mode (Insert key pressed)</div>
+        <div class="ba-content">
+          <p>Before typing "quick ":</p>
+          <p>The <span class="cursor"></span>brown fox</p>
+          <br>
+          <p>After typing "quick ":</p>
+          <p>The quick <span class="cursor"></span>fox</p>
+          <p style="font-size:.8rem;color:#c62828;margin-top:6px">✘ "brown " was overwritten and is gone!</p>
+        </div>
+      </div>
+    </div>
+    <div class="tip"><strong>Toggle:</strong> Press the <kbd>Insert</kbd> key to switch between Insert and Overtype. The Status Bar shows <strong>OVR</strong> when Overtype is active.</div>
+
+    <h3>How to Select Text — 3 Methods</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Method 1: Click and Drag (Mouse)</strong>
+        <p>Click at the START of the text you want to select, hold the mouse button, drag to the END, then release.</p>
+        <div class="writer-window" style="font-size:.8rem">
+          <div class="w-format-bar" style="justify-content:flex-end;padding:3px 8px;font-size:.75rem;color:#555">📄 document1.odt</div>
+          <div class="w-page" style="min-height:60px;margin:6px auto;padding:12px 16px">
+            The quick <span class="sel-text">brown fox jumps</span> over the lazy dog.
+          </div>
+        </div>
+        <p style="font-size:.82rem;color:#555">Blue highlight = selected text. Any formatting or edit now applies to this text only.</p>
+      </div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Method 2: Double-click to select one word</strong>
+        <p>Double-click on any word to instantly select the entire word.</p>
+        <div class="callout">Double-click on "brown" → <span class="sel-text">brown</span> is instantly selected</div>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Method 3: Keyboard shortcuts</strong>
+        <ul>
+          <li><kbd>Ctrl+A</kbd> — select entire document</li>
+          <li><kbd>Shift+→</kbd> — extend selection one character right</li>
+          <li><kbd>Shift+End</kbd> — select to end of line</li>
+          <li><kbd>Shift+Ctrl+End</kbd> — select to end of document</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <h3>Using Find and Replace</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Press Ctrl+H</strong><p>The Find and Replace dialog box opens.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>The Find and Replace Dialog</strong>
+        <div class="dialog-wrap">
+          <div class="dialog">
+            <div class="dlg-title">Find & Replace <span>✕</span></div>
+            <div class="dlg-body">
+              <div class="dlg-row"><span class="dlg-label">Search For:</span><input aria-label="Search for" class="dlg-input highlight" value="colour" style="font-size:.8rem"></div>
+              <div class="dlg-row"><span class="dlg-label">Replace With:</span><input aria-label="Replace with" class="dlg-input" value="color" style="font-size:.8rem"></div>
+              <div style="margin:8px 0;display:flex;gap:12px;font-size:.78rem">
+                <label><input type="checkbox"> Match Case</label>
+                <label><input type="checkbox"> Entire Words Only</label>
+              </div>
+            </div>
+            <div class="dlg-footer">
+              <button class="dlg-btn">Find Next</button>
+              <button class="dlg-btn">Replace</button>
+              <button class="dlg-btn primary">Replace All</button>
+              <button class="dlg-btn">Close</button>
+            </div>
+          </div>
+        </div>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Type in the Search For field</strong><p>Type the word you want to find (e.g., "colour").</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Type in Replace With field</strong><p>Type the replacement word (e.g., "color").</p></div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Click Replace All</strong><p>All instances of "colour" in the document are replaced with "color" in one click. Writer shows a count of replacements made.</p></div></div>
+    </div>
+
+    <h3>Spell Check — What the Red Underline Means</h3>
+    <div class="writer-window" style="font-size:.8rem">
+      <div class="w-format-bar" style="padding:3px 8px;font-size:.75rem;color:#555;background:#f0f0f0">Formatting Toolbar</div>
+      <div class="w-page" style="min-height:80px;margin:6px auto;padding:12px 16px">
+        <p>The student submited the assinment on time.</p>
+        <p style="font-size:.75rem;margin-top:4px">
+          <span style="text-decoration:underline wavy red;text-decoration-color:red">submited</span> &nbsp; ← Red wavy = spelling error<br>
+          <span style="text-decoration:underline wavy;text-decoration-color:blue">on time</span> &nbsp; ← Blue wavy = grammar suggestion
+        </p>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Right-click the red-underlined word</strong><p>A context menu appears with spelling suggestions.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Choose the correct spelling</strong><p>Click the correct word from the list — it replaces the misspelled word instantly.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Or press F7 for full spell check</strong><p>This opens the Spelling dialog that goes through every error one by one with options: Ignore, Change, Add to Dictionary.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- CHAPTER 6 -->
+<!-- ══════════════════════════════════════ -->
+<div class="sec" id="ch6">
+  <div class="sec-hdr">🎨 Chapter 6 — Formatting a Document</div>
+  <div class="sec-body">
+
+    <h3>Applying Bold, Italic, Underline</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Select the text</strong><p>Click and drag to highlight the text you want to format.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Click the button in the Formatting Toolbar</strong>
+        <div class="writer-window" style="font-size:.8rem">
+          <div class="w-format-bar">
+            <select aria-label="Font name" class="fselect"><option>Times New Roman</option><option>Arial</option></select>
+            <select aria-label="Font size" class="fselect" style="min-width:40px"><option>14</option></select>
+            <span class="fbtn b active" style="background:#bbdefb;border:2px solid #1565c0">B</span>
+            <span class="fbtn i">I</span>
+            <span class="fbtn u">U</span>
+          </div>
+          <div class="w-page" style="min-height:60px;margin:4px auto;padding:10px 16px">
+            <span class="sel-text">Important heading</span> is selected → click <strong>B</strong> → <strong>Important heading</strong>
+          </div>
+        </div>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Or use keyboard shortcuts</strong><p><kbd>Ctrl+B</kbd> Bold &nbsp;|&nbsp; <kbd>Ctrl+I</kbd> Italic &nbsp;|&nbsp; <kbd>Ctrl+U</kbd> Underline</p></div></div>
+    </div>
+
+    <h3>Text Alignment — Before and After</h3>
+    <div class="ba-wrap">
+      <div class="ba-box ba-before">
+        <div class="ba-label">Before (Left Align)</div>
+        <div class="ba-content" style="font-size:.85rem">
+          <p>The quick brown fox</p>
+          <p>jumps over the lazy</p>
+          <p>dog near the river bank.</p>
+        </div>
+      </div>
+      <div class="ba-box ba-after">
+        <div class="ba-label">After (Justify — Ctrl+J)</div>
+        <div class="ba-content" style="font-size:.85rem;text-align:justify">
+          <p>The quick brown fox</p>
+          <p>jumps  over  the  lazy</p>
+          <p>dog near the river bank.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Changing Font and Font Size</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Select the text to change</strong></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Click the Font Name dropdown</strong>
+        <div class="writer-window" style="font-size:.8rem">
+          <div class="w-format-bar">
+            <div style="position:relative;display:inline-block">
+              <select aria-label="Font name" class="fselect" style="min-width:130px;border:2px solid #1565c0"><option>Arial</option></select>
+              <div style="position:absolute;top:26px;left:0;background:#fff;border:1px solid #888;z-index:5;padding:4px 0;min-width:130px;font-size:.8rem;box-shadow:2px 2px 6px rgba(0,0,0,.2)">
+                <div style="padding:4px 10px;background:#d0e9f5">Arial</div>
+                <div style="padding:4px 10px">Times New Roman</div>
+                <div style="padding:4px 10px">Calibri</div>
+                <div style="padding:4px 10px">Comic Sans MS</div>
+              </div>
+            </div>
+          </div>
+          <div style="height:40px"></div>
+        </div>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Type or select a font name</strong><p>Click on the font you want from the dropdown list.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Change the size</strong><p>Click the Font Size field next to the font name and type the new size (e.g., 16) or choose from the dropdown.</p></div></div>
+    </div>
+
+    <h3>Page Setup — Changing Margins and Orientation</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body">
+        <strong>Go to Format → Page Style</strong>
+        <div class="path"><span>Format</span><span class="sep">›</span><span>Page Style…</span></div>
+      </div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>The Page Style Dialog opens</strong>
+        <div class="dialog-wrap">
+          <div class="dialog">
+            <div class="dlg-title">Page Style: Default Page Style <span>✕</span></div>
+            <div class="dlg-body">
+              <div style="display:flex;gap:8px;border-bottom:1px solid #ccc;margin-bottom:10px;font-size:.78rem">
+                <span style="padding:4px 8px;background:#d0e9f5;border:1px solid #888;cursor:pointer">Page</span>
+                <span style="padding:4px 8px;cursor:pointer">Area</span>
+                <span style="padding:4px 8px;cursor:pointer">Header</span>
+                <span style="padding:4px 8px;cursor:pointer">Footer</span>
+              </div>
+              <div style="display:flex;gap:20px;flex-wrap:wrap">
+                <div>
+                  <div style="font-size:.78rem;font-weight:600;margin-bottom:6px">Paper Format</div>
+                  <div class="dlg-row"><span class="dlg-label">Format:</span><select aria-label="Paper format" class="dlg-input"><option>A4</option><option>Letter</option></select></div>
+                  <div class="dlg-row"><span class="dlg-label">Orientation:</span>
+                    <label style="font-size:.78rem;margin-right:10px"><input type="radio" checked> Portrait</label>
+                    <label style="font-size:.78rem"><input type="radio"> Landscape</label>
+                  </div>
+                </div>
+                <div>
+                  <div style="font-size:.78rem;font-weight:600;margin-bottom:6px">Margins</div>
+                  <div class="dlg-row"><span class="dlg-label">Top:</span><input aria-label="Top margin" class="dlg-input" value="2.00cm" style="width:70px"></div>
+                  <div class="dlg-row"><span class="dlg-label">Bottom:</span><input aria-label="Bottom margin" class="dlg-input" value="2.00cm" style="width:70px"></div>
+                  <div class="dlg-row"><span class="dlg-label">Left:</span><input aria-label="Left margin" class="dlg-input highlight" value="2.50cm" style="width:70px"></div>
+                  <div class="dlg-row"><span class="dlg-label">Right:</span><input aria-label="Right margin" class="dlg-input" value="2.00cm" style="width:70px"></div>
+                </div>
+              </div>
+            </div>
+            <div class="dlg-footer"><button class="dlg-btn">Cancel</button><button class="dlg-btn primary">OK</button></div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- CHAPTER 7 -->
+<!-- ══════════════════════════════════════ -->
+<div class="sec" id="ch7">
+  <div class="sec-hdr">📋 Chapter 7 — Creating and Using Tables</div>
+  <div class="sec-body">
+
+    <h3>How to Insert a Table</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Click where you want the table</strong><p>Place the cursor at the location in your document where the table should appear.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body">
+        <strong>Go to Table → Insert Table or press Ctrl+F12</strong>
+        <div class="path"><span>Table</span><span class="sep">›</span><span>Insert Table…</span></div>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><strong>The Insert Table Dialog opens</strong>
+        <div class="dialog-wrap">
+          <div class="dialog">
+            <div class="dlg-title">Insert Table <span>✕</span></div>
+            <div class="dlg-body">
+              <div class="dlg-row"><span class="dlg-label">Name:</span><input aria-label="Table name" class="dlg-input" value="Table1"></div>
+              <div class="dlg-row"><span class="dlg-label">Columns:</span><input aria-label="Number of columns" class="dlg-input highlight" value="3" type="number" style="width:60px"></div>
+              <div class="dlg-row"><span class="dlg-label">Rows:</span><input aria-label="Number of rows" class="dlg-input highlight" value="4" type="number" style="width:60px"></div>
+              <div style="margin-top:8px"><label style="font-size:.8rem"><input type="checkbox" checked> Heading (first row as header)</label></div>
+            </div>
+            <div class="dlg-footer"><button class="dlg-btn">Cancel</button><button class="dlg-btn primary">Insert</button></div>
+          </div>
+        </div>
+      </div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Set columns and rows, click Insert</strong><p>The table appears in your document. The first row is the heading row.</p>
+        <table class="tbl-mock">
+          <tr><th>Name</th><th>Class</th><th>Marks</th></tr>
+          <tr><td>Rahul<span class="cell-hint">Row 2, Col 1</span></td><td>9A</td><td>85</td></tr>
+          <tr><td>Priya</td><td>9B</td><td>92</td></tr>
+          <tr><td>Amit</td><td>9A</td><td>78</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <h3>Merging Cells — Visual Example</h3>
+    <p>To merge cells, select the cells, then go to Table → Merge Cells.</p>
+    <div class="ba-wrap">
+      <div class="ba-box ba-before">
+        <div class="ba-label">Before Merging</div>
+        <div class="ba-content">
+          <table class="tbl-mock" style="margin:8px 0">
+            <tr><td style="min-width:80px">Header 1</td><td>Header 2</td><td>Header 3</td></tr>
+            <tr><td>Data</td><td>Data</td><td>Data</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="ba-box ba-after">
+        <div class="ba-label">After Merging top row</div>
+        <div class="ba-content">
+          <table class="tbl-mock" style="margin:8px 0">
+            <tr><td colspan="3" class="merge-h" style="text-align:center">Student Results — merged across 3 columns</td></tr>
+            <tr><td>Data</td><td>Data</td><td>Data</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="tip"><strong>Tip:</strong> Press <kbd>Tab</kbd> to jump to the next cell. Pressing Tab in the very last cell of the last row automatically adds a new row!</div>
+  </div>
+</div>
+
+<!-- ���═════════════════════════════════════ -->
+<!-- CHAPTER 8 -->
+<!-- ══════════════════════════════════════ -->
+<div class="sec" id="ch8">
+  <div class="sec-hdr">🖨️ Chapter 8 — Printing a Document</div>
+  <div class="sec-body">
+
+    <h3>Step-by-Step: Printing a Document</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Check Print Preview first</strong>
+        <div class="path"><span>File</span><span class="sep">›</span><span>Print Preview</span></div>
+        <p>Always check how the document will look printed before sending to the printer.</p>
+      </div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Press Ctrl+P to open Print Dialog</strong>
+        <div class="dialog-wrap">
+          <div class="dialog" style="max-width:480px">
+            <div class="dlg-title">Print <span>✕</span></div>
+            <div class="dlg-body">
+              <div class="dlg-row"><span class="dlg-label">Printer:</span><select aria-label="Printer selection" class="dlg-input"><option>HP LaserJet 107a ✓ Ready</option></select></div>
+              <div style="margin:10px 0;padding:10px;background:#f9f9f9;border:1px solid #ddd;border-radius:4px">
+                <div style="font-size:.8rem;font-weight:600;margin-bottom:8px">Print Range</div>
+                <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem">
+                  <label><input type="radio" name="range" checked> All Pages</label>
+                  <label><input type="radio" name="range"> Current Page</label>
+                  <label><input type="radio" name="range"> Pages:</label>
+                  <input aria-label="Page range" class="dlg-input" value="1-3, 5" style="width:80px;font-size:.78rem">
+                </div>
+              </div>
+              <div class="dlg-row">
+                <span class="dlg-label">Copies:</span>
+                <input aria-label="Number of copies" class="dlg-input" value="1" type="number" style="width:60px">
+                <label style="font-size:.8rem;margin-left:10px"><input type="checkbox" checked> Collate</label>
+              </div>
+            </div>
+            <div class="dlg-footer"><button class="dlg-btn">Cancel</button><button class="dlg-btn primary">Print</button></div>
+          </div>
+        </div>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Select printer, range and copies</strong><p>Choose which pages to print and how many copies. Enable Collate to print complete sets.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Click Print</strong><p>The document is sent to the printer.</p></div></div>
+    </div>
+
+    <h3>Export as PDF</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body">
+        <div class="path"><span>File</span><span class="sep">›</span><span>Export as PDF…</span></div>
+      </div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>PDF Options Dialog</strong>
+        <div class="dialog-wrap">
+          <div class="dialog">
+            <div class="dlg-title">PDF Options <span>✕</span></div>
+            <div class="dlg-body">
+              <div style="font-size:.8rem;font-weight:600;margin-bottom:8px">General</div>
+              <div style="display:flex;gap:16px;font-size:.79rem;margin-bottom:8px">
+                <label><input type="radio" name="pdf" checked> All Pages</label>
+                <label><input type="radio" name="pdf"> Pages:</label>
+                <input aria-label="PDF page range" class="dlg-input" style="width:60px;font-size:.78rem">
+              </div>
+              <label style="font-size:.79rem"><input type="checkbox"> Reduce Image Resolution</label>
+            </div>
+            <div class="dlg-footer"><button class="dlg-btn">Cancel</button><button class="dlg-btn primary">Export</button></div>
+          </div>
+        </div>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Click Export, choose filename and save location, click Save</strong></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- CHAPTER 9 -->
+<!-- ══════════════════════════════════════ -->
+<div class="sec" id="ch9">
+  <div class="sec-hdr">📬 Chapter 9 — Using Mail Merge</div>
+  <div class="sec-body">
+
+    <h3>How Mail Merge Works — Visual Flow</h3>
+    <div class="mm-flow">
+      <div class="mm-box"><h4>📄 Main Document</h4>Letter template with «merge fields»</div>
+      <span class="mm-arrow">+</span>
+      <div class="mm-box"><h4>📊 Data Source</h4>Spreadsheet with names, addresses etc.</div>
+      <span class="mm-arrow">→</span>
+      <div class="mm-box"><h4>⚙️ Mail Merge</h4>Tools → Mail Merge Wizard</div>
+      <span class="mm-arrow">→</span>
+      <div class="mm-box mm-result"><h4>📬 Output</h4>Personalised documents for each record</div>
+    </div>
+
+    <h3>The Data Source — How It Should Look</h3>
+    <p>Your data source (e.g., a Calc spreadsheet) must have <strong>field names in the first row</strong>.</p>
+    <table class="tbl-mock" style="margin:12px 0">
+      <tr>
+        <th>Name</th><th>Class</th><th>Roll_No</th><th>Address</th><th>City</th>
+      </tr>
+      <tr><td>Rahul Sharma</td><td>9A</td><td>1</td><td>Plot 12, Sec 5</td><td>Panvel</td></tr>
+      <tr><td>Priya Singh</td><td>9B</td><td>2</td><td>House 4, MG Road</td><td>Mumbai</td></tr>
+      <tr><td>Amit Verma</td><td>9C</td><td>3</td><td>B-9, Shastri Nagar</td><td>Thane</td></tr>
+    </table>
+    <div class="note"><strong>Rule:</strong> Row 1 = column headings (field names). Row 2 onwards = actual data. The headings become your merge field names: «Name», «Class», «Roll_No» etc.</div>
+
+    <h3>Main Document with Merge Fields</h3>
+    <div class="writer-window">
+      <div class="w-titlebar"><span>📄 Invitation_Letter.odt – LibreOffice Writer</span><div class="wbtns"><span class="wmin"></span><span class="wmax"></span><span class="wcls"></span></div></div>
+      <div class="w-menu"><span class="active">Tools</span><span>Insert</span></div>
+      <div class="w-page" style="min-height:160px;margin:8px auto;padding:16px 20px;font-size:.88rem;line-height:1.9">
+        <p>Date: 21 June 2026</p>
+        <p>Dear <span style="background:#fff9c4;border:1px dashed #f9a825;border-radius:3px;padding:1px 6px;color:#e65100;font-weight:600">«Name»</span>,</p>
+        <p>We are pleased to inform you that your ward from Class <span style="background:#fff9c4;border:1px dashed #f9a825;border-radius:3px;padding:1px 6px;color:#e65100;font-weight:600">«Class»</span>, Roll No. <span style="background:#fff9c4;border:1px dashed #f9a825;border-radius:3px;padding:1px 6px;color:#e65100;font-weight:600">«Roll_No»</span> has been selected for the Annual Prize Distribution Ceremony.</p>
+        <p>Yours sincerely,<br>The Principal</p>
+      </div>
+    </div>
+    <p style="font-size:.84rem;color:#555;margin-top:6px">The yellow boxes are merge fields. They will be replaced with actual data during merging.</p>
+
+    <h3>Step-by-Step: Mail Merge Wizard</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body">
+        <strong>Open the main document</strong><p>Open or create your letter template in Writer.</p>
+        <div class="path"><span>Tools</span><span class="sep">›</span><span>Mail Merge Wizard…</span></div>
+      </div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Wizard Step 1 — Select document type</strong><p>Choose <strong>Letter</strong>. Click Next.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Wizard Step 2 — Select starting document</strong><p>Choose "Use the current document". Click Next.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Wizard Step 3 — Select address list (Data Source)</strong><p>Click "Select a Different List" and browse to your Calc spreadsheet (.ods file). Click Next.</p></div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Wizard Steps 4–6 — Set up salutation and layout</strong><p>Configure the greeting line and address block position if needed. Click Next through each step.</p></div></div>
+      <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Wizard Step 7 — Preview the merged document</strong><p>Use the arrow buttons to preview each merged letter. Verify that names and data appear correctly.</p></div></div>
+      <div class="step"><div class="step-num">7</div><div class="step-body"><strong>Wizard Step 8 — Finalise and output</strong>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <div style="background:#e0f2f1;border:1px solid #26a69a;border-radius:8px;padding:10px;font-size:.85rem;flex:1;min-width:120px"><strong>📄 New Document</strong><br>Creates all letters in a new Writer file — editable before printing</div>
+          <div style="background:#e3f2fd;border:1px solid #90caf9;border-radius:8px;padding:10px;font-size:.85rem;flex:1;min-width:120px"><strong>🖨️ Printer</strong><br>Sends directly to printer — quick but not editable</div>
+          <div style="background:#fff3e0;border:1px solid #ffb74d;border-radius:8px;padding:10px;font-size:.85rem;flex:1;min-width:120px"><strong>📧 Email</strong><br>Sends personalised emails to each recipient</div>
+        </div>
+      </div></div>
+    </div>
+
+    <h3>The Merged Output</h3>
+    <p>After merging with 3 data records, the output document has 3 personalised letters:</p>
+    <div class="ba-wrap">
+      <div class="ba-box ba-before">
+        <div class="ba-label">Main Document (template)</div>
+        <div class="ba-content" style="font-size:.84rem">
+          Dear <strong>«Name»</strong>,<br>
+          Class: <strong>«Class»</strong> | Roll: <strong>«Roll_No»</strong>
+        </div>
+      </div>
+      <div class="ba-box ba-after">
+        <div class="ba-label">After Merge (Record 1)</div>
+        <div class="ba-content" style="font-size:.84rem">
+          Dear <strong>Rahul Sharma</strong>,<br>
+          Class: <strong>9A</strong> | Roll: <strong>1</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SHORTCUTS SUMMARY -->
+<div class="sec">
+  <div class="sec-hdr">⌨️ All Important Shortcuts at a Glance</div>
+  <div class="sec-body">
+    <table class="sc-table">
+      <tr><th>Action</th><th>Shortcut</th><th>Action</th><th>Shortcut</th></tr>
+      <tr><td>New Document</td><td><kbd>Ctrl+N</kbd></td><td>Open Document</td><td><kbd>Ctrl+O</kbd></td></tr>
+      <tr><td>Save</td><td><kbd>Ctrl+S</kbd></td><td>Print</td><td><kbd>Ctrl+P</kbd></td></tr>
+      <tr><td>Copy</td><td><kbd>Ctrl+C</kbd></td><td>Cut</td><td><kbd>Ctrl+X</kbd></td></tr>
+      <tr><td>Paste</td><td><kbd>Ctrl+V</kbd></td><td>Undo</td><td><kbd>Ctrl+Z</kbd></td></tr>
+      <tr><td>Redo</td><td><kbd>Ctrl+Y</kbd></td><td>Select All</td><td><kbd>Ctrl+A</kbd></td></tr>
+      <tr><td>Find</td><td><kbd>Ctrl+F</kbd></td><td>Find &amp; Replace</td><td><kbd>Ctrl+H</kbd></td></tr>
+      <tr><td>Bold</td><td><kbd>Ctrl+B</kbd></td><td>Italic</td><td><kbd>Ctrl+I</kbd></td></tr>
+      <tr><td>Underline</td><td><kbd>Ctrl+U</kbd></td><td>Spell Check</td><td><kbd>F7</kbd></td></tr>
+      <tr><td>Left Align</td><td><kbd>Ctrl+L</kbd></td><td>Centre</td><td><kbd>Ctrl+E</kbd></td></tr>
+      <tr><td>Right Align</td><td><kbd>Ctrl+R</kbd></td><td>Justify</td><td><kbd>Ctrl+J</kbd></td></tr>
+      <tr><td>Insert Table</td><td><kbd>Ctrl+F12</kbd></td><td>Next Table Cell</td><td><kbd>Tab</kbd></td></tr>
+      <tr><td>Toggle Overtype</td><td><kbd>Insert</kbd></td><td>Line Start/End</td><td><kbd>Home/End</kbd></td></tr>
+    </table>
+  </div>
+</div>
+
+</div><!-- end wrap -->
+<footer>CBSE Class 9 IT Code 402 | Part B Unit 3 | Visual Step-by-Step Guide | KIPS Syllabus | LibreOffice Writer</footer>
+<script>
+document.querySelectorAll('.dialog input,.dialog select,.writer-window input,.writer-window select,.w-format-bar select,.w-format-bar input').forEach(function(el){
+  if(!el.getAttribute('aria-label')){el.setAttribute('aria-label','UI demonstration field');}
+});
+</script>
+</body>
+</html>
