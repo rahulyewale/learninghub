@@ -5,715 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Part A – Unit 1: Communication Skills | Class 9 ICT (402)</title>
   <style>
-    :root {
-      --primary: #1565c0;
-      --primary-light: #1976d2;
-      --accent: #e65100;
-      --bg: #f0f4ff;
-      --white: #ffffff;
-      --border: #c5cae9;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: var(--bg);
-      color: #222;
-      line-height: 1.7;
-    }
-    header {
-      background: linear-gradient(135deg, #1565c0, #42a5f5);
-      color: white;
-      padding: 28px 20px 18px;
-      text-align: center;
-    }
-    header h1 { font-size: 1.7rem; margin-bottom: 4px; }
-    header p  { font-size: 0.95rem; opacity: 0.9; }
-    nav {
-      background: var(--primary);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      padding: 10px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav a {
-      color: #cce5ff;
-      text-decoration: none;
-      font-size: 0.82rem;
-      padding: 4px 10px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.12);
-      transition: background 0.2s;
-    }
-    nav a:hover { background: rgba(255,255,255,0.28); color: #fff; }
-    .container { max-width: 1050px; margin: auto; padding: 22px 16px 40px; }
-    .section {
-      background: var(--white);
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      padding: 24px;
-      margin-bottom: 24px;
-    }
-    h2 {
-      background: var(--primary-light);
-      color: white;
-      padding: 10px 16px;
-      border-radius: 6px;
-      margin-bottom: 16px;
-      font-size: 1.15rem;
-    }
-    h3 { color: var(--primary); margin: 18px 0 8px; font-size: 1rem; }
-    h4 { color: #444; margin: 12px 0 6px; font-size: 0.95rem; }
-    p  { margin-bottom: 10px; }
-    ul, ol { padding-left: 22px; margin-bottom: 10px; }
-    li { margin-bottom: 4px; }
-    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.92rem; }
-    th { background: var(--primary-light); color: white; padding: 9px 12px; text-align: left; }
-    td { padding: 8px 12px; border: 1px solid var(--border); }
-    tr:nth-child(even) td { background: #f3f6ff; }
-    .tip {
-      background: #fffde7;
-      border-left: 5px solid #f9a825;
-      padding: 12px 16px;
-      margin: 14px 0;
-      border-radius: 0 6px 6px 0;
-      font-size: 0.93rem;
-    }
-    .tip strong { color: #e65100; }
-    .keyterm {
-      display: inline-block;
-      background: #e3f2fd;
-      color: #0d47a1;
-      border-radius: 4px;
-      padding: 1px 8px;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-    .cycle-box {
-      background: #eef5ff;
-      border-radius: 8px;
-      padding: 18px;
-      text-align: center;
-      font-size: 1rem;
-      line-height: 2.2;
-    }
-    .cycle-box span {
-      display: inline-block;
-      background: var(--primary-light);
-      color: white;
-      border-radius: 20px;
-      padding: 3px 18px;
-      margin: 2px;
-    }
-    /* Q&A section */
-    .qa-section { margin-top: 6px; }
-    .q-block {
-      background: #f9f9ff;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      margin-bottom: 16px;
-      overflow: hidden;
-    }
-    .q-header {
-      background: #e8eaf6;
-      padding: 10px 16px;
-      font-weight: 600;
-      font-size: 0.93rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .q-header:hover { background: #c5cae9; }
-    .q-marks { font-size: 0.78rem; background: var(--primary); color: white; border-radius: 10px; padding: 2px 8px; }
-    .q-body {
-      padding: 14px 16px;
-      display: none;
-      border-top: 1px solid var(--border);
-      font-size: 0.92rem;
-    }
-    .q-body.open { display: block; }
-    .answer-label { color: #2e7d32; font-weight: 700; margin-bottom: 6px; font-size: 0.85rem; text-transform: uppercase; }
-    .mcq-option { padding: 2px 0; }
-    .correct-option { color: #2e7d32; font-weight: 700; }
-    .marks-badge {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      border-radius: 12px;
-      font-size: 0.75rem;
-      padding: 2px 10px;
-      margin-left: 8px;
-      vertical-align: middle;
-    }
-    footer {
-      text-align: center;
-      padding: 16px;
-      font-size: 0.8rem;
-      color: #888;
-    }
-    @media(max-width:600px){
-      header h1 { font-size: 1.2rem; }
-      nav { gap: 4px; }
-    }
+    :root{--primary:#1565c0;--pl:#1976d2;--bg:#f0f4ff;--white:#fff;--border:#c5cae9;--warn:#f9a825}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#222;line-height:1.7}
+    header{background:linear-gradient(135deg,#1565c0,#42a5f5);color:#fff;padding:32px 20px;text-align:center}
+    header h1{font-size:1.8rem;margin-bottom:6px}
+    header p{font-size:.95rem;opacity:.9}
+    nav{background:var(--primary);display:flex;flex-wrap:wrap;gap:6px;padding:10px 20px}
+    nav a{color:#bbdefb;text-decoration:none;font-size:.84rem;padding:4px 10px;border-radius:12px;background:rgba(255,255,255,.12)}
+    nav a:hover{background:rgba(255,255,255,.28);color:#fff}
+    .container{max-width:1060px;margin:auto;padding:24px 16px 40px}
+    .intro-card{background:var(--white);border-radius:12px;padding:20px 24px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:28px}
+    .intro-card h2{color:var(--primary);margin-bottom:10px;font-size:1.15rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:28px}
+    .ch-card{background:var(--white);border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:20px;border-left:5px solid var(--pl);transition:transform .15s}
+    .ch-card:hover{transform:translateY(-3px)}
+    .ch-card .num{font-size:.8rem;color:var(--pl);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+    .ch-card h3{color:#0d2a5e;font-size:1.05rem;margin-bottom:8px}
+    .ch-card p{font-size:.88rem;color:#455;margin-bottom:12px;line-height:1.5}
+    .ch-card a{display:inline-block;background:var(--primary);color:#fff;text-decoration:none;padding:7px 14px;border-radius:8px;font-size:.86rem}
+    .ch-card a:hover{background:var(--pl)}
+    .topics span{display:inline-block;background:#e3f2fd;color:#0d47a1;border-radius:4px;padding:2px 7px;margin:2px 2px;font-size:.8rem}
+    .tip{background:#fffde7;border-left:5px solid var(--warn);padding:14px 18px;border-radius:0 8px 8px 0;font-size:.93rem;margin-top:8px}
+    .tip strong{color:#e65100}
+    .summary{background:var(--white);border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:20px 24px;margin-bottom:20px}
+    .summary h2{color:var(--primary);margin-bottom:12px;font-size:1.1rem}
+    table{width:100%;border-collapse:collapse;font-size:.9rem}
+    th{background:var(--pl);color:#fff;padding:8px 12px;text-align:left}
+    td{padding:7px 12px;border:1px solid var(--border)}
+    tr:nth-child(even) td{background:#f0f4ff}
+    footer{text-align:center;color:#666;font-size:.8rem;padding:16px;background:#e3f2fd;margin-top:8px}
   </style>
 </head>
 <body>
-
 <header>
-  <h1>📡 Part A – Unit 1: Communication Skills</h1>
-  <p>CBSE Class 9 &nbsp;|&nbsp; Information Technology (Code 402) &nbsp;|&nbsp; NCERT &nbsp;|&nbsp; 30-Mark Exam Prep</p>
+  <h1>🗣️ Part A – Unit 1: Communication Skills</h1>
+  <p>CBSE Class 9 IT (Code 402) | KIPS Publication | Chapters 1–4</p>
 </header>
-
 <nav>
-  <a href="#intro">Intro</a>
-  <a href="#types">Types</a>
-  <a href="#cycle">Cycle</a>
-  <a href="#barriers">Barriers</a>
-  <a href="#feedback">Feedback</a>
-  <a href="#listening">Listening</a>
-  <a href="#writing">Writing</a>
-  <a href="#grammar">Grammar</a>
-  <a href="#questions">Questions</a>
+  <a href="#chapters">All Chapters</a>
+  <a href="#summary">Key Concepts</a>
+  <a href="../../../index.html">🏠 Learning Hub</a>
 </nav>
-
 <div class="container">
 
-  <!-- ========== SECTION 1 ========== -->
-  <div class="section" id="intro">
-    <h2>1. What is Communication?</h2>
-    <p>
-      <span class="keyterm">Communication</span> is the process of exchanging information, ideas, thoughts, feelings or knowledge between two or more people using a common system of symbols, signs, or behaviour.
-    </p>
-    <h3>Importance of Communication</h3>
-    <ul>
-      <li>Builds personal and professional relationships</li>
-      <li>Helps in sharing and spreading information</li>
-      <li>Improves teamwork and collaboration</li>
-      <li>Reduces misunderstandings and conflicts</li>
-      <li>Helps express needs, ideas and emotions</li>
-      <li>Supports learning and development</li>
-    </ul>
-    <h3>Elements of Communication</h3>
-    <table>
-      <tr><th>Element</th><th>Description</th></tr>
-      <tr><td><strong>Sender</strong></td><td>Person who initiates or sends the message</td></tr>
-      <tr><td><strong>Message</strong></td><td>The information/idea to be communicated</td></tr>
-      <tr><td><strong>Encoding</strong></td><td>Converting idea into a communicable form (words, signals)</td></tr>
-      <tr><td><strong>Channel / Medium</strong></td><td>The path used to send the message (speech, email, letter)</td></tr>
-      <tr><td><strong>Receiver</strong></td><td>Person who receives the message</td></tr>
-      <tr><td><strong>Decoding</strong></td><td>Interpreting and understanding the received message</td></tr>
-      <tr><td><strong>Feedback</strong></td><td>Response from the receiver back to the sender</td></tr>
-      <tr><td><strong>Noise</strong></td><td>Any disturbance/interference that distorts the message</td></tr>
-    </table>
-    <div class="tip">
-      <strong>Remember:</strong> Communication is a <em>two-way</em> process. Without feedback it remains one-way (like a broadcast).
+  <div class="intro-card">
+    <h2>About This Unit</h2>
+    <p>Unit 1 of Part A covers <strong>Communication Skills</strong> — the foundation for all professional and personal interaction. This unit spans <strong>Chapters 1 through 4</strong> of the KIPS Class 9 IT textbook.</p>
+    <p>Click any chapter card to open its full notes with key terms, tables, examples, memory tips and exam-ready Q&A.</p>
+    <div class="tip"><strong>Exam Focus:</strong> Communication cycle (Ch2), Non-verbal communication (Ch1), Perspectives/barriers (Ch3), and formal letter/notice writing (Ch4) are frequently asked in both 1-mark and 5-mark questions.</div>
+  </div>
+
+  <div class="grid" id="chapters">
+    <div class="ch-card">
+      <div class="num">Chapter 1</div>
+      <h3>Methods of Communication</h3>
+      <p>Types of communication — verbal (oral and written), non-verbal, and visual. Formal vs informal, barriers and how to overcome them.</p>
+      <div class="topics"><span>Verbal</span><span>Non-Verbal</span><span>Visual</span><span>Oral vs Written</span><span>Formal vs Informal</span><span>Barriers</span></div>
+      <br><a href="ch1-methods/index.html">Open Chapter 1 →</a>
+    </div>
+    <div class="ch-card">
+      <div class="num">Chapter 2</div>
+      <h3>Communication Cycle</h3>
+      <p>All 8 elements of the communication cycle, types of feedback, noise, and the 7 C's of effective communication. Active listening.</p>
+      <div class="topics"><span>Sender</span><span>Encoding</span><span>Channel</span><span>Decoding</span><span>Feedback</span><span>Noise</span><span>7 C's</span><span>Active Listening</span></div>
+      <br><a href="ch2-communication-cycle/index.html">Open Chapter 2 →</a>
+    </div>
+    <div class="ch-card">
+      <div class="num">Chapter 3</div>
+      <h3>Perspectives in Communication</h3>
+      <p>Perception, factors affecting communication, language and parts of speech, cultural perspectives, assertive communication, and professional etiquette.</p>
+      <div class="topics"><span>Perception</span><span>Parts of Speech</span><span>Kinds of Sentences</span><span>Culture</span><span>Assertive</span><span>Email Etiquette</span></div>
+      <br><a href="ch3-perspectives/index.html">Open Chapter 3 →</a>
+    </div>
+    <div class="ch-card">
+      <div class="num">Chapter 4</div>
+      <h3>Basic Writing Skills</h3>
+      <p>Writing process, paragraph structure, formal and informal letters, professional email, notice writing and introduction to report writing.</p>
+      <div class="topics"><span>Writing Process</span><span>Paragraphs</span><span>Formal Letter</span><span>Informal Letter</span><span>Email</span><span>Notice Writing</span><span>5 W's</span></div>
+      <br><a href="ch4-writing-skills/index.html">Open Chapter 4 →</a>
     </div>
   </div>
 
-  <!-- ========== SECTION 2 ========== -->
-  <div class="section" id="types">
-    <h2>2. Types / Methods of Communication</h2>
+  <div class="summary" id="summary">
+    <h2>📌 Key Concepts at a Glance</h2>
     <table>
-      <tr><th>Type</th><th>Meaning</th><th>Examples</th></tr>
-      <tr><td><strong>Verbal</strong></td><td>Using words (spoken or written)</td><td>Speech, phone, letter, email</td></tr>
-      <tr><td><strong>Non-Verbal</strong></td><td>Without words; body language</td><td>Gestures, expressions, eye contact</td></tr>
-      <tr><td><strong>Visual</strong></td><td>Using images, symbols, graphics</td><td>Charts, diagrams, posters, signs</td></tr>
+      <tr><th>Topic</th><th>Key Points</th></tr>
+      <tr><td><strong>3 Methods of Communication</strong></td><td>Verbal (words), Non-verbal (body language), Visual (images/signs)</td></tr>
+      <tr><td><strong>Non-verbal types</strong></td><td>Facial expression, eye contact, gesture, posture, paralanguage, personal space</td></tr>
+      <tr><td><strong>Communication Cycle</strong></td><td>Sender → Encoding → Channel → Receiver → Decoding → Feedback (→ back to Sender)</td></tr>
+      <tr><td><strong>8 Cycle Elements</strong></td><td>Sender, Message, Encoding, Channel, Receiver, Decoding, Feedback, Noise</td></tr>
+      <tr><td><strong>7 C's of Communication</strong></td><td>Clear, Concise, Correct, Complete, Courteous, Coherent, Concrete</td></tr>
+      <tr><td><strong>Types of Noise</strong></td><td>Physical, Semantic, Psychological, Physiological</td></tr>
+      <tr><td><strong>Parts of Speech</strong></td><td>Noun, Pronoun, Verb, Adjective, Adverb, Preposition, Conjunction, Interjection</td></tr>
+      <tr><td><strong>4 Sentence Types</strong></td><td>Declarative, Interrogative, Imperative, Exclamatory</td></tr>
+      <tr><td><strong>Formal Letter parts</strong></td><td>Sender Address, Date, Receiver Address, Salutation, Subject, Body, Closing, Signature</td></tr>
+      <tr><td><strong>Notice — 5 W's</strong></td><td>Who, What, When, Where, Why</td></tr>
+      <tr><td><strong>Assertive style</strong></td><td>Clear + confident + respectful — ideal for professional communication</td></tr>
+      <tr><td><strong>Writing Process</strong></td><td>Pre-write → Draft → Revise → Edit → Publish</td></tr>
     </table>
-
-    <h3>A. Verbal Communication</h3>
-    <h4>i. Oral / Spoken Communication</h4>
-    <ul>
-      <li>Face-to-face conversation</li>
-      <li>Telephone / Video call</li>
-      <li>Meetings and conferences</li>
-      <li>Speeches and presentations</li>
-    </ul>
-    <p><strong>Advantages:</strong> Immediate feedback, personal touch, quick clarification.</p>
-    <p><strong>Disadvantages:</strong> No permanent record, may be misunderstood, affected by noise.</p>
-
-    <h4>ii. Written Communication</h4>
-    <ul>
-      <li>Letters, notices, reports</li>
-      <li>Emails, SMS, WhatsApp messages</li>
-      <li>Books, newspapers</li>
-    </ul>
-    <p><strong>Advantages:</strong> Permanent record, precise, can be referred later.</p>
-    <p><strong>Disadvantages:</strong> Time-consuming, no immediate feedback, requires literacy.</p>
-
-    <h3>B. Non-Verbal Communication</h3>
-    <table>
-      <tr><th>Form</th><th>Example</th></tr>
-      <tr><td>Facial Expressions</td><td>Smiling (happiness), frowning (displeasure)</td></tr>
-      <tr><td>Eye Contact</td><td>Direct eye contact shows confidence</td></tr>
-      <tr><td>Posture / Body Language</td><td>Standing straight shows attentiveness</td></tr>
-      <tr><td>Hand Gestures</td><td>Waving hello / thumbs up</td></tr>
-      <tr><td>Tone of Voice</td><td>Loud vs soft; happy vs angry</td></tr>
-      <tr><td>Personal Space</td><td>Proximity in conversation</td></tr>
-    </table>
-    <div class="tip">
-      <strong>Fact:</strong> Studies show that over <strong>70%</strong> of communication is non-verbal (body language + tone).
-    </div>
-
-    <h3>C. Visual Communication</h3>
-    <ul>
-      <li>Maps, graphs, charts</li>
-      <li>Traffic signs and signals</li>
-      <li>Infographics and posters</li>
-      <li>Emojis and icons (digital)</li>
-    </ul>
-  </div>
-
-  <!-- ========== SECTION 3 ========== -->
-  <div class="section" id="cycle">
-    <h2>3. The Communication Cycle (Process)</h2>
-    <div class="cycle-box">
-      <span>Sender</span> ➜
-      <span>Idea/Thought</span> ➜
-      <span>Encoding</span> ➜
-      <span>Channel</span> ➜
-      <span>Receiver</span> ➜
-      <span>Decoding</span> ➜
-      <span>Feedback</span>
-      <br><small style="color:#555; margin-top:8px; display:block;">↩ Feedback loops back to the Sender completing the cycle</small>
-    </div>
-    <h3>Explanation of Each Step</h3>
-    <ol>
-      <li><strong>Sender</strong> – Has an idea or information to share.</li>
-      <li><strong>Idea</strong> – The content or thought that needs to be communicated.</li>
-      <li><strong>Encoding</strong> – The sender converts the idea into words, symbols or signals.</li>
-      <li><strong>Channel</strong> – The medium through which the message travels (voice, email, paper).</li>
-      <li><strong>Receiver</strong> – The person who receives the message.</li>
-      <li><strong>Decoding</strong> – The receiver interprets and understands the message.</li>
-      <li><strong>Feedback</strong> – The receiver responds, completing the cycle.</li>
-    </ol>
-    <div class="tip">
-      <strong>Noise</strong> can enter at any stage – it is anything that interrupts or distorts the message (loud environment, poor signal, language barrier).
-    </div>
-  </div>
-
-  <!-- ========== SECTION 4 ========== -->
-  <div class="section" id="barriers">
-    <h2>4. Barriers to Communication</h2>
-    <p>Barriers are obstacles that prevent effective communication.</p>
-    <table>
-      <tr><th>Type of Barrier</th><th>Meaning</th><th>Example</th></tr>
-      <tr><td><strong>Physical / Environmental</strong></td><td>Physical distance or noise</td><td>Loud room, poor internet</td></tr>
-      <tr><td><strong>Language</strong></td><td>Different language or vocabulary</td><td>Using jargon or technical terms</td></tr>
-      <tr><td><strong>Psychological</strong></td><td>Mental state or attitude</td><td>Fear, stress, prejudice</td></tr>
-      <tr><td><strong>Emotional</strong></td><td>Strong feelings affecting reception</td><td>Anger, grief</td></tr>
-      <tr><td><strong>Cultural</strong></td><td>Different customs / values</td><td>Different meanings of gestures</td></tr>
-      <tr><td><strong>Perceptual</strong></td><td>Different understanding of the same message</td><td>Visual perception differences</td></tr>
-      <tr><td><strong>Technological</strong></td><td>Device or network failure</td><td>No signal, power cut</td></tr>
-    </table>
-    <h3>Ways to Overcome Barriers</h3>
-    <ul>
-      <li>Use simple, clear language</li>
-      <li>Choose the right channel</li>
-      <li>Listen actively and ask questions</li>
-      <li>Be aware of cultural differences</li>
-      <li>Seek feedback to confirm understanding</li>
-    </ul>
-  </div>
-
-  <!-- ========== SECTION 5 ========== -->
-  <div class="section" id="feedback">
-    <h2>5. Feedback</h2>
-    <p><span class="keyterm">Feedback</span> is the response or reaction of the receiver after receiving and decoding the message.</p>
-    <table>
-      <tr><th>Type</th><th>Description</th><th>Example</th></tr>
-      <tr><td><strong>Positive Feedback</strong></td><td>Confirms message was understood correctly</td><td>"Yes, I understand."</td></tr>
-      <tr><td><strong>Negative Feedback</strong></td><td>Indicates misunderstanding or disagreement</td><td>"I'm not sure what you mean."</td></tr>
-      <tr><td><strong>Verbal Feedback</strong></td><td>Spoken or written response</td><td>Replying to an email</td></tr>
-      <tr><td><strong>Non-Verbal Feedback</strong></td><td>Body language, expression</td><td>Nodding, frowning</td></tr>
-    </table>
-    <div class="tip"><strong>Importance of Feedback:</strong> It helps the sender know if the message was received and understood correctly. It makes communication a <em>two-way process</em>.</div>
-  </div>
-
-  <!-- ========== SECTION 6 ========== -->
-  <div class="section" id="listening">
-    <h2>6. Listening Skills</h2>
-    <p><span class="keyterm">Active Listening</span> means fully concentrating on the speaker, understanding the message, and responding appropriately.</p>
-    <h3>Types of Listening</h3>
-    <table>
-      <tr><th>Type</th><th>Description</th></tr>
-      <tr><td><strong>Active Listening</strong></td><td>Fully focused, engaged, asks questions</td></tr>
-      <tr><td><strong>Passive Listening</strong></td><td>Hearing without full attention or response</td></tr>
-      <tr><td><strong>Empathetic Listening</strong></td><td>Listening with feelings/emotions</td></tr>
-      <tr><td><strong>Critical Listening</strong></td><td>Evaluating and analysing the content</td></tr>
-    </table>
-    <h3>Tips for Good Listening</h3>
-    <ul>
-      <li>Maintain eye contact with the speaker</li>
-      <li>Do not interrupt; wait for your turn</li>
-      <li>Avoid distractions (phone, noise)</li>
-      <li>Take brief notes if needed</li>
-      <li>Ask clarifying questions</li>
-      <li>Summarise what you heard</li>
-    </ul>
-    <div class="tip"><strong>Remember:</strong> Listening ≠ Hearing. Hearing is passive; Listening is active and conscious.</div>
-  </div>
-
-  <!-- ========== SECTION 7 ========== -->
-  <div class="section" id="writing">
-    <h2>7. Writing &amp; Reading Skills</h2>
-    <h3>Effective Writing</h3>
-    <ul>
-      <li>Use simple and clear sentences</li>
-      <li>Organise ideas logically</li>
-      <li>Check spelling and grammar</li>
-      <li>Use appropriate format (letter, email, report)</li>
-      <li>Proofread before sending</li>
-    </ul>
-    <h3>Effective Reading</h3>
-    <ul>
-      <li><strong>Skimming:</strong> Reading quickly to get the main idea</li>
-      <li><strong>Scanning:</strong> Looking for specific information</li>
-      <li><strong>Intensive Reading:</strong> Reading carefully for details</li>
-      <li><strong>Extensive Reading:</strong> Reading for overall understanding/pleasure</li>
-    </ul>
-    <h3>Format of a Formal Letter</h3>
-    <ol>
-      <li>Sender's Address</li>
-      <li>Date</li>
-      <li>Receiver's Address</li>
-      <li>Subject</li>
-      <li>Salutation (Dear Sir/Madam)</li>
-      <li>Body (Introduction, Content, Conclusion)</li>
-      <li>Complimentary close (Yours sincerely/faithfully)</li>
-      <li>Sender's Signature and Name</li>
-    </ol>
-  </div>
-
-  <!-- ========== SECTION 8 ========== -->
-  <div class="section" id="grammar">
-    <h2>8. English Grammar Essentials</h2>
-    <h3>Parts of Speech</h3>
-    <table>
-      <tr><th>Part of Speech</th><th>Function</th><th>Example</th></tr>
-      <tr><td>Noun</td><td>Name of person/place/thing</td><td>Rahul, Delhi, Book</td></tr>
-      <tr><td>Pronoun</td><td>Replaces a noun</td><td>He, She, It, They</td></tr>
-      <tr><td>Verb</td><td>Action or state</td><td>Run, Write, Is</td></tr>
-      <tr><td>Adjective</td><td>Describes a noun</td><td>Beautiful, Tall, Red</td></tr>
-      <tr><td>Adverb</td><td>Modifies verb/adjective</td><td>Quickly, Very, Well</td></tr>
-      <tr><td>Preposition</td><td>Shows relation</td><td>In, On, At, Between</td></tr>
-      <tr><td>Conjunction</td><td>Joins clauses/words</td><td>And, But, Because, Or</td></tr>
-      <tr><td>Interjection</td><td>Expresses emotion</td><td>Wow!, Oh!, Ouch!</td></tr>
-    </table>
-
-    <h3>Types of Sentences</h3>
-    <table>
-      <tr><th>Type</th><th>Description</th><th>Example</th></tr>
-      <tr><td>Declarative</td><td>Makes a statement</td><td>I am a student.</td></tr>
-      <tr><td>Interrogative</td><td>Asks a question</td><td>What is your name?</td></tr>
-      <tr><td>Imperative</td><td>Gives a command/request</td><td>Open the door.</td></tr>
-      <tr><td>Exclamatory</td><td>Expresses strong emotion</td><td>What a beautiful day!</td></tr>
-    </table>
-
-    <h3>Tenses at a Glance</h3>
-    <table>
-      <tr><th>Tense</th><th>Structure</th><th>Example</th></tr>
-      <tr><td>Simple Present</td><td>Subject + V1 (+s/es)</td><td>She reads.</td></tr>
-      <tr><td>Present Continuous</td><td>Subject + is/am/are + V-ing</td><td>She is reading.</td></tr>
-      <tr><td>Simple Past</td><td>Subject + V2</td><td>She read.</td></tr>
-      <tr><td>Past Continuous</td><td>Subject + was/were + V-ing</td><td>She was reading.</td></tr>
-      <tr><td>Simple Future</td><td>Subject + will + V1</td><td>She will read.</td></tr>
-    </table>
-
-    <h3>Punctuation Marks</h3>
-    <table>
-      <tr><th>Mark</th><th>Symbol</th><th>Use</th></tr>
-      <tr><td>Full Stop</td><td>.</td><td>End of sentence</td></tr>
-      <tr><td>Comma</td><td>,</td><td>Pause; separating items</td></tr>
-      <tr><td>Question Mark</td><td>?</td><td>End of question</td></tr>
-      <tr><td>Exclamation Mark</td><td>!</td><td>Excitement or command</td></tr>
-      <tr><td>Apostrophe</td><td>'</td><td>Possession or contraction</td></tr>
-      <tr><td>Quotation Marks</td><td>" "</td><td>Direct speech</td></tr>
-      <tr><td>Colon</td><td>:</td><td>Introduce a list</td></tr>
-    </table>
-  </div>
-
-  <!-- ========== SECTION 9: QUESTIONS ========== -->
-  <div class="section" id="questions">
-    <h2>📝 Sample Exam Questions &amp; Answers <span class="marks-badge">30 Marks</span></h2>
-    <p style="font-size:0.85rem; color:#555; margin-bottom:16px;">Click on each question to reveal the model answer. Questions are mapped to their marks.</p>
-
-    <div class="qa-section">
-
-      <!-- MCQ Block -->
-      <h3>Section A – Multiple Choice Questions (MCQ) <span class="marks-badge">1 mark each</span></h3>
-
-      <div class="q-block">
-        <div class="q-header" onclick="toggle(this)">
-          Q1. What is communication? <span class="q-marks">1 Mark</span>
-        </div>
-        <div class="q-body">
-          <div class="mcq-option">a) The act of listening</div>
-          <div class="mcq-option">b) The process of exchanging information and ideas between two or more people</div>
-          <div class="mcq-option">c) Writing an essay</div>
-          <div class="mcq-option">d) Drawing a diagram</div>
-          <br><div class="answer-label">✔ Correct Answer:</div>
-          <div class="correct-option">b) The process of exchanging information and ideas between two or more people</div>
-        </div>
-      </div>
-
-      <div class="q-block">
-        <div class="q-header" onclick="toggle(this)">
-          Q2. Which of the following is an example of non-verbal communication? <span class="q-marks">1 Mark</span>
-        </div>
-        <div class="q-body">
-          <div class="mcq-option">a) Writing a letter</div>
-          <div class="mcq-option">b) Sending an email</div>
-          <div class="mcq-option correct-option">c) Nodding your head</div>
-          <div class="mcq-option">d) Talking on the phone</div>
-          <br><div class="answer-label">✔ Correct Answer:</div>
-          <div class="correct-option">c) Nodding your head</div>
-        </div>
-      </div>
-
-      <div class="q-block">
-        <div class="q-header" onclick="toggle(this)">
-          Q3. The person who receives the message in the communication cycle is called: <span class="q-marks">1 Mark</span>
-        </div>
-        <div class="q-body">
-          <div class="mcq-option">a) Sender</div>
-          <div class="mcq-option">b) Encoder</div>
-          <div class="mcq-option correct-option">c) Receiver</div>
-          <div class="mcq-option">d) Channel</div>
-          <br><div class="answer-label">✔ Correct Answer:</div>
-          <div class="correct-option">c) Receiver</div>
-        </div>
-      </div>
-
-      <div class="q-block">
-        <div class="q-header" onclick="toggle(this)">
-          Q4. Which of the following is a barrier to communication? <span class="q-marks">1 Mark</span>
-        </div>
-        <div class="q-body">
-          <div class="mcq-option">a) Feedback</div>
-          <div class="mcq-option correct-option">b) Loud background noise</div>
-          <div class="mcq-option">c) Clear language</div>
-          <div class="mcq-option">d) Eye contact</div>
-          <br><div class="answer-label">✔ Correct Answer:</div>
-          <div class="correct-option">b) Loud background noise</div>
-        </div>
-      </div>
-
-      <div class="q-block">
-        <div class="q-header" onclick="toggle(this)">
-          Q5. 'She runs fast.' – The word 'fast' is a: <span class="q-marks">1 Mark</span>
-        </div>
-        <div class="q-body">
-          <div class="mcq-option">a) Adjective</div>
-          <div class="mcq-option">b) Verb</div>
-          <div class="mcq-option correct-option">c) Adverb</div>
-          <div class="mcq-option">d) Noun</div>
-          <br><div class="answer-label">✔ Correct Answer:</div>
-          <div class="correct-option">c) Adverb — it modifies the verb 'runs'</div>
-        </div>
-      </div>
-
-      <!-- Short Answer -->
-      <h3 style="margin-top:20px;">Section B – Short Answer Questions <span class="marks-badge">2 marks each</span></h3>
-
-      <div class="q-block">
-        <div class="q-header" onclick="toggle(this)">
-          Q6. Differentiate between verbal and non-verbal communication with one example each. <span class="q-marks">2 Marks</span>
-        </div>
-        <div class="q-body">
-          <div class="answer-label">Model Answer:</div>
-          <table>
-            <tr><th>Verbal Communication</th><th>Non-Verbal Communication</th></tr>
-            <tr><td>Uses words (spoken or written) to convey a message.</td><td>Uses gestures, expressions, or body language instead of words.</td></tr>
-            <tr><td><em>Example:</em> Speaking on the phone</td><td><em>Example:</em> Waving to greet someone</td></tr>
-          </table>
-        </div>
-      </div>
-
-      <div class="q-block">
-        <div class="q-header" onclick="toggle(this)">
-          Q7. What is feedback? Why is it important in communication? <span class="q-marks">2 Marks</span>
-        </div>
-        <div class="q-body">
-          <div class="answer-label">Model Answer:</div>
-          <p><strong>Feedback</strong> is the response or reaction given by the receiver to the sender after receiving and understanding the message.</p>
-          <p><strong>Importance:</strong> Feedback confirms whether the message was received and understood correctly. Without feedback, communication is incomplete and one-way. It helps the sender correct any misunderstandings.</p>
-        </div>
-      </div>
-
-      <div class="q-block">
-        <div class="q-header" onclick="toggle(this)">
-          Q8. Name any four barriers to effective communication. <span class="q-marks">2 Marks</span>
-        </div>
-        <div class="q-body">
-          <div class="answer-label">Model Answer:</div>
-          <ol>
-            <li><strong>Physical Barrier:</strong> Noise or distance (e.g., loud surroundings)</li>
-            <li><strong>Language Barrier:</strong> Use of unknown words or different language</li>
-            <li><strong>Psychological Barrier:</strong> Fear, stress, or prejudice</li>
-            <li><strong>Emotional Barrier:</strong> Strong emotions like anger or sadness</li>
-          </ol>
-        </div>
-      </div>
-
-      <div class="q-block">
-        <div class="q-header" onclick="toggle(this)">
-          Q9. What is active listening? List any two good listening habits. <span class="q-marks">2 Marks</span>
-        </div>
-        <div class="q-body">
-          <div class="answer-label">Model Answer:</div>
-          <p><strong>Active Listening</strong> means giving full attention to the speaker, focusing on what is being said, and responding thoughtfully. It is conscious and deliberate, unlike passive hearing.</p>
-          <p><strong>Two Good Listening Habits:</strong></p>
-          <ol>
-            <li>Maintain eye contact and avoid distractions</li>
-            <li>Do not interrupt the speaker; wait for them to finish before responding</li>
-          </ol>
-        </div>
-      </div>
-
-      <!-- Medium/Long Answer -->
-      <h3 style="margin-top:20px;">Section C – Answer in Brief <span class="marks-badge">3 marks each</span></h3>
-
-      <div class="q-block">
-        <div class="q-header" onclick="toggle(this)">
-          Q10. Explain the communication cycle with a neat labelled diagram. <span class="q-marks">3 Marks</span>
-        </div>
-        <div class="q-body">
-          <div class="answer-label">Model Answer:</div>
-          <p>The <strong>Communication Cycle</strong> is the step-by-step process by which a message travels from sender to receiver and back.</p>
-          <div class="cycle-box">
-            <span>Sender</span> ➜
-            <span>Idea</span> ➜
-            <span>Encoding</span> ➜
-            <span>Channel/Medium</span> ➜
-            <span>Receiver</span> ➜
-            <span>Decoding</span> ➜
-            <span>Feedback</span> ↩
-          </div>
-          <ul style="margin-top:10px;">
-            <li><strong>Sender:</strong> Initiates and sends the message</li>
-            <li><strong>Encoding:</strong> Converts idea into language/signals</li>
-            <li><strong>Channel:</strong> Medium used (e.g., phone, paper, email)</li>
-            <li><strong>Receiver:</strong> Receives the message</li>
-            <li><strong>Decoding:</strong> Interprets the message</li>
-            <li><strong>Feedback:</strong> Response completing the loop</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="q-block">
-        <div class="q-header" onclick="toggle(this)">
-          Q11. Explain three types of communication with examples. <span class="q-marks">3 Marks</span>
-        </div>
-        <div class="q-body">
-          <div class="answer-label">Model Answer:</div>
-          <ol>
-            <li><strong>Verbal Communication:</strong> Uses spoken or written words. Divided into oral (face-to-face talk, phone calls) and written (letters, emails). <em>Example: Giving a speech.</em></li>
-            <li><strong>Non-Verbal Communication:</strong> Uses gestures, facial expressions, body language without words. <em>Example: Smiling to show happiness.</em></li>
-            <li><strong>Visual Communication:</strong> Conveys information through images, charts, signs. <em>Example: Traffic signals, infographics.</em></li>
-          </ol>
-        </div>
-      </div>
-
-      <!-- Long Answer -->
-      <h3 style="margin-top:20px;">Section D – Long Answer Questions <span class="marks-badge">5 marks each</span></h3>
-
-      <div class="q-block">
-        <div class="q-header" onclick="toggle(this)">
-          Q12. What is communication? Explain its importance and any five factors that affect communication. <span class="q-marks">5 Marks</span>
-        </div>
-        <div class="q-body">
-          <div class="answer-label">Model Answer:</div>
-          <p><strong>Definition:</strong> Communication is the process of exchanging information, ideas, feelings or knowledge between two or more persons using a common system of signs, symbols or behaviour.</p>
-          <p><strong>Importance:</strong></p>
-          <ul>
-            <li>Builds and maintains relationships</li>
-            <li>Facilitates learning and knowledge sharing</li>
-            <li>Improves workplace efficiency and teamwork</li>
-            <li>Reduces misunderstandings and conflicts</li>
-          </ul>
-          <p><strong>Five Factors Affecting Communication:</strong></p>
-          <ol>
-            <li><strong>Visual Perception:</strong> How we see and interpret the world differs, leading to different understanding of the same message.</li>
-            <li><strong>Language:</strong> Use of complex vocabulary or different language makes communication difficult.</li>
-            <li><strong>Past Experience:</strong> Prior experiences can positively or negatively affect interpretation of a message.</li>
-            <li><strong>Prejudices:</strong> Pre-formed opinions about the sender may cause biased interpretation.</li>
-            <li><strong>Emotions:</strong> Strong feelings (anger, grief) of either sender or receiver can distort communication.</li>
-          </ol>
-        </div>
-      </div>
-
-      <div class="q-block">
-        <div class="q-header" onclick="toggle(this)">
-          Q13. Write a short note on: (a) Parts of Speech (b) Types of Sentences — with examples for each. <span class="q-marks">5 Marks</span>
-        </div>
-        <div class="q-body">
-          <div class="answer-label">Model Answer:</div>
-          <p><strong>(a) Parts of Speech</strong> — Words in English are classified into 8 categories:</p>
-          <table>
-            <tr><th>#</th><th>Part</th><th>Example</th></tr>
-            <tr><td>1</td><td>Noun – name of person/place/thing</td><td>Priya, India, Book</td></tr>
-            <tr><td>2</td><td>Pronoun – replaces noun</td><td>She, He, They</td></tr>
-            <tr><td>3</td><td>Verb – action or state</td><td>Eat, Run, Is</td></tr>
-            <tr><td>4</td><td>Adjective – describes noun</td><td>Tall, Red, Happy</td></tr>
-            <tr><td>5</td><td>Adverb – modifies verb</td><td>Quickly, Very</td></tr>
-            <tr><td>6</td><td>Preposition – shows relation</td><td>In, On, Under</td></tr>
-            <tr><td>7</td><td>Conjunction – joins clauses</td><td>And, But, Or</td></tr>
-            <tr><td>8</td><td>Interjection – shows emotion</td><td>Oh!, Wow!, Ouch!</td></tr>
-          </table>
-          <p><strong>(b) Types of Sentences:</strong></p>
-          <table>
-            <tr><th>Type</th><th>Example</th></tr>
-            <tr><td>Declarative (Statement)</td><td>I like science.</td></tr>
-            <tr><td>Interrogative (Question)</td><td>Do you like science?</td></tr>
-            <tr><td>Imperative (Command)</td><td>Sit down quietly.</td></tr>
-            <tr><td>Exclamatory (Emotion)</td><td>How wonderful this is!</td></tr>
-          </table>
-        </div>
-      </div>
-
-      <!-- Marks Summary -->
-      <div class="tip" style="margin-top:20px;">
-        <strong>📊 Marks Distribution (Sample 30-mark paper):</strong><br>
-        Section A – MCQ: 5 × 1 = 5 marks &nbsp;|&nbsp;
-        Section B – Short Answer: 4 × 2 = 8 marks &nbsp;|&nbsp;
-        Section C – Brief: 2 × 3 = 6 marks (+ 1 extra = 7 marks practical) &nbsp;|&nbsp;
-        Section D – Long Answer: 2 × 5 = 10 marks &nbsp; ≈ <strong>30 marks total</strong>
-      </div>
-    </div>
-  </div>
-
-  <!-- Quick Revision -->
-  <div class="section">
-    <h2>⚡ Quick Revision Box</h2>
-    <ul>
-      <li>Communication = <strong>exchange of information</strong> between two or more people</li>
-      <li>Types: <strong>Verbal</strong> (oral + written) | <strong>Non-Verbal</strong> (body language) | <strong>Visual</strong> (images)</li>
-      <li>Communication Cycle: <strong>Sender → Encode → Channel → Decode → Receiver → Feedback</strong></li>
-      <li>Barriers: Physical, Language, Psychological, Emotional, Cultural</li>
-      <li>Active Listening = conscious, focused listening with response</li>
-      <li>Parts of Speech: <strong>Noun, Pronoun, Verb, Adjective, Adverb, Preposition, Conjunction, Interjection</strong></li>
-      <li>4 Sentence types: <strong>Declarative, Interrogative, Imperative, Exclamatory</strong></li>
-      <li>Feedback makes communication <strong>two-way</strong></li>
-    </ul>
   </div>
 
 </div>
-
-<footer>
-  CBSE Class 9 | Information Technology (402) | Part A – Unit 1 | NCERT | Devanshi's Learning Hub ❤️
-</footer>
-
-<script>
-  function toggle(header) {
-    const body = header.nextElementSibling;
-    body.classList.toggle('open');
-    header.querySelector('.q-marks').style.background =
-      body.classList.contains('open') ? '#2e7d32' : 'var(--primary)';
-  }
-</script>
+<footer>CBSE Class 9 IT Code 402 | Part A Unit 1 | Communication Skills | KIPS Publication</footer>
 </body>
 </html>
-

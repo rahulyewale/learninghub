@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 5 – Editing a Document | Class 9 ICT (402)</title>
+  <style>
+    :root{--primary:#00695c;--pl:#00897b;--bg:#f0fdf8;--white:#fff;--border:#b2dfdb;--warn:#f9a825;--accent:#e65100}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#222;line-height:1.7}
+    header{background:linear-gradient(135deg,#00695c,#26a69a);color:#fff;padding:28px 20px;text-align:center}
+    header h1{font-size:1.65rem;margin-bottom:4px} header p{font-size:.9rem;opacity:.9}
+    nav{background:var(--primary);display:flex;flex-wrap:wrap;gap:6px;padding:10px 20px;position:sticky;top:0;z-index:100}
+    nav a{color:#b2ffe8;text-decoration:none;font-size:.82rem;padding:4px 10px;border-radius:12px;background:rgba(255,255,255,.12)}
+    nav a:hover{background:rgba(255,255,255,.28);color:#fff}
+    .container{max-width:1060px;margin:auto;padding:22px 16px 40px}
+    .sec{background:var(--white);border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:24px;margin-bottom:22px}
+    h2{background:var(--pl);color:#fff;padding:10px 16px;border-radius:6px;margin-bottom:16px;font-size:1.1rem}
+    h3{color:var(--primary);margin:18px 0 8px;font-size:1rem}
+    p{margin-bottom:10px} ul,ol{padding-left:22px;margin-bottom:10px} li{margin-bottom:4px}
+    table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem}
+    th{background:var(--pl);color:#fff;padding:9px 12px;text-align:left}
+    td{padding:8px 12px;border:1px solid var(--border)} tr:nth-child(even) td{background:#f0fdf8}
+    .tip{background:#fffde7;border-left:5px solid var(--warn);padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:.93rem}
+    .tip strong{color:var(--accent)}
+    .kt{display:inline-block;background:#e0f2f1;color:#004d40;border-radius:4px;padding:1px 8px;font-weight:600;font-size:.9rem}
+    .kbd{display:inline-block;background:#263238;color:#b2dfdb;border-radius:4px;padding:2px 9px;font-family:Consolas,monospace;font-size:.86rem}
+    .q-block{background:#f9fffc;border:1px solid var(--border);border-radius:8px;margin-bottom:14px;overflow:hidden}
+    .q-h{background:#e0f2f1;padding:10px 16px;font-weight:600;font-size:.92rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .q-h:hover{background:#b2dfdb}
+    .q-b{padding:12px 16px;font-size:.92rem;display:none;border-top:1px solid var(--border)}
+    .mk{background:var(--primary);color:#fff;border-radius:10px;padding:1px 8px;font-size:.76rem;font-weight:700;margin-left:6px}
+    footer{text-align:center;color:#666;font-size:.8rem;padding:16px;background:#e0f2f1;margin-top:8px}
+  </style>
+</head>
+<body>
+<header>
+  <h1>✏️ Chapter 5: Editing a Document</h1>
+  <p>CBSE Class 9 IT (Code 402) | Part B – Unit 3 | KIPS Publication | LibreOffice Writer</p>
+</header>
+<nav>
+  <a href="#insert">Inserting Text</a>
+  <a href="#select">Selecting Text</a>
+  <a href="#ccp">Cut/Copy/Paste</a>
+  <a href="#undo">Undo/Redo</a>
+  <a href="#find">Find &amp; Replace</a>
+  <a href="#spell">Spell Check</a>
+  <a href="#autocorrect">AutoCorrect</a>
+  <a href="#qa">Q&amp;A</a>
+  <a href="../index.html">← Unit 3</a>
+  <a href="../../../../index.html">🏠 Home</a>
+</nav>
+<div class="container">
+
+  <div class="sec" id="insert">
+    <h2>1. Inserting and Deleting Text</h2>
+    <h3>Insert Mode vs Overtype Mode</h3>
+    <table>
+      <tr><th>Insert Mode (Default)</th><th>Overtype Mode</th></tr>
+      <tr><td>New text is inserted at cursor position; existing text shifts right</td><td>New text replaces (overwrites) existing text character by character</td></tr>
+      <tr><td>Default mode when Writer opens</td><td>Activated by pressing the <strong>Insert</strong> key</td></tr>
+    </table>
+    <h3>Deleting Text</h3>
+    <table>
+      <tr><th>Key</th><th>Action</th></tr>
+      <tr><td><span class="kbd">Backspace</span></td><td>Deletes character to the LEFT of the cursor</td></tr>
+      <tr><td><span class="kbd">Delete</span></td><td>Deletes character to the RIGHT of the cursor</td></tr>
+      <tr><td><span class="kbd">Ctrl+Backspace</span></td><td>Deletes one word to the left</td></tr>
+      <tr><td><span class="kbd">Ctrl+Delete</span></td><td>Deletes one word to the right</td></tr>
+    </table>
+    <div class="tip"><strong>Tip:</strong> Press <strong>Insert</strong> key to toggle between Insert and Overtype mode. The Status Bar shows OVR when Overtype is active.</div>
+  </div>
+
+  <div class="sec" id="select">
+    <h2>2. Selecting Text</h2>
+    <p>Selection is needed before performing operations like cut, copy, format or delete.</p>
+    <h3>Mouse Selection</h3>
+    <ul>
+      <li><strong>Click and drag</strong> — select any portion of text</li>
+      <li><strong>Double-click</strong> — selects a word</li>
+      <li><strong>Triple-click</strong> — selects an entire paragraph</li>
+      <li><strong>Click in margin</strong> — selects a line; click+drag selects multiple lines</li>
+    </ul>
+    <h3>Keyboard Selection</h3>
+    <table>
+      <tr><th>Keys</th><th>Selection</th></tr>
+      <tr><td><span class="kbd">Shift + →/←</span></td><td>Select one character at a time</td></tr>
+      <tr><td><span class="kbd">Shift + ↑/↓</span></td><td>Select one line at a time</td></tr>
+      <tr><td><span class="kbd">Shift + Home</span></td><td>Select from cursor to beginning of line</td></tr>
+      <tr><td><span class="kbd">Shift + End</span></td><td>Select from cursor to end of line</td></tr>
+      <tr><td><span class="kbd">Ctrl + A</span></td><td>Select all text in the document</td></tr>
+      <tr><td><span class="kbd">Ctrl + Shift + End</span></td><td>Select from cursor to end of document</td></tr>
+      <tr><td><span class="kbd">Ctrl + Shift + Home</span></td><td>Select from cursor to beginning of document</td></tr>
+    </table>
+    <div class="tip"><strong>Remember:</strong> Selected text appears highlighted (usually in blue). Any key pressed will replace the selection.</div>
+  </div>
+
+  <div class="sec" id="ccp">
+    <h2>3. Cut, Copy and Paste</h2>
+    <table>
+      <tr><th>Operation</th><th>Shortcut</th><th>Description</th></tr>
+      <tr><td><strong>Cut</strong></td><td><span class="kbd">Ctrl+X</span></td><td>Removes selected text from its current location and places it in Clipboard</td></tr>
+      <tr><td><strong>Copy</strong></td><td><span class="kbd">Ctrl+C</span></td><td>Copies selected text to Clipboard — original text remains</td></tr>
+      <tr><td><strong>Paste</strong></td><td><span class="kbd">Ctrl+V</span></td><td>Inserts the content from Clipboard at the cursor position</td></tr>
+      <tr><td><strong>Paste Special</strong></td><td><span class="kbd">Ctrl+Shift+V</span></td><td>Paste with options: unformatted text, formatted text, etc.</td></tr>
+    </table>
+    <h3>The Clipboard</h3>
+    <p>The <span class="kt">Clipboard</span> is a temporary storage area in memory. It holds the last cut or copied content until something new is cut or copied, or the computer is restarted.</p>
+    <h3>Drag and Drop</h3>
+    <p>Another way to move text: Select text → hold the mouse button → drag to new position → release.</p>
+    <div class="tip"><strong>Move vs Copy:</strong> Cut + Paste = Move text | Copy + Paste = Duplicate text</div>
+  </div>
+
+  <div class="sec" id="undo">
+    <h2>4. Undo and Redo</h2>
+    <table>
+      <tr><th>Action</th><th>Shortcut</th><th>Description</th></tr>
+      <tr><td><strong>Undo</strong></td><td><span class="kbd">Ctrl+Z</span></td><td>Reverses the last action. Can be pressed multiple times to undo several actions.</td></tr>
+      <tr><td><strong>Redo</strong></td><td><span class="kbd">Ctrl+Y</span></td><td>Repeats an action that was undone. Used after Undo to restore changes.</td></tr>
+    </table>
+    <div class="tip"><strong>Remember:</strong> Writer keeps a history of actions. You can undo/redo multiple times using Ctrl+Z/Ctrl+Y or the toolbar arrows.</div>
+  </div>
+
+  <div class="sec" id="find">
+    <h2>5. Find and Replace</h2>
+    <p><span class="kt">Find</span> locates a word or phrase in the document. <span class="kt">Replace</span> replaces a found word with a different word.</p>
+    <table>
+      <tr><th>Operation</th><th>Shortcut</th><th>Path</th></tr>
+      <tr><td>Find</td><td><span class="kbd">Ctrl+F</span></td><td>View → Find Bar or Edit → Find</td></tr>
+      <tr><td>Find and Replace</td><td><span class="kbd">Ctrl+H</span></td><td>Edit → Find &amp; Replace</td></tr>
+    </table>
+    <h3>Steps to use Find and Replace</h3>
+    <ol>
+      <li>Press <span class="kbd">Ctrl+H</span> to open the Find &amp; Replace dialog box</li>
+      <li>In the <strong>Search For</strong> field, type the word to find</li>
+      <li>In the <strong>Replace With</strong> field, type the replacement word</li>
+      <li>Click <strong>Replace</strong> to replace one at a time, or <strong>Replace All</strong> to replace all occurrences</li>
+      <li>Click <strong>Close</strong> when done</li>
+    </ol>
+    <div class="tip"><strong>Exam tip:</strong> Find and Replace is very useful when a word appears many times and needs to be changed throughout the document.</div>
+  </div>
+
+  <div class="sec" id="spell">
+    <h2>6. Spelling and Grammar Check</h2>
+    <p>LibreOffice Writer automatically checks spelling and grammar as you type.</p>
+    <table>
+      <tr><th>Indicator</th><th>Meaning</th></tr>
+      <tr><td>Red wavy underline</td><td>Spelling mistake</td></tr>
+      <tr><td>Blue wavy underline</td><td>Grammar mistake</td></tr>
+    </table>
+    <h3>How to use Spell Check</h3>
+    <ul>
+      <li>Right-click on underlined word → choose correct spelling from suggestions</li>
+      <li>Or: Tools → Spelling (press <span class="kbd">F7</span>) to open full spell check dialog</li>
+    </ul>
+    <h3>Spell Check Dialog Options</h3>
+    <table>
+      <tr><th>Option</th><th>Action</th></tr>
+      <tr><td>Ignore Once</td><td>Skip this occurrence</td></tr>
+      <tr><td>Ignore All</td><td>Skip all occurrences of this word</td></tr>
+      <tr><td>Add to Dictionary</td><td>Add the word to personal dictionary</td></tr>
+      <tr><td>Change</td><td>Replace with suggested word</td></tr>
+      <tr><td>Change All</td><td>Replace all occurrences</td></tr>
+    </table>
+  </div>
+
+  <div class="sec" id="autocorrect">
+    <h2>7. AutoCorrect</h2>
+    <p><span class="kt">AutoCorrect</span> automatically corrects common typing mistakes as you type. For example: "teh" → "the", "dont" → "don't".</p>
+    <ul>
+      <li>Access: Tools → AutoCorrect Options</li>
+      <li>You can add your own autocorrect entries</li>
+      <li>You can turn off AutoCorrect if it changes something you don't want</li>
+    </ul>
+    <h3>AutoText</h3>
+    <p><span class="kt">AutoText</span> lets you store and quickly insert frequently used text with a short code. E.g., type "BR" → press F3 → inserts "Best Regards".</p>
+    <div class="tip"><strong>Tip:</strong> AutoCorrect vs AutoText — AutoCorrect fixes mistakes automatically; AutoText inserts pre-saved text blocks on demand.</div>
+  </div>
+
+  <div class="sec" id="qa">
+    <h2>8. Sample Questions with Answers</h2>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q1. What is the difference between Insert and Overtype mode? <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b"><strong>Insert Mode:</strong> New text is inserted at cursor; existing text shifts right. <br><strong>Overtype Mode:</strong> New text overwrites existing text. Toggled by pressing the Insert key.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q2. How do you select an entire document using the keyboard? <span class="mk">1 Mark</span><span>▼</span></div>
+      <div class="q-b">Press <strong>Ctrl+A</strong> to select all the text in the document.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q3. What is the Clipboard? What is its use? <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b">The Clipboard is a temporary memory storage area. It holds the last cut or copied content so it can be pasted to another location. The content is lost when new content is cut/copied or the computer restarts.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q4. What is the difference between Cut+Paste and Copy+Paste? <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b"><strong>Cut+Paste:</strong> Moves text from original location to new location (original is removed). <br><strong>Copy+Paste:</strong> Duplicates text — original remains; a copy is placed at new location.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q5. Write the steps to find and replace a word in LibreOffice Writer. <span class="mk">3 Marks</span><span>▼</span></div>
+      <div class="q-b">(1) Press Ctrl+H to open Find &amp; Replace. (2) Type the word to find in "Search For". (3) Type the replacement word in "Replace With". (4) Click Replace (one) or Replace All (all). (5) Click Close.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q6. What do red and blue wavy underlines indicate in Writer? <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b"><strong>Red wavy underline</strong> = Spelling mistake. <br><strong>Blue wavy underline</strong> = Grammar mistake. Right-click to see correction suggestions.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q7. What is AutoCorrect? Give one example. <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b">AutoCorrect automatically fixes common typing mistakes as you type. Example: "teh" is automatically corrected to "the".</div>
+    </div>
+    <div class="tip"><strong>Quick Revision:</strong> Insert mode = shifts text right | Overtype mode = replaces | Ctrl+X Cut | Ctrl+C Copy | Ctrl+V Paste | Ctrl+Z Undo | Ctrl+Y Redo | Ctrl+F Find | Ctrl+H Find &amp; Replace | F7 Spell Check.</div>
+  </div>
+</div>
+<footer>CBSE Class 9 IT Code 402 | Part B Unit 3 | Chapter 5 | KIPS Publication | LibreOffice Writer</footer>
+<script>function t(h){const b=h.nextElementSibling;const a=h.querySelector('span:last-child');b.style.display=b.style.display==='block'?'none':'block';a.textContent=b.style.display==='block'?'▲':'▼';}</script>
+</body>
+</html>
+

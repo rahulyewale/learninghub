@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 8 – Printing a Document | Class 9 ICT (402)</title>
+  <style>
+    :root{--primary:#00695c;--pl:#00897b;--bg:#f0fdf8;--white:#fff;--border:#b2dfdb;--warn:#f9a825;--accent:#e65100}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#222;line-height:1.7}
+    header{background:linear-gradient(135deg,#00695c,#26a69a);color:#fff;padding:28px 20px;text-align:center}
+    header h1{font-size:1.65rem;margin-bottom:4px} header p{font-size:.9rem;opacity:.9}
+    nav{background:var(--primary);display:flex;flex-wrap:wrap;gap:6px;padding:10px 20px;position:sticky;top:0;z-index:100}
+    nav a{color:#b2ffe8;text-decoration:none;font-size:.82rem;padding:4px 10px;border-radius:12px;background:rgba(255,255,255,.12)}
+    nav a:hover{background:rgba(255,255,255,.28);color:#fff}
+    .container{max-width:1060px;margin:auto;padding:22px 16px 40px}
+    .sec{background:var(--white);border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:24px;margin-bottom:22px}
+    h2{background:var(--pl);color:#fff;padding:10px 16px;border-radius:6px;margin-bottom:16px;font-size:1.1rem}
+    h3{color:var(--primary);margin:18px 0 8px;font-size:1rem}
+    p{margin-bottom:10px} ul,ol{padding-left:22px;margin-bottom:10px} li{margin-bottom:4px}
+    table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem}
+    th{background:var(--pl);color:#fff;padding:9px 12px;text-align:left}
+    td{padding:8px 12px;border:1px solid var(--border)} tr:nth-child(even) td{background:#f0fdf8}
+    .tip{background:#fffde7;border-left:5px solid var(--warn);padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:.93rem}
+    .tip strong{color:var(--accent)}
+    .kt{display:inline-block;background:#e0f2f1;color:#004d40;border-radius:4px;padding:1px 8px;font-weight:600;font-size:.9rem}
+    .kbd{display:inline-block;background:#263238;color:#b2dfdb;border-radius:4px;padding:2px 9px;font-family:Consolas,monospace;font-size:.86rem}
+    .q-block{background:#f9fffc;border:1px solid var(--border);border-radius:8px;margin-bottom:14px;overflow:hidden}
+    .q-h{background:#e0f2f1;padding:10px 16px;font-weight:600;font-size:.92rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .q-h:hover{background:#b2dfdb}
+    .q-b{padding:12px 16px;font-size:.92rem;display:none;border-top:1px solid var(--border)}
+    .mk{background:var(--primary);color:#fff;border-radius:10px;padding:1px 8px;font-size:.76rem;font-weight:700;margin-left:6px}
+    footer{text-align:center;color:#666;font-size:.8rem;padding:16px;background:#e0f2f1;margin-top:8px}
+  </style>
+</head>
+<body>
+<header>
+  <h1>🖨️ Chapter 8: Printing a Document</h1>
+  <p>CBSE Class 9 IT (Code 402) | Part B – Unit 3 | KIPS Publication | LibreOffice Writer</p>
+</header>
+<nav>
+  <a href="#preview">Print Preview</a>
+  <a href="#setup">Page Setup</a>
+  <a href="#print">Print Dialog</a>
+  <a href="#options">Print Options</a>
+  <a href="#pdf">Print to PDF</a>
+  <a href="#qa">Q&amp;A</a>
+  <a href="../index.html">← Unit 3</a>
+  <a href="../../../../index.html">🏠 Home</a>
+</nav>
+<div class="container">
+
+  <div class="sec" id="preview">
+    <h2>1. Print Preview</h2>
+    <p><span class="kt">Print Preview</span> shows exactly how the document will look when printed, before sending it to the printer. This helps avoid wasting paper.</p>
+    <h3>Opening Print Preview</h3>
+    <ul>
+      <li>File → Print Preview, or</li>
+      <li>Click the Print Preview button in the Standard Toolbar</li>
+    </ul>
+    <h3>What you can do in Print Preview</h3>
+    <ul>
+      <li>View single page, two pages, or all pages at once</li>
+      <li>Zoom in and out to check details</li>
+      <li>Check margins, headers, footers and page layout</li>
+      <li>Click Close Preview to return to editing</li>
+    </ul>
+    <div class="tip"><strong>Best Practice:</strong> Always use Print Preview before printing to check the document layout and avoid printing errors.</div>
+  </div>
+
+  <div class="sec" id="setup">
+    <h2>2. Page Setup Before Printing</h2>
+    <p>Before printing, set up the page correctly using Format → Page Style.</p>
+    <table>
+      <tr><th>Setting</th><th>Description</th></tr>
+      <tr><td><strong>Page Size</strong></td><td>A4 is standard for most documents. Match with actual paper loaded in printer.</td></tr>
+      <tr><td><strong>Orientation</strong></td><td>Portrait (vertical) or Landscape (horizontal)</td></tr>
+      <tr><td><strong>Margins</strong></td><td>Set top, bottom, left, right margins as required</td></tr>
+      <tr><td><strong>Header / Footer</strong></td><td>Set up text that appears at top/bottom of every page</td></tr>
+      <tr><td><strong>Page Numbers</strong></td><td>Insert page numbers in header or footer</td></tr>
+      <tr><td><strong>Paper Source</strong></td><td>Select which paper tray to use (if printer has multiple trays)</td></tr>
+    </table>
+  </div>
+
+  <div class="sec" id="print">
+    <h2>3. The Print Dialog Box</h2>
+    <p>Open the Print dialog: File → Print or press <span class="kbd">Ctrl+P</span>.</p>
+    <h3>Sections of the Print Dialog</h3>
+    <table>
+      <tr><th>Section</th><th>Option</th><th>Description</th></tr>
+      <tr><td rowspan="3"><strong>Printer</strong></td><td>Name</td><td>Select the connected printer from the dropdown</td></tr>
+      <tr><td>Properties</td><td>Access printer-specific settings (quality, paper type)</td></tr>
+      <tr><td>Print to File</td><td>Save print output as a file instead of printing physically</td></tr>
+      <tr><td rowspan="4"><strong>Print Range</strong></td><td>All Pages</td><td>Print the entire document</td></tr>
+      <tr><td>Current Page</td><td>Print only the page currently visible</td></tr>
+      <tr><td>Pages</td><td>Enter specific page numbers, e.g., 1-3, 5, 8 (prints pages 1,2,3,5,8)</td></tr>
+      <tr><td>Selection</td><td>Print only the currently selected text</td></tr>
+      <tr><td rowspan="2"><strong>Copies</strong></td><td>Number of Copies</td><td>How many copies to print</td></tr>
+      <tr><td>Collate</td><td>If checked, prints complete sets (1,2,3 then 1,2,3); unchecked prints all copies of page 1, then page 2...</td></tr>
+    </table>
+  </div>
+
+  <div class="sec" id="options">
+    <h2>4. Additional Print Options</h2>
+    <h3>Duplex / Two-sided Printing</h3>
+    <p>Printing on both sides of the paper. Requires a printer that supports duplex printing.</p>
+    <ul>
+      <li>Long-edge binding: flip on long side (like a book)</li>
+      <li>Short-edge binding: flip on short side (like a notepad)</li>
+    </ul>
+    <h3>Print Brochure</h3>
+    <p>Prints two pages side-by-side on one sheet, folded to create a booklet (brochure format).</p>
+    <h3>Print in Black and White</h3>
+    <p>Converts coloured document to grayscale for printing on a B&amp;W printer to save colour ink.</p>
+    <h3>Number of Pages per Sheet</h3>
+    <p>Print multiple document pages on one sheet of paper. E.g., 2 pages per sheet, 4 pages per sheet.</p>
+    <h3>Page Order</h3>
+    <table>
+      <tr><th>Order</th><th>Description</th></tr>
+      <tr><td>Left to Right</td><td>Pages appear in normal reading order</td></tr>
+      <tr><td>Right to Left</td><td>Used for right-to-left languages</td></tr>
+      <tr><td>Reversed</td><td>Prints last page first — useful for printers that stack face-up</td></tr>
+    </table>
+    <div class="tip"><strong>Tip:</strong> Click the <strong>More Options</strong> or <strong>Print Options</strong> button in the Print dialog to access advanced settings like paper source, print quality, and printer properties.</div>
+  </div>
+
+  <div class="sec" id="pdf">
+    <h2>5. Exporting to PDF</h2>
+    <p>PDF (Portable Document Format) creates a read-only version of the document that looks the same on any device or printer.</p>
+    <h3>Why use PDF?</h3>
+    <ul>
+      <li>Maintains exact formatting on all devices</li>
+      <li>Cannot be easily edited (read-only)</li>
+      <li>Smaller file size than .odt in many cases</li>
+      <li>Universally accepted for sharing official documents</li>
+    </ul>
+    <h3>Export to PDF in LibreOffice Writer</h3>
+    <ol>
+      <li>File → Export as PDF</li>
+      <li>The PDF Options dialog opens</li>
+      <li>Set page range, image quality, security (password) etc.</li>
+      <li>Click Export</li>
+      <li>Choose save location and filename → click Save</li>
+    </ol>
+    <div class="tip"><strong>Quick Export:</strong> File → Export Directly as PDF exports immediately with default settings.</div>
+  </div>
+
+  <div class="sec" id="qa">
+    <h2>6. Sample Questions with Answers</h2>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q1. What is Print Preview? Why is it used? <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b">Print Preview shows exactly how the document will appear when printed. It is used to check layout, margins, headers/footers and avoid printing mistakes before sending to the printer.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q2. How do you open the Print dialog? What is its shortcut? <span class="mk">1 Mark</span><span>▼</span></div>
+      <div class="q-b">File → Print, or press <strong>Ctrl+P</strong> to open the Print dialog box.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q3. What are the different print range options available in the Print dialog? <span class="mk">3 Marks</span><span>▼</span></div>
+      <div class="q-b">(1) All Pages – prints entire document. (2) Current Page – prints only the page visible on screen. (3) Pages – prints specific page numbers entered (e.g., 2-4, 7). (4) Selection – prints only selected text.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q4. What does the Collate option do while printing? <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b">Collate organises multiple copies into complete sets. With Collate ON: prints 1,2,3 then 1,2,3 again. With Collate OFF: prints all copies of page 1, then all of page 2, etc.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q5. What is PDF? Write two advantages of saving a document as PDF. <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b">PDF (Portable Document Format) is a read-only file format. Advantages: (1) Maintains exact formatting on any device/printer. (2) Cannot be easily modified — suitable for official documents.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q6. Write the steps to export a document as PDF in LibreOffice Writer. <span class="mk">3 Marks</span><span>▼</span></div>
+      <div class="q-b">(1) Click File → Export as PDF. (2) The PDF Options dialog opens. (3) Set page range and quality. (4) Click Export. (5) Choose save location and file name → click Save.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q7. What is duplex printing? <span class="mk">1 Mark</span><span>▼</span></div>
+      <div class="q-b">Duplex printing means printing on both sides of a sheet of paper. It requires a printer that supports double-sided (duplex) printing.</div>
+    </div>
+    <div class="tip"><strong>Quick Revision:</strong> Ctrl+P = Print | Print Preview = check before printing | Range = All/Current/Pages/Selection | Collate = full sets | PDF = read-only, fixed format | Duplex = both sides | Export as PDF = File → Export as PDF.</div>
+  </div>
+</div>
+<footer>CBSE Class 9 IT Code 402 | Part B Unit 3 | Chapter 8 | KIPS Publication | LibreOffice Writer</footer>
+<script>function t(h){const b=h.nextElementSibling;const a=h.querySelector('span:last-child');b.style.display=b.style.display==='block'?'none':'block';a.textContent=b.style.display==='block'?'▲':'▼';}</script>
+</body>
+</html>
+

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 4 – Getting Started with Word Processor | Class 9 ICT (402)</title>
+  <style>
+    :root{--primary:#00695c;--pl:#00897b;--bg:#f0fdf8;--white:#fff;--border:#b2dfdb;--warn:#f9a825;--accent:#e65100}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#222;line-height:1.7}
+    header{background:linear-gradient(135deg,#00695c,#26a69a);color:#fff;padding:28px 20px;text-align:center}
+    header h1{font-size:1.65rem;margin-bottom:4px}
+    header p{font-size:.9rem;opacity:.9}
+    nav{background:var(--primary);display:flex;flex-wrap:wrap;gap:6px;padding:10px 20px;position:sticky;top:0;z-index:100}
+    nav a{color:#b2ffe8;text-decoration:none;font-size:.82rem;padding:4px 10px;border-radius:12px;background:rgba(255,255,255,.12)}
+    nav a:hover{background:rgba(255,255,255,.28);color:#fff}
+    .container{max-width:1060px;margin:auto;padding:22px 16px 40px}
+    .sec{background:var(--white);border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:24px;margin-bottom:22px}
+    h2{background:var(--pl);color:#fff;padding:10px 16px;border-radius:6px;margin-bottom:16px;font-size:1.1rem}
+    h3{color:var(--primary);margin:18px 0 8px;font-size:1rem}
+    p{margin-bottom:10px} ul,ol{padding-left:22px;margin-bottom:10px} li{margin-bottom:4px}
+    table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem}
+    th{background:var(--pl);color:#fff;padding:9px 12px;text-align:left}
+    td{padding:8px 12px;border:1px solid var(--border)}
+    tr:nth-child(even) td{background:#f0fdf8}
+    .tip{background:#fffde7;border-left:5px solid var(--warn);padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:.93rem}
+    .tip strong{color:var(--accent)}
+    .kt{display:inline-block;background:#e0f2f1;color:#004d40;border-radius:4px;padding:1px 8px;font-weight:600;font-size:.9rem}
+    .kbd{display:inline-block;background:#263238;color:#b2dfdb;border-radius:4px;padding:2px 9px;font-family:Consolas,monospace;font-size:.86rem}
+    .q-block{background:#f9fffc;border:1px solid var(--border);border-radius:8px;margin-bottom:14px;overflow:hidden}
+    .q-h{background:#e0f2f1;padding:10px 16px;font-weight:600;font-size:.92rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .q-h:hover{background:#b2dfdb}
+    .q-b{padding:12px 16px;font-size:.92rem;display:none;border-top:1px solid var(--border)}
+    .mk{background:var(--primary);color:#fff;border-radius:10px;padding:1px 8px;font-size:.76rem;font-weight:700;margin-left:6px}
+    footer{text-align:center;color:#666;font-size:.8rem;padding:16px;background:#e0f2f1;margin-top:8px}
+  </style>
+</head>
+<body>
+<header>
+  <h1>📄 Chapter 4: Getting Started with Word Processor</h1>
+  <p>CBSE Class 9 IT (Code 402) | Part B – Unit 3 | KIPS Publication | LibreOffice Writer</p>
+</header>
+<nav>
+  <a href="#intro">Introduction</a>
+  <a href="#start">Starting Writer</a>
+  <a href="#window">Writer Window</a>
+  <a href="#file">File Operations</a>
+  <a href="#formats">Formats</a>
+  <a href="#cursor">Cursor Keys</a>
+  <a href="#qa">Q&amp;A</a>
+  <a href="../index.html">← Unit 3</a>
+  <a href="../../../../index.html">🏠 Home</a>
+</nav>
+<div class="container">
+
+  <div class="sec" id="intro">
+    <h2>1. Introduction to Word Processing</h2>
+    <p>A <span class="kt">Word Processor</span> is application software used to create, edit, format, store and print text documents. It is more powerful than a typewriter because it allows corrections, formatting, and storing of documents.</p>
+    <table>
+      <tr><th>Feature</th><th>Typewriter</th><th>Word Processor</th></tr>
+      <tr><td>Editing</td><td>Not possible once typed</td><td>Easy — just click and retype</td></tr>
+      <tr><td>Formatting</td><td>No formatting options</td><td>Bold, italic, font, size, colour etc.</td></tr>
+      <tr><td>Storage</td><td>Paper only</td><td>Save as digital file</td></tr>
+      <tr><td>Spelling check</td><td>Manual only</td><td>Automatic spell check</td></tr>
+      <tr><td>Copies</td><td>Carbon paper required</td><td>Print multiple copies instantly</td></tr>
+    </table>
+    <h3>Popular Word Processors</h3>
+    <ul>
+      <li><strong>LibreOffice Writer</strong> — free and open-source (used in CBSE)</li>
+      <li>Microsoft Word — commercial</li>
+      <li>Google Docs — cloud-based, online</li>
+    </ul>
+  </div>
+
+  <div class="sec" id="start">
+    <h2>2. Starting LibreOffice Writer</h2>
+    <p>Methods to start LibreOffice Writer:</p>
+    <ol>
+      <li><strong>Start Menu:</strong> Click Start → All Programs → LibreOffice → LibreOffice Writer</li>
+      <li><strong>Desktop Shortcut:</strong> Double-click the LibreOffice Writer icon on the desktop</li>
+      <li><strong>Run Command:</strong> Press Windows+R → type <kbd>swriter</kbd> → press Enter</li>
+      <li><strong>Right-click:</strong> Right-click on Desktop → New → ODF Text Document</li>
+    </ol>
+    <div class="tip"><strong>Remember:</strong> When Writer opens, a blank document is created automatically, ready for typing.</div>
+  </div>
+
+  <div class="sec" id="window">
+    <h2>3. Parts of the LibreOffice Writer Window</h2>
+    <table>
+      <tr><th>Component</th><th>Location</th><th>Description</th></tr>
+      <tr><td><strong>Title Bar</strong></td><td>Top</td><td>Shows the document name and application name. Untitled1 appears for unsaved documents.</td></tr>
+      <tr><td><strong>Menu Bar</strong></td><td>Below Title Bar</td><td>Contains menus: File, Edit, View, Insert, Format, Styles, Table, Tools, Window, Help</td></tr>
+      <tr><td><strong>Standard Toolbar</strong></td><td>Below Menu Bar</td><td>Icons for common tasks like New, Open, Save, Print, Copy, Paste</td></tr>
+      <tr><td><strong>Formatting Toolbar</strong></td><td>Below Standard</td><td>Formatting options: font, size, Bold, Italic, Underline, alignment</td></tr>
+      <tr><td><strong>Ruler</strong></td><td>Horizontal / Vertical</td><td>Shows margins, tab stops and indents. Helps position text on the page.</td></tr>
+      <tr><td><strong>Work Area / Text Area</strong></td><td>Centre</td><td>The white area where text is typed</td></tr>
+      <tr><td><strong>Scroll Bars</strong></td><td>Right and Bottom</td><td>Used to move through the document — vertical and horizontal</td></tr>
+      <tr><td><strong>Status Bar</strong></td><td>Bottom</td><td>Shows current page number, total pages, word count, zoom level</td></tr>
+      <tr><td><strong>View Buttons</strong></td><td>Bottom Right</td><td>Switch between Normal, Web, and other views</td></tr>
+      <tr><td><strong>Zoom Slider</strong></td><td>Bottom Right</td><td>Zoom in or out on the document view</td></tr>
+    </table>
+    <div class="tip"><strong>Insertion Point (Cursor):</strong> The blinking vertical line in the work area that shows where text will be typed.</div>
+  </div>
+
+  <div class="sec" id="file">
+    <h2>4. Basic File Operations</h2>
+    <h3>Creating a New Document</h3>
+    <ul>
+      <li>Click File → New → Text Document, OR</li>
+      <li>Press <span class="kbd">Ctrl+N</span></li>
+    </ul>
+    <h3>Opening an Existing Document</h3>
+    <ul>
+      <li>Click File → Open, OR</li>
+      <li>Press <span class="kbd">Ctrl+O</span> → browse to file → click Open</li>
+    </ul>
+    <h3>Saving a Document</h3>
+    <ol>
+      <li>Click File → Save (or press <span class="kbd">Ctrl+S</span>)</li>
+      <li>The Save dialog opens for a new document</li>
+      <li>Choose the save location (folder)</li>
+      <li>Type the file name</li>
+      <li>Choose the file format</li>
+      <li>Click Save</li>
+    </ol>
+    <h3>Save vs Save As</h3>
+    <table>
+      <tr><th>Save (Ctrl+S)</th><th>Save As (Ctrl+Shift+S)</th></tr>
+      <tr><td>Saves changes to the same file at the same location</td><td>Saves with a new name, location or format</td></tr>
+      <tr><td>Used to update an existing document</td><td>Used to create a copy of the document</td></tr>
+    </table>
+    <h3>Closing a Document</h3>
+    <ul>
+      <li>Click File → Close</li>
+      <li>Or click the X on the document tab</li>
+      <li>If unsaved, Writer asks: Save, Discard, or Cancel</li>
+    </ul>
+  </div>
+
+  <div class="sec" id="formats">
+    <h2>5. File Formats</h2>
+    <table>
+      <tr><th>Format</th><th>Extension</th><th>Description</th></tr>
+      <tr><td>ODF Text</td><td>.odt</td><td>Default LibreOffice format (open standard)</td></tr>
+      <tr><td>Word Document</td><td>.docx / .doc</td><td>Microsoft Word format</td></tr>
+      <tr><td>PDF</td><td>.pdf</td><td>Portable Document Format — read-only, widely used</td></tr>
+      <tr><td>Rich Text</td><td>.rtf</td><td>Cross-platform text with basic formatting</td></tr>
+      <tr><td>Plain Text</td><td>.txt</td><td>No formatting — just plain text</td></tr>
+    </table>
+    <div class="tip"><strong>Export to PDF:</strong> File → Export as PDF — creates a PDF file from the current document.</div>
+  </div>
+
+  <div class="sec" id="cursor">
+    <h2>6. Cursor Movement Keys</h2>
+    <table>
+      <tr><th>Key</th><th>Action</th></tr>
+      <tr><td><span class="kbd">→</span></td><td>Move one character to the right</td></tr>
+      <tr><td><span class="kbd">←</span></td><td>Move one character to the left</td></tr>
+      <tr><td><span class="kbd">↑</span></td><td>Move one line up</td></tr>
+      <tr><td><span class="kbd">↓</span></td><td>Move one line down</td></tr>
+      <tr><td><span class="kbd">Home</span></td><td>Go to beginning of current line</td></tr>
+      <tr><td><span class="kbd">End</span></td><td>Go to end of current line</td></tr>
+      <tr><td><span class="kbd">Ctrl+Home</span></td><td>Go to beginning of document</td></tr>
+      <tr><td><span class="kbd">Ctrl+End</span></td><td>Go to end of document</td></tr>
+      <tr><td><span class="kbd">Page Up</span></td><td>Move one screen up</td></tr>
+      <tr><td><span class="kbd">Page Down</span></td><td>Move one screen down</td></tr>
+      <tr><td><span class="kbd">Ctrl+→</span></td><td>Move one word to the right</td></tr>
+      <tr><td><span class="kbd">Ctrl+←</span></td><td>Move one word to the left</td></tr>
+    </table>
+  </div>
+
+  <div class="sec" id="qa">
+    <h2>7. Sample Questions with Answers</h2>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q1. What is a word processor? Name two examples. <span class="mk">1 Mark</span><span>▼</span></div>
+      <div class="q-b">A word processor is software used to create, edit, format and print text documents. Examples: LibreOffice Writer, Microsoft Word.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q2. State any three advantages of a word processor over a typewriter. <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b">(1) Editing is easy — text can be corrected without retyping the whole page. (2) Formatting options like bold, italic, font size are available. (3) Documents can be saved digitally and printed multiple times.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q3. What is the Title Bar? What does it show? <span class="mk">1 Mark</span><span>▼</span></div>
+      <div class="q-b">The Title Bar is the topmost bar of the Writer window. It shows the name of the current document and the application name (LibreOffice Writer). For an unsaved document, it shows "Untitled1".</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q4. Differentiate between Save and Save As. <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b"><strong>Save (Ctrl+S):</strong> Saves the document at the same location with the same name — used to update. <br><strong>Save As (Ctrl+Shift+S):</strong> Opens dialog to save with a different name, location, or format — used to create a copy.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q5. Name any five components of the LibreOffice Writer window. <span class="mk">3 Marks</span><span>▼</span></div>
+      <div class="q-b">Title Bar, Menu Bar, Standard Toolbar, Formatting Toolbar, Ruler, Work Area, Scroll Bars, Status Bar.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q6. Write keyboard shortcuts for: New, Open, Save, Close, Print. <span class="mk">3 Marks</span><span>▼</span></div>
+      <div class="q-b">New – Ctrl+N; Open – Ctrl+O; Save – Ctrl+S; Close – Ctrl+W; Print – Ctrl+P.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q7. What are the different file formats supported by LibreOffice Writer? <span class="mk">3 Marks</span><span>▼</span></div>
+      <div class="q-b">.odt (ODF – default), .docx (MS Word), .pdf (Portable Document Format), .rtf (Rich Text Format), .txt (Plain Text).</div>
+    </div>
+    <div class="tip"><strong>Quick Revision:</strong> Word Processor = create, edit, format, save, print documents | Title Bar = document name | Status Bar = page no., word count | Ctrl+N/O/S/P = New/Open/Save/Print | .odt = default format.</div>
+  </div>
+</div>
+<footer>CBSE Class 9 IT Code 402 | Part B Unit 3 | Chapter 4 | KIPS Publication | LibreOffice Writer</footer>
+<script>function t(h){const b=h.nextElementSibling;const a=h.querySelector('span:last-child');b.style.display=b.style.display==='block'?'none':'block';a.textContent=b.style.display==='block'?'▲':'▼';}</script>
+</body>
+</html>
+

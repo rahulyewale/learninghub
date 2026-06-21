@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 9 – Using Mail Merge | Class 9 ICT (402)</title>
+  <style>
+    :root{--primary:#00695c;--pl:#00897b;--bg:#f0fdf8;--white:#fff;--border:#b2dfdb;--warn:#f9a825;--accent:#e65100}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#222;line-height:1.7}
+    header{background:linear-gradient(135deg,#00695c,#26a69a);color:#fff;padding:28px 20px;text-align:center}
+    header h1{font-size:1.65rem;margin-bottom:4px} header p{font-size:.9rem;opacity:.9}
+    nav{background:var(--primary);display:flex;flex-wrap:wrap;gap:6px;padding:10px 20px;position:sticky;top:0;z-index:100}
+    nav a{color:#b2ffe8;text-decoration:none;font-size:.82rem;padding:4px 10px;border-radius:12px;background:rgba(255,255,255,.12)}
+    nav a:hover{background:rgba(255,255,255,.28);color:#fff}
+    .container{max-width:1060px;margin:auto;padding:22px 16px 40px}
+    .sec{background:var(--white);border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:24px;margin-bottom:22px}
+    h2{background:var(--pl);color:#fff;padding:10px 16px;border-radius:6px;margin-bottom:16px;font-size:1.1rem}
+    h3{color:var(--primary);margin:18px 0 8px;font-size:1rem}
+    p{margin-bottom:10px} ul,ol{padding-left:22px;margin-bottom:10px} li{margin-bottom:4px}
+    table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem}
+    th{background:var(--pl);color:#fff;padding:9px 12px;text-align:left}
+    td{padding:8px 12px;border:1px solid var(--border)} tr:nth-child(even) td{background:#f0fdf8}
+    .tip{background:#fffde7;border-left:5px solid var(--warn);padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:.93rem}
+    .tip strong{color:var(--accent)}
+    .kt{display:inline-block;background:#e0f2f1;color:#004d40;border-radius:4px;padding:1px 8px;font-weight:600;font-size:.9rem}
+    .merge-flow{background:#e8f5e9;border:2px solid #a5d6a7;border-radius:10px;padding:16px;text-align:center;font-size:1rem;line-height:2.2;margin:14px 0}
+    .merge-flow strong{color:#00695c}
+    .q-block{background:#f9fffc;border:1px solid var(--border);border-radius:8px;margin-bottom:14px;overflow:hidden}
+    .q-h{background:#e0f2f1;padding:10px 16px;font-weight:600;font-size:.92rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .q-h:hover{background:#b2dfdb}
+    .q-b{padding:12px 16px;font-size:.92rem;display:none;border-top:1px solid var(--border)}
+    .mk{background:var(--primary);color:#fff;border-radius:10px;padding:1px 8px;font-size:.76rem;font-weight:700;margin-left:6px}
+    footer{text-align:center;color:#666;font-size:.8rem;padding:16px;background:#e0f2f1;margin-top:8px}
+  </style>
+</head>
+<body>
+<header>
+  <h1>📬 Chapter 9: Using Mail Merge</h1>
+  <p>CBSE Class 9 IT (Code 402) | Part B – Unit 3 | KIPS Publication | LibreOffice Writer</p>
+</header>
+<nav>
+  <a href="#what">What is Mail Merge</a>
+  <a href="#uses">Uses</a>
+  <a href="#components">Components</a>
+  <a href="#steps">Steps</a>
+  <a href="#datasource">Data Source</a>
+  <a href="#fields">Merge Fields</a>
+  <a href="#output">Output</a>
+  <a href="#qa">Q&amp;A</a>
+  <a href="../index.html">← Unit 3</a>
+  <a href="../../../../index.html">🏠 Home</a>
+</nav>
+<div class="container">
+
+  <div class="sec" id="what">
+    <h2>1. What is Mail Merge?</h2>
+    <p><span class="kt">Mail Merge</span> is a feature in LibreOffice Writer that allows you to create a single document template and automatically personalise it for many recipients using data from a list (database or spreadsheet).</p>
+    <p>Instead of typing separate letters for each person, you write one letter with placeholders, and Mail Merge fills in each person's details automatically.</p>
+    <div class="tip"><strong>Example:</strong> Your school wants to send invitation letters to 200 parents. With Mail Merge, you write the letter once, and Writer automatically inserts each parent's name, address, and child's name — generating 200 personalised letters in minutes.</div>
+  </div>
+
+  <div class="sec" id="uses">
+    <h2>2. Uses of Mail Merge</h2>
+    <ul>
+      <li>Sending personalised invitation or congratulation letters</li>
+      <li>Printing address labels and envelopes for bulk mailing</li>
+      <li>Creating personalised certificates (student's name, grade, class)</li>
+      <li>Sending individualised reports or mark sheets</li>
+      <li>Bulk email campaigns with personalised greetings</li>
+      <li>Printing fee receipts, identity cards, notice letters</li>
+    </ul>
+  </div>
+
+  <div class="sec" id="components">
+    <h2>3. Three Main Components of Mail Merge</h2>
+    <table>
+      <tr><th>Component</th><th>Also Called</th><th>Description</th></tr>
+      <tr><td><strong>Main Document</strong></td><td>Master Document / Template</td><td>The document that contains the standard (common) text and the merge field placeholders. Written once.</td></tr>
+      <tr><td><strong>Data Source</strong></td><td>Address List / Database</td><td>A file containing the variable data — names, addresses, marks, etc. Can be a Calc spreadsheet, Writer table, or database.</td></tr>
+      <tr><td><strong>Merged Document</strong></td><td>Output Document</td><td>The final personalised documents created by combining the main document with each record from the data source.</td></tr>
+    </table>
+
+    <div class="merge-flow">
+      <strong>Main Document</strong> (Template with placeholders)<br>
+      +<br>
+      <strong>Data Source</strong> (List of names, addresses etc.)<br>
+      ↓<br>
+      <strong>Mail Merge</strong><br>
+      ↓<br>
+      <strong>Merged Documents</strong> (Personalised letters/labels)
+    </div>
+  </div>
+
+  <div class="sec" id="steps">
+    <h2>4. Steps to Perform Mail Merge in LibreOffice Writer</h2>
+    <ol>
+      <li>Open LibreOffice Writer and create or open the <strong>Main Document</strong></li>
+      <li>Go to <strong>Tools → Mail Merge Wizard</strong> — the wizard guides you step by step</li>
+      <li><strong>Step 1:</strong> Select document type — Letter, E-mail, or Envelope</li>
+      <li><strong>Step 2:</strong> Select starting document (use current document or template)</li>
+      <li><strong>Step 3:</strong> Select the <strong>Address List (Data Source)</strong>
+        <ul>
+          <li>Use an existing list (Calc/Base file)</li>
+          <li>Or create a new list (enter records in a dialog)</li>
+        </ul>
+      </li>
+      <li><strong>Step 4:</strong> Create/edit the <strong>Salutation</strong> (greeting line)</li>
+      <li><strong>Step 5:</strong> Adjust the document layout (margins, address block)</li>
+      <li><strong>Step 6:</strong> Preview the merged documents — check a few records</li>
+      <li><strong>Step 7:</strong> Finalise and <strong>merge</strong>:
+        <ul>
+          <li>Print merged documents directly</li>
+          <li>Or save as a new file containing all merged records</li>
+          <li>Or send as email</li>
+        </ul>
+      </li>
+    </ol>
+    <div class="tip"><strong>Quick Method:</strong> Tools → Mail Merge Wizard opens an 8-step interactive wizard that handles all the steps with guidance.</div>
+  </div>
+
+  <div class="sec" id="datasource">
+    <h2>5. Creating a Data Source</h2>
+    <p>The <span class="kt">Data Source</span> (address list) is a structured file with rows and columns. Each row is one record (one person). Each column is one field (one piece of information).</p>
+    <h3>Example Data Source Table</h3>
+    <table>
+      <tr><th>Name</th><th>Class</th><th>Roll No</th><th>Address</th><th>City</th></tr>
+      <tr><td>Rahul Sharma</td><td>9A</td><td>1</td><td>Plot 12, Sector 5</td><td>Panvel</td></tr>
+      <tr><td>Priya Singh</td><td>9B</td><td>2</td><td>House 4, MG Road</td><td>Mumbai</td></tr>
+      <tr><td>Amit Verma</td><td>9A</td><td>3</td><td>B-9, Shastri Nagar</td><td>Thane</td></tr>
+    </table>
+    <h3>Sources of Data</h3>
+    <table>
+      <tr><th>Source Type</th><th>Description</th></tr>
+      <tr><td>LibreOffice Calc Spreadsheet (.ods/.xlsx)</td><td>Most common — create a table with headers in row 1</td></tr>
+      <tr><td>LibreOffice Base Database (.odb)</td><td>For larger datasets</td></tr>
+      <tr><td>Writer Table</td><td>A table within a Writer document</td></tr>
+      <tr><td>New List (created in wizard)</td><td>Enter records directly in the Mail Merge wizard</td></tr>
+      <tr><td>CSV File (.csv)</td><td>Comma-separated values — compatible with many apps</td></tr>
+    </table>
+    <div class="tip"><strong>Important:</strong> The first row of your data source must contain the field names (headers) like Name, Address, Class. The actual data goes from the second row onwards.</div>
+  </div>
+
+  <div class="sec" id="fields">
+    <h2>6. Inserting Merge Fields</h2>
+    <p><span class="kt">Merge Fields</span> are placeholders in the main document that get replaced with actual data during the merge. They are shown in double angle brackets: &laquo;Name&raquo; &laquo;City&raquo;.</p>
+    <h3>How to Insert Merge Fields</h3>
+    <ol>
+      <li>Link the data source (done in the wizard)</li>
+      <li>Place the cursor where you want the field</li>
+      <li>Go to Insert → Field → More Fields → Database tab, or</li>
+      <li>Use the Mail Merge Toolbar → Insert Merge Field dropdown</li>
+      <li>Select the field name (e.g., Name, Address)</li>
+      <li>Click Insert — the field appears as &laquo;Name&raquo;</li>
+    </ol>
+    <h3>Sample Main Document with Merge Fields</h3>
+    <div style="background:#f8f8f8;border:1px solid #ccc;border-radius:6px;padding:16px;font-size:.92rem;line-height:2">
+      Date: 21 June 2026<br><br>
+      Dear <strong>&laquo;Name&raquo;</strong>,<br><br>
+      We are pleased to inform you that your ward from Class <strong>&laquo;Class&raquo;</strong>, Roll No. <strong>&laquo;Roll_No&raquo;</strong>, has been selected for the Annual Prize Distribution Ceremony.<br><br>
+      The event will be held at the school auditorium on 30 June 2026.<br><br>
+      Yours sincerely,<br>
+      The Principal
+    </div>
+    <p>When merged, &laquo;Name&raquo; is replaced by "Rahul Sharma" for the first record, "Priya Singh" for the second, and so on.</p>
+  </div>
+
+  <div class="sec" id="output">
+    <h2>7. Merging and Output Options</h2>
+    <table>
+      <tr><th>Output Option</th><th>Description</th></tr>
+      <tr><td><strong>Merge to New Document</strong></td><td>Creates a new Writer file with all personalised letters on separate pages. Can be edited before printing.</td></tr>
+      <tr><td><strong>Merge to Printer</strong></td><td>Sends all merged letters directly to the printer. Quick but cannot be edited.</td></tr>
+      <tr><td><strong>Merge to Email</strong></td><td>Sends personalised emails to each recipient using email client.</td></tr>
+    </table>
+    <h3>Filtering Records</h3>
+    <p>You can choose to merge only specific records:</p>
+    <ul>
+      <li>By record number range (e.g., records 1 to 50)</li>
+      <li>By applying a filter (e.g., only students from Class 9A)</li>
+    </ul>
+    <div class="tip"><strong>Exam Tip:</strong> Know the three components: Main Document, Data Source, Merged Document. Know the 3 output options: New Document, Printer, Email.</div>
+  </div>
+
+  <div class="sec" id="qa">
+    <h2>8. Sample Questions with Answers</h2>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q1. What is Mail Merge? <span class="mk">1 Mark</span><span>▼</span></div>
+      <div class="q-b">Mail Merge is a feature in LibreOffice Writer that combines a main document (template) with a data source (list) to automatically create personalised documents for multiple recipients.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q2. Name the three components of Mail Merge and explain each briefly. <span class="mk">3 Marks</span><span>▼</span></div>
+      <div class="q-b">(1) <strong>Main Document:</strong> The template containing common text and merge field placeholders. (2) <strong>Data Source:</strong> A file (spreadsheet/database) with variable data — names, addresses etc. (3) <strong>Merged Document:</strong> The final personalised output combining the template with each data record.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q3. What are merge fields? How are they shown in the main document? <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b">Merge fields are placeholders in the main document that get replaced by actual data during the mail merge. They are shown within double angle brackets, e.g., &laquo;Name&raquo;, &laquo;City&raquo;.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q4. State any three uses of Mail Merge. <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b">(1) Sending personalised invitation letters to many people. (2) Printing address labels or envelopes. (3) Creating personalised certificates or mark sheets for students.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q5. What are the three output options when completing a Mail Merge? <span class="mk">3 Marks</span><span>▼</span></div>
+      <div class="q-b">(1) <strong>Merge to New Document:</strong> Creates a new file with all merged letters (can be edited). (2) <strong>Merge to Printer:</strong> Prints all merged letters directly. (3) <strong>Merge to Email:</strong> Sends personalised emails to each recipient.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q6. Write the steps to perform Mail Merge using the Wizard in LibreOffice Writer. <span class="mk">5 Marks</span><span>▼</span></div>
+      <div class="q-b">(1) Open/create the main document in Writer. (2) Tools → Mail Merge Wizard. (3) Select document type (Letter). (4) Select starting document. (5) Select/create address list (data source). (6) Set up salutation/greeting. (7) Arrange address layout. (8) Preview merged records. (9) Finalise: merge to new document, printer or email.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q7. What should the first row of a data source contain? Why? <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b">The first row of the data source must contain the <strong>field names (headers)</strong> such as Name, Address, Class. These headers are used as merge field names in the main document so Writer knows which column to use for each placeholder.</div>
+    </div>
+    <div class="tip"><strong>Quick Revision:</strong> Mail Merge = one template + many records = many personalised documents | 3 Components: Main Document + Data Source = Merged Document | Merge Fields shown as &laquo;FieldName&raquo; | Wizard: Tools → Mail Merge Wizard | Output: New Document / Printer / Email | Data source first row = headers/field names.</div>
+  </div>
+</div>
+<footer>CBSE Class 9 IT Code 402 | Part B Unit 3 | Chapter 9 | KIPS Publication | LibreOffice Writer</footer>
+<script>function t(h){const b=h.nextElementSibling;const a=h.querySelector('span:last-child');b.style.display=b.style.display==='block'?'none':'block';a.textContent=b.style.display==='block'?'▲':'▼';}</script>
+</body>
+</html>
+

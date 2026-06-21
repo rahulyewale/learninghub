@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch 6 – Formatting a Document | Class 9 ICT (402)</title>
+  <style>
+    :root{--primary:#00695c;--pl:#00897b;--bg:#f0fdf8;--white:#fff;--border:#b2dfdb;--warn:#f9a825;--accent:#e65100}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#222;line-height:1.7}
+    header{background:linear-gradient(135deg,#00695c,#26a69a);color:#fff;padding:28px 20px;text-align:center}
+    header h1{font-size:1.65rem;margin-bottom:4px} header p{font-size:.9rem;opacity:.9}
+    nav{background:var(--primary);display:flex;flex-wrap:wrap;gap:6px;padding:10px 20px;position:sticky;top:0;z-index:100}
+    nav a{color:#b2ffe8;text-decoration:none;font-size:.82rem;padding:4px 10px;border-radius:12px;background:rgba(255,255,255,.12)}
+    nav a:hover{background:rgba(255,255,255,.28);color:#fff}
+    .container{max-width:1060px;margin:auto;padding:22px 16px 40px}
+    .sec{background:var(--white);border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:24px;margin-bottom:22px}
+    h2{background:var(--pl);color:#fff;padding:10px 16px;border-radius:6px;margin-bottom:16px;font-size:1.1rem}
+    h3{color:var(--primary);margin:18px 0 8px;font-size:1rem}
+    p{margin-bottom:10px} ul,ol{padding-left:22px;margin-bottom:10px} li{margin-bottom:4px}
+    table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem}
+    th{background:var(--pl);color:#fff;padding:9px 12px;text-align:left}
+    td{padding:8px 12px;border:1px solid var(--border)} tr:nth-child(even) td{background:#f0fdf8}
+    .tip{background:#fffde7;border-left:5px solid var(--warn);padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:.93rem}
+    .tip strong{color:var(--accent)}
+    .kt{display:inline-block;background:#e0f2f1;color:#004d40;border-radius:4px;padding:1px 8px;font-weight:600;font-size:.9rem}
+    .kbd{display:inline-block;background:#263238;color:#b2dfdb;border-radius:4px;padding:2px 9px;font-family:Consolas,monospace;font-size:.86rem}
+    .q-block{background:#f9fffc;border:1px solid var(--border);border-radius:8px;margin-bottom:14px;overflow:hidden}
+    .q-h{background:#e0f2f1;padding:10px 16px;font-weight:600;font-size:.92rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .q-h:hover{background:#b2dfdb}
+    .q-b{padding:12px 16px;font-size:.92rem;display:none;border-top:1px solid var(--border)}
+    .mk{background:var(--primary);color:#fff;border-radius:10px;padding:1px 8px;font-size:.76rem;font-weight:700;margin-left:6px}
+    footer{text-align:center;color:#666;font-size:.8rem;padding:16px;background:#e0f2f1;margin-top:8px}
+  </style>
+</head>
+<body>
+<header>
+  <h1>🎨 Chapter 6: Formatting a Document</h1>
+  <p>CBSE Class 9 IT (Code 402) | Part B – Unit 3 | KIPS Publication | LibreOffice Writer</p>
+</header>
+<nav>
+  <a href="#char">Character</a>
+  <a href="#para">Paragraph</a>
+  <a href="#page">Page</a>
+  <a href="#lists">Lists</a>
+  <a href="#borders">Borders</a>
+  <a href="#styles">Styles</a>
+  <a href="#qa">Q&amp;A</a>
+  <a href="../index.html">← Unit 3</a>
+  <a href="../../../../index.html">🏠 Home</a>
+</nav>
+<div class="container">
+
+  <div class="sec" id="char">
+    <h2>1. Character Formatting</h2>
+    <p><span class="kt">Character Formatting</span> changes the appearance of individual characters or selected text. Access via Format → Character or the Formatting Toolbar.</p>
+    <table>
+      <tr><th>Option</th><th>Description</th><th>Shortcut</th></tr>
+      <tr><td><strong>Font Name</strong></td><td>Changes the typeface (e.g., Arial, Times New Roman)</td><td>—</td></tr>
+      <tr><td><strong>Font Size</strong></td><td>Changes the size of text (measured in points)</td><td>—</td></tr>
+      <tr><td><strong>Bold</strong></td><td>Makes text thick/heavy</td><td><span class="kbd">Ctrl+B</span></td></tr>
+      <tr><td><strong>Italic</strong></td><td>Makes text slant to the right</td><td><span class="kbd">Ctrl+I</span></td></tr>
+      <tr><td><strong>Underline</strong></td><td>Adds a line below text</td><td><span class="kbd">Ctrl+U</span></td></tr>
+      <tr><td><strong>Strikethrough</strong></td><td>Draws a line through text</td><td>—</td></tr>
+      <tr><td><strong>Superscript</strong></td><td>Text above baseline (e.g., x²)</td><td><span class="kbd">Ctrl+Shift+P</span></td></tr>
+      <tr><td><strong>Subscript</strong></td><td>Text below baseline (e.g., H₂O)</td><td><span class="kbd">Ctrl+Shift+B</span></td></tr>
+      <tr><td><strong>Font Colour</strong></td><td>Changes colour of text</td><td>—</td></tr>
+      <tr><td><strong>Highlighting</strong></td><td>Background colour of selected text</td><td>—</td></tr>
+      <tr><td><strong>UPPERCASE/lowercase</strong></td><td>Change capitalisation</td><td>Format → Text → UPPERCASE etc.</td></tr>
+    </table>
+    <div class="tip"><strong>Remember:</strong> Select the text FIRST, then apply character formatting. Formatting applied without selection affects new text typed at the cursor.</div>
+  </div>
+
+  <div class="sec" id="para">
+    <h2>2. Paragraph Formatting</h2>
+    <p><span class="kt">Paragraph Formatting</span> changes the arrangement of an entire paragraph. Access via Format → Paragraph.</p>
+    <h3>Text Alignment</h3>
+    <table>
+      <tr><th>Alignment</th><th>Description</th><th>Shortcut</th></tr>
+      <tr><td>Left Align</td><td>Text aligned to the left margin (default)</td><td><span class="kbd">Ctrl+L</span></td></tr>
+      <tr><td>Centre Align</td><td>Text centred between margins</td><td><span class="kbd">Ctrl+E</span></td></tr>
+      <tr><td>Right Align</td><td>Text aligned to the right margin</td><td><span class="kbd">Ctrl+R</span></td></tr>
+      <tr><td>Justify</td><td>Text spreads evenly to both margins</td><td><span class="kbd">Ctrl+J</span></td></tr>
+    </table>
+    <h3>Line Spacing</h3>
+    <p>Controls vertical space between lines. Format → Paragraph → Indents and Spacing → Line Spacing.</p>
+    <table>
+      <tr><th>Option</th><th>Description</th></tr>
+      <tr><td>Single (1.0)</td><td>Default spacing — lines close together</td></tr>
+      <tr><td>1.5 Lines</td><td>One and a half times single spacing</td></tr>
+      <tr><td>Double (2.0)</td><td>Twice single spacing — large gap between lines</td></tr>
+      <tr><td>Fixed</td><td>Exact height specified in points</td></tr>
+      <tr><td>Proportional</td><td>Percentage of single line height</td></tr>
+    </table>
+    <h3>Indentation</h3>
+    <p><span class="kt">Indentation</span> is the space between the text and the left/right margins.</p>
+    <table>
+      <tr><th>Type</th><th>Description</th></tr>
+      <tr><td>Left Indent</td><td>Moves all lines of paragraph away from left margin</td></tr>
+      <tr><td>Right Indent</td><td>Moves all lines of paragraph away from right margin</td></tr>
+      <tr><td>First Line Indent</td><td>Indents only the first line of a paragraph (book style)</td></tr>
+      <tr><td>Hanging Indent</td><td>All lines indented EXCEPT the first line (used in bullet lists)</td></tr>
+    </table>
+    <h3>Spacing Before and After Paragraph</h3>
+    <p>Adds extra space before or after a paragraph without pressing Enter multiple times.</p>
+  </div>
+
+  <div class="sec" id="page">
+    <h2>3. Page Formatting</h2>
+    <p><span class="kt">Page Formatting</span> controls the overall layout of the page. Access via Format → Page Style.</p>
+    <table>
+      <tr><th>Option</th><th>Description</th></tr>
+      <tr><td><strong>Page Size</strong></td><td>Physical size of the page. Standard sizes: A4 (210×297 mm), Letter (8.5×11 inch)</td></tr>
+      <tr><td><strong>Orientation</strong></td><td>Portrait = tall page (default) | Landscape = wide page</td></tr>
+      <tr><td><strong>Margins</strong></td><td>Blank space around page edges. Default: Top/Bottom/Left/Right = 2.54 cm (1 inch)</td></tr>
+      <tr><td><strong>Header</strong></td><td>Text that appears at the TOP of every page (e.g., title, chapter name)</td></tr>
+      <tr><td><strong>Footer</strong></td><td>Text that appears at the BOTTOM of every page (e.g., page number, date)</td></tr>
+      <tr><td><strong>Page Numbers</strong></td><td>Insert → Header and Footer → Page Number</td></tr>
+      <tr><td><strong>Columns</strong></td><td>Divides page into newspaper-style columns</td></tr>
+    </table>
+    <div class="tip"><strong>Portrait vs Landscape:</strong> Portrait is used for letters/reports (tall); Landscape is used for spreadsheets/tables/wide diagrams (wide).</div>
+  </div>
+
+  <div class="sec" id="lists">
+    <h2>4. Ordered and Unordered Lists</h2>
+    <table>
+      <tr><th>Feature</th><th>Unordered List (Bullet)</th><th>Ordered List (Numbered)</th></tr>
+      <tr><td>Marker type</td><td>Bullets (•, ■, ▸)</td><td>Numbers or letters (1, 2, A, B, i, ii)</td></tr>
+      <tr><td>Used for</td><td>Items without specific order</td><td>Steps or sequence-based items</td></tr>
+      <tr><td>Shortcut</td><td>Toolbar bullet button</td><td>Toolbar number button</td></tr>
+      <tr><td>Menu path</td><td>Format → Lists → Unordered List</td><td>Format → Lists → Ordered List</td></tr>
+    </table>
+    <h3>Multilevel Lists</h3>
+    <p>A list within a list (sub-list). Press <span class="kbd">Tab</span> to go one level deeper, <span class="kbd">Shift+Tab</span> to go back up.</p>
+    <div class="tip"><strong>Tip:</strong> To end a list, press Enter twice (once to create empty bullet, once to exit list level).</div>
+  </div>
+
+  <div class="sec" id="borders">
+    <h2>5. Borders and Shading</h2>
+    <h3>Text / Paragraph Borders</h3>
+    <p>Add a decorative or visible border around a paragraph: Format → Paragraph → Borders.</p>
+    <ul>
+      <li>Choose box, shadow, or custom border</li>
+      <li>Set border style, width and colour</li>
+    </ul>
+    <h3>Page Borders</h3>
+    <p>Format → Page Style → Area/Borders tab — adds a border around the entire page.</p>
+    <h3>Shading / Background Colour</h3>
+    <p>Highlight or background fill for selected text or a paragraph.</p>
+    <h3>Format Painter (Clone Formatting)</h3>
+    <p>Copies formatting from one selection and applies it to another — like a paintbrush for formatting.</p>
+    <ul>
+      <li>Select formatted text → click Format Painter (paint bucket icon in toolbar) → click/drag on target text</li>
+      <li>Double-click Format Painter to apply to multiple locations</li>
+    </ul>
+  </div>
+
+  <div class="sec" id="styles">
+    <h2>6. Styles and Templates</h2>
+    <h3>Styles</h3>
+    <p>A <span class="kt">Style</span> is a saved set of formatting settings (font, size, colour, alignment, etc.) that can be applied to text in one click.</p>
+    <table>
+      <tr><th>Type of Style</th><th>Use</th></tr>
+      <tr><td>Paragraph Style</td><td>Applies formatting to a whole paragraph (Heading 1, Body Text)</td></tr>
+      <tr><td>Character Style</td><td>Applies formatting to selected characters</td></tr>
+      <tr><td>Page Style</td><td>Controls page layout (margins, orientation, header/footer)</td></tr>
+      <tr><td>List Style</td><td>Defines look of bullet/numbered lists</td></tr>
+    </table>
+    <h3>Templates</h3>
+    <p>A <span class="kt">Template</span> is a pre-formatted document that serves as a starting point. Examples: letter template, resume template, invoice template.</p>
+    <ul>
+      <li>File → New → Templates to browse and use templates</li>
+      <li>File → Templates → Save as Template to create your own</li>
+    </ul>
+    <div class="tip"><strong>Styles speed up work:</strong> Instead of formatting each heading manually, apply "Heading 1" style — consistent and quick.</div>
+  </div>
+
+  <div class="sec" id="qa">
+    <h2>7. Sample Questions with Answers</h2>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q1. What is character formatting? Name any four options. <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b">Character formatting changes the appearance of selected text. Options: Font name, Font size, Bold (Ctrl+B), Italic (Ctrl+I), Underline (Ctrl+U), Font colour, Superscript, Subscript.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q2. Write shortcuts for all four alignment options. <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b">Left align – Ctrl+L; Centre – Ctrl+E; Right – Ctrl+R; Justify – Ctrl+J.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q3. Differentiate between ordered and unordered lists. <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b"><strong>Unordered list</strong> uses bullets (• ■) and is used for items without a specific order. <br><strong>Ordered list</strong> uses numbers or letters (1, 2, A) and is used for step-by-step or sequential items.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q4. What is the difference between Portrait and Landscape orientation? <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b"><strong>Portrait:</strong> Page is taller than wide (vertical). Default for letters and reports. <br><strong>Landscape:</strong> Page is wider than tall (horizontal). Used for tables, spreadsheets, or wide diagrams.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q5. What are margins? What is the default margin in Writer? <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b">Margins are the blank spaces around the edges of the page — top, bottom, left, and right. The default margin in LibreOffice Writer is 2.54 cm (1 inch) on all sides.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q6. What is a Style in LibreOffice Writer? Name four types. <span class="mk">3 Marks</span><span>▼</span></div>
+      <div class="q-b">A Style is a saved set of formatting settings applied in one click. Types: Paragraph Style, Character Style, Page Style, List Style.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-h" onclick="t(this)">Q7. What is Format Painter? How is it used? <span class="mk">2 Marks</span><span>▼</span></div>
+      <div class="q-b">Format Painter (Clone Formatting) copies the formatting of selected text and applies it to other text. Use: Select formatted text → click the paint-bucket icon → drag over target text.</div>
+    </div>
+    <div class="tip"><strong>Quick Revision:</strong> Character = text appearance | Paragraph = alignment, spacing, indent | Page = size, margins, orientation | Bold Ctrl+B | Italic Ctrl+I | Align: L/E/R/J | Styles = saved formats | Template = pre-made document.</div>
+  </div>
+</div>
+<footer>CBSE Class 9 IT Code 402 | Part B Unit 3 | Chapter 6 | KIPS Publication | LibreOffice Writer</footer>
+<script>function t(h){const b=h.nextElementSibling;const a=h.querySelector('span:last-child');b.style.display=b.style.display==='block'?'none':'block';a.textContent=b.style.display==='block'?'▲':'▼';}</script>
+</body>
+</html>
+
