@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Part B – Unit 6: Web Application and Security | Class 9 ICT (402)</title>
+  <style>
+    :root{--primary:#00695c;--primary-light:#00897b;--accent:#e65100;--bg:#f0fdf8;--white:#ffffff;--border:#b2dfdb}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#222;line-height:1.7}
+    header{background:linear-gradient(135deg,#00695c,#26a69a);color:white;padding:28px 20px 18px;text-align:center}
+    header h1{font-size:1.7rem;margin-bottom:4px}
+    header p{font-size:0.95rem;opacity:0.9}
+    nav{background:var(--primary);display:flex;flex-wrap:wrap;gap:6px;padding:10px 20px;position:sticky;top:0;z-index:100}
+    nav a{color:#b2ffe8;text-decoration:none;font-size:0.82rem;padding:4px 10px;border-radius:12px;background:rgba(255,255,255,0.12)}
+    nav a:hover{background:rgba(255,255,255,0.28);color:#fff}
+    .container{max-width:1050px;margin:auto;padding:22px 16px 40px}
+    .section{background:var(--white);border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:24px;margin-bottom:24px}
+    h2{background:var(--primary-light);color:white;padding:10px 16px;border-radius:6px;margin-bottom:16px;font-size:1.15rem}
+    h3{color:var(--primary);margin:18px 0 8px;font-size:1rem}
+    p{margin-bottom:10px}
+    ul,ol{padding-left:22px;margin-bottom:10px}
+    li{margin-bottom:4px}
+    table{width:100%;border-collapse:collapse;margin:14px 0;font-size:0.92rem}
+    th{background:var(--primary-light);color:white;padding:9px 12px;text-align:left}
+    td{padding:8px 12px;border:1px solid var(--border)}
+    tr:nth-child(even) td{background:#f0fdf8}
+    .tip{background:#fffde7;border-left:5px solid #f9a825;padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:0.93rem}
+    .tip strong{color:#e65100}
+    .keyterm{display:inline-block;background:#e0f2f1;color:#004d40;border-radius:4px;padding:1px 8px;font-weight:600;font-size:0.9rem}
+    .danger{background:#ffebee;border-left:5px solid #c62828;padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:0.93rem}
+    .danger strong{color:#b71c1c}
+    .q-block{background:#f9fffc;border:1px solid var(--border);border-radius:8px;margin-bottom:16px;overflow:hidden}
+    .q-header{background:#e0f2f1;padding:10px 16px;font-weight:600;font-size:0.93rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .q-body{padding:12px 16px;font-size:0.93rem;display:none}
+    .marks{background:#00695c;color:#fff;border-radius:10px;padding:1px 8px;font-size:0.78rem;font-weight:700;margin-left:8px}
+    footer{text-align:center;color:#666;font-size:0.82rem;padding:18px;background:#e0f2f1;margin-top:10px}
+  </style>
+</head>
+<body>
+<header>
+  <h1>🌐 Part B – Unit 6: Web Application and Security</h1>
+  <p>Class 9 ICT (Code 402) | Internet, Email, Web Browsers, Cyber Safety | NCERT Study Notes</p>
+</header>
+<nav>
+  <a href="#internet">Internet Basics</a>
+  <a href="#www">WWW & URLs</a>
+  <a href="#browser">Web Browser</a>
+  <a href="#email">Email</a>
+  <a href="#services">Web Services</a>
+  <a href="#security">Cyber Safety</a>
+  <a href="#questions">Questions</a>
+  <a href="../../../index.html">🏠 Home</a>
+</nav>
+<div class="container">
+
+  <div class="section" id="internet">
+    <h2>1. Internet Basics</h2>
+    <p>The <span class="keyterm">Internet</span> is a global network of interconnected computers that communicate using standard protocols (especially TCP/IP).</p>
+    <table>
+      <tr><th>Term</th><th>Full Form / Meaning</th></tr>
+      <tr><td>Internet</td><td>International Network of networks</td></tr>
+      <tr><td>ISP</td><td>Internet Service Provider – company that provides internet access</td></tr>
+      <tr><td>TCP/IP</td><td>Transmission Control Protocol / Internet Protocol – communication rules</td></tr>
+      <tr><td>IP Address</td><td>Unique numerical address for each device on a network (e.g., 192.168.1.1)</td></tr>
+      <tr><td>Bandwidth</td><td>Speed/capacity of an internet connection (measured in Mbps/Gbps)</td></tr>
+      <tr><td>LAN</td><td>Local Area Network – small network in one building</td></tr>
+      <tr><td>WAN</td><td>Wide Area Network – large network across cities/countries</td></tr>
+      <tr><td>Wi-Fi</td><td>Wireless local area network using radio waves</td></tr>
+    </table>
+    <h3>Types of Internet Connection</h3>
+    <table>
+      <tr><th>Type</th><th>Description</th></tr>
+      <tr><td>Dial-up</td><td>Slow; uses phone line; not common now</td></tr>
+      <tr><td>Broadband (DSL/Cable)</td><td>High-speed wired connection</td></tr>
+      <tr><td>Wi-Fi</td><td>Wireless connection via router</td></tr>
+      <tr><td>Mobile Data (3G/4G/5G)</td><td>Internet via mobile network</td></tr>
+      <tr><td>Fiber Optic</td><td>Very high speed using light through cables</td></tr>
+    </table>
+  </div>
+
+  <div class="section" id="www">
+    <h2>2. World Wide Web (WWW) and URLs</h2>
+    <p>The <span class="keyterm">World Wide Web (WWW)</span> is a collection of websites and web pages accessible through the internet. It was invented by Tim Berners-Lee in 1989.</p>
+    <p>A <span class="keyterm">URL (Uniform Resource Locator)</span> is the address of a specific web page or resource.</p>
+    <h3>Parts of a URL</h3>
+    <p>Example: <strong>https://www.ncert.nic.in/textbook.php</strong></p>
+    <table>
+      <tr><th>Part</th><th>Example</th><th>Meaning</th></tr>
+      <tr><td>Protocol</td><td>https://</td><td>How data is transferred (HTTP = web, HTTPS = secure)</td></tr>
+      <tr><td>Subdomain</td><td>www</td><td>World Wide Web prefix</td></tr>
+      <tr><td>Domain Name</td><td>ncert.nic.in</td><td>Registered name of the website</td></tr>
+      <tr><td>Domain Extension (TLD)</td><td>.in / .com / .org</td><td>Country or organisation type</td></tr>
+      <tr><td>Path</td><td>/textbook.php</td><td>Specific page or file on the server</td></tr>
+    </table>
+    <h3>Common Domain Extensions</h3>
+    <table>
+      <tr><th>Extension</th><th>Used by</th></tr>
+      <tr><td>.com</td><td>Commercial organisations</td></tr>
+      <tr><td>.org</td><td>Non-profit organisations</td></tr>
+      <tr><td>.gov</td><td>Government websites</td></tr>
+      <tr><td>.edu</td><td>Educational institutions</td></tr>
+      <tr><td>.in</td><td>India country code</td></tr>
+      <tr><td>.net</td><td>Network organisations</td></tr>
+    </table>
+  </div>
+
+  <div class="section" id="browser">
+    <h2>3. Web Browser</h2>
+    <p>A <span class="keyterm">Web Browser</span> is software used to access and view websites on the internet.</p>
+    <h3>Popular Web Browsers</h3>
+    <ul>
+      <li>Google Chrome</li>
+      <li>Mozilla Firefox</li>
+      <li>Microsoft Edge</li>
+      <li>Apple Safari</li>
+      <li>Opera</li>
+    </ul>
+    <h3>Browser components</h3>
+    <table>
+      <tr><th>Component</th><th>Purpose</th></tr>
+      <tr><td>Address Bar / URL Bar</td><td>Type website address; shows current page URL</td></tr>
+      <tr><td>Back / Forward Buttons</td><td>Navigate to previous or next page</td></tr>
+      <tr><td>Refresh / Reload Button</td><td>Reload the current page</td></tr>
+      <tr><td>Home Button</td><td>Go to homepage</td></tr>
+      <tr><td>Bookmarks / Favourites</td><td>Save frequently visited pages</td></tr>
+      <tr><td>Tabs</td><td>Open multiple pages in the same window</td></tr>
+      <tr><td>History</td><td>List of previously visited pages</td></tr>
+      <tr><td>Downloads</td><td>List of files downloaded from internet</td></tr>
+    </table>
+    <h3>Search Engines</h3>
+    <p>A <span class="keyterm">Search Engine</span> indexes web pages and helps users find information.</p>
+    <p>Examples: <strong>Google, Bing, Yahoo, DuckDuckGo</strong></p>
+    <div class="tip"><strong>Tip:</strong> Use specific keywords and quotation marks for exact search. Example: "climate change India 2025"</div>
+  </div>
+
+  <div class="section" id="email">
+    <h2>4. Electronic Mail (Email)</h2>
+    <p>An <span class="keyterm">Email (Electronic Mail)</span> is a digital message sent over the internet from one person to another.</p>
+    <h3>Parts of an Email</h3>
+    <table>
+      <tr><th>Field</th><th>Purpose</th></tr>
+      <tr><td>To</td><td>Primary recipient's email address</td></tr>
+      <tr><td>CC (Carbon Copy)</td><td>Send a copy to additional recipients (visible to all)</td></tr>
+      <tr><td>BCC (Blind Carbon Copy)</td><td>Hidden copy – recipient not visible to others</td></tr>
+      <tr><td>Subject</td><td>Brief topic/title of the email</td></tr>
+      <tr><td>Body</td><td>Main message/content</td></tr>
+      <tr><td>Attachment</td><td>File(s) sent along with the email</td></tr>
+      <tr><td>Signature</td><td>Sender's name and contact details at the bottom</td></tr>
+    </table>
+    <h3>Email Address Format</h3>
+    <p>Format: <strong>username@domain.extension</strong> — e.g., <em>student@school.edu.in</em></p>
+    <h3>Email Actions</h3>
+    <table>
+      <tr><th>Action</th><th>Meaning</th></tr>
+      <tr><td>Compose</td><td>Write a new email</td></tr>
+      <tr><td>Reply</td><td>Respond to the sender only</td></tr>
+      <tr><td>Reply All</td><td>Respond to sender and all recipients</td></tr>
+      <tr><td>Forward</td><td>Send received email to another person</td></tr>
+      <tr><td>Delete</td><td>Move email to Trash folder</td></tr>
+      <tr><td>Spam/Junk</td><td>Mark unwanted emails; move to spam folder</td></tr>
+    </table>
+    <div class="tip"><strong>Etiquette:</strong> Use formal language, write a proper subject, keep messages clear and brief. Never share passwords or personal information via email.</div>
+  </div>
+
+  <div class="section" id="services">
+    <h2>5. Web Applications and Online Services</h2>
+    <table>
+      <tr><th>Service</th><th>Examples</th><th>Use</th></tr>
+      <tr><td>Search Engine</td><td>Google, Bing</td><td>Find information</td></tr>
+      <tr><td>Social Media</td><td>Facebook, Instagram, Twitter</td><td>Connect and share</td></tr>
+      <tr><td>Cloud Storage</td><td>Google Drive, OneDrive, Dropbox</td><td>Store and share files</td></tr>
+      <tr><td>E-Commerce</td><td>Amazon, Flipkart</td><td>Buy and sell online</td></tr>
+      <tr><td>Online Banking</td><td>Net banking, UPI apps</td><td>Manage finances online</td></tr>
+      <tr><td>Video Conferencing</td><td>Zoom, Google Meet, Teams</td><td>Online meetings</td></tr>
+      <tr><td>Online Learning</td><td>DIKSHA, Khan Academy</td><td>Education over internet</td></tr>
+      <tr><td>Instant Messaging</td><td>WhatsApp, Telegram</td><td>Real-time text/voice</td></tr>
+    </table>
+  </div>
+
+  <div class="section" id="security">
+    <h2>6. Cyber Safety and Security</h2>
+    <p><span class="keyterm">Cyber Safety</span> means protecting yourself and your information from threats on the internet.</p>
+    <h3>Common Cyber Threats</h3>
+    <table>
+      <tr><th>Threat</th><th>Meaning</th></tr>
+      <tr><td>Virus</td><td>Malicious program that attaches to files and spreads</td></tr>
+      <tr><td>Malware</td><td>Any malicious software (virus, worm, trojan, ransomware)</td></tr>
+      <tr><td>Phishing</td><td>Fake emails/websites that trick users into sharing passwords</td></tr>
+      <tr><td>Hacking</td><td>Unauthorised access to computer systems or data</td></tr>
+      <tr><td>Identity Theft</td><td>Stealing someone's personal information for misuse</td></tr>
+      <tr><td>Cyberbullying</td><td>Using technology to harass or intimidate someone</td></tr>
+      <tr><td>Spam</td><td>Unsolicited bulk emails/messages</td></tr>
+    </table>
+    <div class="danger"><strong>⚠ Warning:</strong> Never share your passwords, OTPs, Aadhaar, bank details, or personal photos with strangers or on unsafe websites.</div>
+    <h3>Cyber Safety Practices</h3>
+    <ul>
+      <li>Use strong passwords (mix of uppercase, lowercase, numbers, symbols)</li>
+      <li>Change passwords regularly; never reuse passwords</li>
+      <li>Enable two-factor authentication (2FA)</li>
+      <li>Do not click unknown links or open suspicious attachments</li>
+      <li>Use licensed antivirus software and keep it updated</li>
+      <li>Use HTTPS websites for sensitive transactions</li>
+      <li>Log out from accounts after use on shared computers</li>
+      <li>Keep operating system and software up to date</li>
+      <li>Avoid using public Wi-Fi for banking or personal data</li>
+      <li>Report cyberbullying or abuse to parents/teachers/authorities</li>
+    </ul>
+    <h3>Strong Password Guidelines</h3>
+    <ul>
+      <li>At least 8–12 characters long</li>
+      <li>Mix of letters (upper and lower case), numbers, and symbols</li>
+      <li>Avoid using names, birthdays, or common words</li>
+      <li>Use a password manager to manage multiple passwords</li>
+    </ul>
+    <div class="tip"><strong>Memory tip:</strong> Cyber safety = strong passwords + updated software + no sharing of personal data + HTTPS only.</div>
+  </div>
+
+  <div class="section" id="questions">
+    <h2>7. Sample Questions with Answers</h2>
+
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q1. What is an IP Address? <span class="marks">1 Mark</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> An IP Address (Internet Protocol Address) is a unique numerical identifier assigned to each device on a network, used to send and receive data.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q2. Expand URL and write its parts with an example. <span class="marks">2 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> URL = Uniform Resource Locator. Example: https://www.example.com/page. Parts: Protocol (https://), subdomain (www), domain (example.com), path (/page).</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q3. Differentiate between CC and BCC in email. <span class="marks">2 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> CC (Carbon Copy) sends a copy to additional recipients and their addresses are visible to everyone. BCC (Blind Carbon Copy) sends a hidden copy — the BCC recipient's address is not shown to others.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q4. What is phishing? How can you protect yourself? <span class="marks">3 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> Phishing is when hackers send fake emails or create fake websites to trick users into sharing passwords, OTPs, or personal information. Protection: Do not click unknown links, verify sender addresses, use 2FA, and check for HTTPS.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q5. What is the difference between HTTP and HTTPS? <span class="marks">2 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> HTTP (HyperText Transfer Protocol) transfers data without encryption. HTTPS (HTTP Secure) encrypts data using SSL/TLS, making it safe for sensitive transactions like banking and shopping.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q6. List any five cyber safety practices. <span class="marks">5 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> (1) Use strong and unique passwords. (2) Enable two-factor authentication. (3) Do not click suspicious links or attachments. (4) Use updated antivirus software. (5) Avoid sharing personal data on social media or emails.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q7. Name five popular web browsers and four search engines. <span class="marks">3 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> Browsers: Chrome, Firefox, Edge, Safari, Opera. Search engines: Google, Bing, Yahoo, DuckDuckGo.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q8. What is cyberbullying? What should you do if you experience it? <span class="marks">3 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> Cyberbullying is using digital technology to harass, threaten, embarrass, or target someone. If you experience it, do not respond to the bully, block them, save evidence (screenshots), and report it to parents, teachers, or authorities.</div>
+    </div>
+
+    <div class="tip"><strong>Quick revision:</strong> Internet = global network; WWW invented by Tim Berners-Lee; URL = address of a page; Browser navigates websites; Email fields: To/CC/BCC/Subject/Body; HTTPS = secure; Threats: virus, phishing, hacking, cyberbullying; Stay safe with strong passwords and no sharing of personal data.</div>
+  </div>
+</div>
+<footer>CBSE Class 9 ICT Code 402 | Part B Unit 6 | NCERT-aligned study material</footer>
+<script>
+  function toggle(header) {
+    const body = header.nextElementSibling;
+    const arrow = header.querySelector('span:last-child');
+    body.style.display = body.style.display === 'block' ? 'none' : 'block';
+    arrow.textContent = body.style.display === 'block' ? '▲' : '▼';
+  }
+</script>
+</body>
+</html>
+

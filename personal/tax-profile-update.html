@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Income Tax Return Update Helper - Rahul Yewale</title>
+  <style>
+    :root {
+      --primary: #0d47a1;
+      --primary-light: #1565c0;
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --line: #d8e3f2;
+      --must: #c62828;
+      --same: #2e7d32;
+      --optional: #6a1b9a;
+      --warn: #f9a825;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: #1f2d3d;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0d47a1, #42a5f5);
+      color: white;
+      padding: 28px 18px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 6px;
+      font-size: 1.8rem;
+    }
+
+    header p {
+      margin: 0;
+      opacity: 0.95;
+    }
+
+    .wrap {
+      max-width: 1250px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(244, 247, 251, 0.95);
+      backdrop-filter: blur(4px);
+      padding: 10px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .toolbar a,
+    .toolbar button {
+      border: none;
+      text-decoration: none;
+      background: #e3f2fd;
+      color: #0d47a1;
+      padding: 7px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-family: inherit;
+    }
+
+    .toolbar button.primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .toolbar button.danger {
+      background: #b71c1c;
+      color: white;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid #edf2fa;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      background: var(--primary-light);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+    }
+
+    h3 {
+      color: var(--primary);
+      margin: 18px 0 8px;
+    }
+
+    .note {
+      background: #fff8e1;
+      border-left: 5px solid var(--warn);
+      padding: 12px 14px;
+      border-radius: 6px;
+      margin: 12px 0;
+    }
+
+    .success {
+      background: #e8f5e9;
+      border-left: 5px solid var(--same);
+      padding: 12px 14px;
+      border-radius: 6px;
+      margin: 12px 0;
+    }
+
+    .risk {
+      background: #ffebee;
+      border-left: 5px solid var(--must);
+      padding: 12px 14px;
+      border-radius: 6px;
+      margin: 12px 0;
+    }
+
+    .table-wrap { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      min-width: 980px;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 0.93rem;
+    }
+
+    th {
+      background: #eaf2ff;
+      color: #173d63;
+    }
+
+    tr:nth-child(even) td { background: #fbfdff; }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-width: 140px;
+      border: 1px solid #b9c7d8;
+      border-radius: 6px;
+      padding: 7px 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .status {
+      display: inline-block;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .must { background: var(--must); }
+    .same { background: var(--same); }
+    .optional { background: var(--optional); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 12px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      background: #fbfdff;
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    .mini-card strong { color: var(--primary); }
+
+    .amount { font-family: Consolas, monospace; white-space: nowrap; }
+
+    footer {
+      text-align: center;
+      color: #6f7d8b;
+      padding: 18px 10px;
+      font-size: 0.85rem;
+    }
+
+    @media print {
+      .toolbar { display: none; }
+      body { background: white; }
+      .card { box-shadow: none; page-break-inside: avoid; }
+      input, textarea, select { border: 1px solid #777; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Income Tax Return Update Helper</h1>
+  <p>Reference: Last filed ITR-2 for AY 2025-26 • Use this to collect/update data for the current year</p>
+</header>
+
+<div class="wrap">
+  <nav class="toolbar">
+    <a href="#summary">Summary</a>
+    <a href="#update">Update Table</a>
+    <a href="#checklist">Checklist</a>
+    <a href="#risks">Risks</a>
+    <a href="#questions">Questions</a>
+    <button class="primary" onclick="saveData()">Save Updates Locally</button>
+    <button onclick="exportJSON()">Export Updated JSON</button>
+    <button onclick="window.print()">Print / Save PDF</button>
+    <button class="danger" onclick="clearSavedData()">Clear Saved Updates</button>
+  </nav>
+
+  <section class="card" id="summary">
+    <h2>1. Tax Profile Summary Table</h2>
+    <div class="note">
+      <strong>Important:</strong> This page uses your last filed ITR JSON only as a reference baseline. Do not treat last year values as current-year values unless verified with Form 16, AIS/TIS, Form 26AS, bank statements, broker statements, and donation/loan documents.
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Section Name</th>
+            <th>Key Values from Last Year ITR</th>
+            <th>Notes / Assumptions / Special Cases</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Form / Filing</td>
+            <td>ITR-2; AY 2025-26; Return filing due date: 31-Jul-2025; Return filed u/s code: 11</td>
+            <td>ITR-2 used because no business/profession income, but salary, house property, foreign assets/income and other sources exist.</td>
+          </tr>
+          <tr>
+            <td>Personal Details</td>
+            <td>Rahul Sansthan Yewale; PAN: ADEPY8899C; DOB: 23-Jun-1986; Status: Individual; Residential Status: Resident; Aadhaar available in JSON.</td>
+            <td class="risk">Verify address, mobile, email and Aadhaar/PAN linkage before filing.</td>
+          </tr>
+          <tr>
+            <td>Tax Regime</td>
+            <td>OptOutNewTaxRegime = Y</td>
+            <td class="risk">This indicates old regime was chosen last year. Current-year regime must be re-evaluated because deductions are significant.</td>
+          </tr>
+          <tr>
+            <td>Salary Income</td>
+            <td>Employer: FINICITY TECHNOLOGIES PRIVATE LIMITED; TAN: MUMF08891B; Gross Salary: ₹74,27,332; Perquisites: ₹7,97,555; Income under Salary after Sec 16: ₹73,74,832.</td>
+            <td class="must-text">MUST verify current Form 16 Part A/B, employer TAN, perquisites/RSU/ESOP components, professional tax, and standard deduction.</td>
+          </tr>
+          <tr>
+            <td>HRA / Section 10(13A)</td>
+            <td>HRA received: ₹0; rent paid: ₹0; exemption claimed: ₹0.</td>
+            <td>If you rented this year or got HRA, this may change. Otherwise likely same.</td>
+          </tr>
+          <tr>
+            <td>House Property</td>
+            <td>Self-occupied property at Panvel; 100% owned; home loan from SBI; loan account ending/ref: 33082004142; interest u/s 24(b): ₹1,95,000; HP loss set off: ₹1,95,000.</td>
+            <td class="risk">Verify current interest certificate, principal repayment, outstanding loan, property status (self-occupied/let-out), co-ownership.</td>
+          </tr>
+          <tr>
+            <td>Capital Gains</td>
+            <td>STCG: ₹0; LTCG: ₹0; Section 112A: ₹0; VDA: ₹0.</td>
+            <td class="risk">Must verify broker statements, AIS/TIS, mutual funds, stocks, ESOP/RSU sales, crypto/VDA. Last year no gains reported.</td>
+          </tr>
+          <tr>
+            <td>Other Sources</td>
+            <td>Total: ₹89,975; Interest: ₹89,892; Savings interest: ₹24,810; Term deposit interest: ₹65,082; Dividend: ₹83.</td>
+            <td>Interest and dividend usually change yearly. Match AIS, 26AS and bank statements.</td>
+          </tr>
+          <tr>
+            <td>Exempt Income</td>
+            <td>Exempt interest income: ₹65,453; total exempt income: ₹65,453.</td>
+            <td>Nature appears interest-type exempt income from Schedule EI. Reconfirm source for current year.</td>
+          </tr>
+          <tr>
+            <td>Foreign Income / FTC</td>
+            <td>USA other-source income: ₹14,310; foreign tax paid: ₹3,580; relief u/s 90: ₹3,580; Article 10.</td>
+            <td class="risk">Foreign income/tax relief needs careful matching with Form 67, foreign statements, exchange rates and due-date rules.</td>
+          </tr>
+          <tr>
+            <td>Foreign Assets</td>
+            <td>Morgan Stanley Global Stock Plan Services custodial account; account MS54872362; peak balance ₹41,25,874; closing balance ₹31,80,874; gross amount credited ₹13,566; nature: D.</td>
+            <td class="risk">Schedule FA is mandatory for resident taxpayers holding foreign assets. Must update calendar-year values, not just FY values, as applicable by ITR instructions.</td>
+          </tr>
+          <tr>
+            <td>Chapter VI-A Deductions</td>
+            <td>80C claimed ₹1,50,000 (entered ₹1,72,452); 80CCD(2) employer NPS ₹1,67,751; 80G ₹4,00,000; 80TTA ₹10,000; Total Chapter VI-A ₹7,27,751.</td>
+            <td class="risk">Large 80G claim and employer NPS must be verified with eligible proofs and Form 16/AIS. 80D was zero — check if missed.</td>
+          </tr>
+          <tr>
+            <td>80C Details</td>
+            <td>Items entered: ₹25,452 and ₹1,47,000; total entered ₹1,72,452; allowed capped at ₹1,50,000.</td>
+            <td>Likely includes home loan principal/insurance/etc. Verify actual categories and proofs.</td>
+          </tr>
+          <tr>
+            <td>80D Health Insurance</td>
+            <td>₹0 claimed.</td>
+            <td class="risk">Potential missed deduction if you paid health insurance premium or preventive health checkup for self/family/parents.</td>
+          </tr>
+          <tr>
+            <td>80G Donation</td>
+            <td>₹4,00,000 to RASHTRIY NAGRIK HAK PARTY; PAN: AACAR3843B; mode: other than cash; eligible amount ₹4,00,000.</td>
+            <td class="risk">High-value donation. Verify receipt, 80G certificate/URN if applicable, donee eligibility, AIS reporting, and bank proof.</td>
+          </tr>
+          <tr>
+            <td>Total Income Computation</td>
+            <td>Gross Total Income: ₹72,69,807; Deductions: ₹7,27,751; Total Income: ₹65,42,060.</td>
+            <td>House property loss of ₹1,95,000 set off against salary.</td>
+          </tr>
+          <tr>
+            <td>Tax Liability</td>
+            <td>Tax at normal rates: ₹17,75,118; surcharge: ₹1,77,512; cess: ₹78,105; gross tax: ₹20,30,735; relief u/s 90: ₹3,580; interest u/s 234B/C: ₹2,758; aggregate liability: ₹20,29,913.</td>
+            <td>Surcharge applied due to total income level. Current year liability can differ significantly due to salary, deductions and regime.</td>
+          </tr>
+          <tr>
+            <td>Taxes Paid</td>
+            <td>TDS salary: ₹19,95,629; TDS other than salary: ₹6,509; self-assessment tax: ₹27,780; total taxes paid: ₹20,29,918; balance payable: ₹0; refund due: ₹10.</td>
+            <td>Match with 26AS/AIS. Last year had self-assessment tax and interest; current year advance/self-assessment should be checked.</td>
+          </tr>
+          <tr>
+            <td>Bank / Refund Accounts</td>
+            <td>ICICI Bank SB ending 3506; HDFC Bank SB ending 0122; both marked for refund in JSON.</td>
+            <td class="risk">Portal generally requires one validated refund account. Verify pre-validation, IFSC, account status and preferred refund account.</td>
+          </tr>
+          <tr>
+            <td>Assets / Liabilities</td>
+            <td>Bank deposits: ₹10,00,000; vehicles/yachts/boats/aircraft: ₹20,00,000; liability related to assets: ₹85,00,000.</td>
+            <td>Schedule AL required due income threshold. Verify year-end assets/liabilities if applicable this year.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" id="update">
+    <h2>2. Current-Year Update Table</h2>
+    <p>Fill the “Current Year Value” column as you collect Form 16, AIS/TIS, 26AS, bank interest certificates, home loan certificate, donation proofs, broker/foreign asset statements etc. Use “Save Updates Locally” to save in your browser.</p>
+    <div class="table-wrap">
+      <table id="updateTable">
+        <thead>
+          <tr>
+            <th>Section</th>
+            <th>Last Year Value</th>
+            <th>Current Year Value / Update</th>
+            <th>Status</th>
+            <th>Notes / Proof Needed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-key="assessment_year"><td>Assessment Year</td><td>AY 2025-26</td><td><input aria-label="Assessment year current value" data-field="value" placeholder="e.g. AY 2026-27"></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="Assessment year notes" data-field="notes">Confirm FY/AY and applicable due date.</textarea></td></tr>
+          <tr data-key="tax_regime"><td>Tax Regime</td><td>Old regime opted last year</td><td><select aria-label="Tax regime current value" data-field="value"><option value="">Select</option><option>Old Regime</option><option>New Regime</option><option>Compare both</option></select></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="Tax regime notes" data-field="notes">Compare old vs new using current deductions.</textarea></td></tr>
+          <tr data-key="personal"><td>Personal details</td><td>Name/PAN/DOB/Aadhaar/address/mobile/email from last ITR</td><td><textarea aria-label="Personal details current value" data-field="value" placeholder="Any change in address, email, mobile, Aadhaar/PAN details?"></textarea></td><td><span class="status same">LIKELY SAME</span></td><td><textarea aria-label="Personal details notes" data-field="notes">Verify income tax profile, PAN-Aadhaar link, email/mobile OTP access.</textarea></td></tr>
+          <tr data-key="salary"><td>Salary / Form 16</td><td>Gross ₹74,27,332; salary income ₹73,74,832</td><td><input aria-label="Salary current value" data-field="value" placeholder="Current gross salary / salary income"></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="Salary notes" data-field="notes">Form 16 Part A/B, perquisites, RSU/ESOP, employer TAN, standard deduction, professional tax.</textarea></td></tr>
+          <tr data-key="perquisites"><td>Perquisites</td><td>₹7,97,555</td><td><input aria-label="Perquisites current value" data-field="value" placeholder="Current perquisites"></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="Perquisites notes" data-field="notes">Check stock/perquisite valuation and Form 12BA if applicable.</textarea></td></tr>
+          <tr data-key="hra"><td>HRA / rent</td><td>₹0 HRA exemption</td><td><input aria-label="HRA current value" data-field="value" placeholder="HRA received / rent paid / exemption"></td><td><span class="status optional">OPTIONAL REVIEW</span></td><td><textarea aria-label="HRA notes" data-field="notes">Only relevant if HRA received or rent paid.</textarea></td></tr>
+          <tr data-key="house_property"><td>House property / home loan</td><td>SOP; SBI interest ₹1,95,000; HP loss set off ₹1,95,000</td><td><input aria-label="House property current value" data-field="value" placeholder="Current interest u/s 24(b), principal, outstanding"></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="House property notes" data-field="notes">Home loan interest certificate, principal repayment, property status, ownership share.</textarea></td></tr>
+          <tr data-key="interest"><td>Interest income</td><td>Savings ₹24,810; FD ₹65,082; total interest ₹89,892</td><td><input aria-label="Interest current value" data-field="value" placeholder="Current savings + FD interest"></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="Interest notes" data-field="notes">AIS/TIS, 26AS, all bank statements, FD certificates.</textarea></td></tr>
+          <tr data-key="dividend"><td>Dividend income</td><td>₹83</td><td><input aria-label="Dividend current value" data-field="value" placeholder="Current dividend"></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="Dividend notes" data-field="notes">AIS/TIS and broker statements.</textarea></td></tr>
+          <tr data-key="capital_gains"><td>Capital gains</td><td>₹0 STCG/LTCG/VDA</td><td><input aria-label="Capital gains current value" data-field="value" placeholder="Current STCG/LTCG/VDA"></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="Capital gains notes" data-field="notes">Stocks, mutual funds, RSU/ESOP sale, foreign broker, crypto/VDA statements.</textarea></td></tr>
+          <tr data-key="foreign_income"><td>Foreign income / FTC</td><td>USA income ₹14,310; foreign tax relief ₹3,580</td><td><input aria-label="Foreign income current value" data-field="value" placeholder="Current foreign income and tax"></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="Foreign income notes" data-field="notes">Form 67, foreign tax proof, exchange rate, US statements, Article/DTAA details.</textarea></td></tr>
+          <tr data-key="foreign_assets"><td>Foreign assets Schedule FA</td><td>Morgan Stanley account; peak ₹41,25,874; closing ₹31,80,874</td><td><textarea aria-label="Foreign assets current value" data-field="value" placeholder="Current foreign account/assets: peak, closing, income credited"></textarea></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="Foreign assets notes" data-field="notes">Resident taxpayer must disclose foreign assets. Use required reporting period per ITR instructions.</textarea></td></tr>
+          <tr data-key="80c"><td>80C</td><td>Entered ₹1,72,452; allowed ₹1,50,000</td><td><input aria-label="80C current value" data-field="value" placeholder="Current eligible 80C"></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="80C notes" data-field="notes">PF, LIC, ELSS, tuition, home loan principal, etc.</textarea></td></tr>
+          <tr data-key="80ccd2"><td>80CCD(2) employer NPS</td><td>₹1,67,751</td><td><input aria-label="80CCD(2) current value" data-field="value" placeholder="Current employer NPS"></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="80CCD(2) notes" data-field="notes">Check Form 16 and salary slips.</textarea></td></tr>
+          <tr data-key="80d"><td>80D health insurance</td><td>₹0</td><td><input aria-label="80D current value" data-field="value" placeholder="Current 80D premium/checkup"></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="80D notes" data-field="notes">Self/family/parents premium and preventive health checkup.</textarea></td></tr>
+          <tr data-key="80g"><td>80G donation</td><td>₹4,00,000</td><td><input aria-label="80G current value" data-field="value" placeholder="Current 80G donation"></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="80G notes" data-field="notes">Donation receipt, eligible donee, certificate/URN, PAN, address, payment mode, AIS.</textarea></td></tr>
+          <tr data-key="80tta"><td>80TTA / savings interest deduction</td><td>₹10,000</td><td><input aria-label="80TTA/80TTB current value" data-field="value" placeholder="Current 80TTA/80TTB"></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="80TTA/80TTB notes" data-field="notes">Depends on savings interest and age. Last year 80TTA used.</textarea></td></tr>
+          <tr data-key="exempt"><td>Exempt income</td><td>₹65,453</td><td><input aria-label="Exempt income current value" data-field="value" placeholder="Current exempt income"></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="Exempt income notes" data-field="notes">PPF interest, tax-free interest, exempt dividends, etc. Confirm source.</textarea></td></tr>
+          <tr data-key="taxes_paid"><td>TDS / tax paid</td><td>TDS ₹20,02,138; self-assessment tax ₹27,780</td><td><input aria-label="TDS/TCS/advance/self-assessment tax current value" data-field="value" placeholder="Current TDS/TCS/advance/self-assessment tax"></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="TDS/TCS/advance/self-assessment tax notes" data-field="notes">Match Form 26AS, AIS, challans, Form 16/16A.</textarea></td></tr>
+          <tr data-key="bank"><td>Refund bank account</td><td>ICICI ending 3506; HDFC ending 0122</td><td><textarea aria-label="Refund bank account current value" data-field="value" placeholder="Preferred refund account and pre-validation status"></textarea></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="Refund bank account notes" data-field="notes">One preferred validated account recommended for refund.</textarea></td></tr>
+          <tr data-key="assets_liabilities"><td>Schedule AL</td><td>Bank deposits ₹10L; vehicle ₹20L; liabilities ₹85L</td><td><textarea aria-label="Schedule AL current value" data-field="value" placeholder="Current assets/liabilities for Schedule AL"></textarea></td><td><span class="status must">MUST CHECK</span></td><td><textarea aria-label="Schedule AL notes" data-field="notes">Required due high total income. Update year-end asset/liability values.</textarea></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" id="checklist">
+    <h2>3. This Year Filing Checklist</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Status</th>
+            <th>Why / What to Verify</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Assessment year, filing due date, ITR form applicability</td><td><span class="status must">MUST CHECK</span></td><td>ITR form can change if business income, capital gains, foreign assets, or regime changes.</td></tr>
+          <tr><td>Tax regime comparison</td><td><span class="status must">MUST CHECK</span></td><td>Old regime was used last year, but current-year comparison is essential.</td></tr>
+          <tr><td>Salary and Form 16</td><td><span class="status must">MUST CHECK</span></td><td>Salary, perquisites, employer NPS, TDS and deductions change every year.</td></tr>
+          <tr><td>Home loan interest and principal</td><td><span class="status must">MUST CHECK</span></td><td>Interest/principal/outstanding change annually; affects Sec 24(b) and 80C.</td></tr>
+          <tr><td>Interest income from all banks/FDs</td><td><span class="status must">MUST CHECK</span></td><td>Must match AIS/TIS and bank statements.</td></tr>
+          <tr><td>Dividend income</td><td><span class="status must">MUST CHECK</span></td><td>Usually visible in AIS and can differ from broker statements due timing.</td></tr>
+          <tr><td>Capital gains from Indian securities/MFs</td><td><span class="status must">MUST CHECK</span></td><td>Last year zero, but must verify if any sale/redemption occurred.</td></tr>
+          <tr><td>RSU/ESOP vest/sale/perquisites</td><td><span class="status must">MUST CHECK</span></td><td>Foreign custodial account exists and salary perquisites were significant.</td></tr>
+          <tr><td>Foreign assets Schedule FA</td><td><span class="status must">MUST CHECK</span></td><td>Mandatory for resident individuals holding foreign assets.</td></tr>
+          <tr><td>Foreign income and foreign tax credit</td><td><span class="status must">MUST CHECK</span></td><td>Form 67, foreign taxes, exchange rates and DTAA relief need accurate reporting.</td></tr>
+          <tr><td>80C deductions</td><td><span class="status must">MUST CHECK</span></td><td>Last year entered amount exceeded cap; current proof must be updated.</td></tr>
+          <tr><td>80CCD(2) employer contribution</td><td><span class="status must">MUST CHECK</span></td><td>Verify with Form 16; treatment differs under regimes/limits.</td></tr>
+          <tr><td>80D health insurance</td><td><span class="status must">MUST CHECK</span></td><td>Last year nil; check if self/family/parents premiums paid.</td></tr>
+          <tr><td>80G donation</td><td><span class="status must">MUST CHECK</span></td><td>Large amount last year; requires strong proof and eligibility confirmation.</td></tr>
+          <tr><td>Bank/refund details</td><td><span class="status must">MUST CHECK</span></td><td>Verify pre-validated account and preferred refund account.</td></tr>
+          <tr><td>Address/email/mobile</td><td><span class="status same">LIKELY SAME</span></td><td>Usually same, but update if changed.</td></tr>
+          <tr><td>PAN/Aadhaar/DOB/name</td><td><span class="status same">LIKELY SAME</span></td><td>Normally unchanged; verify portal data.</td></tr>
+          <tr><td>HRA/rent</td><td><span class="status optional">OPTIONAL REVIEW</span></td><td>Only if HRA received or rent was paid.</td></tr>
+          <tr><td>Other deductions: 80E, 80EEA, 80DD, 80DDB, 80GGC</td><td><span class="status optional">OPTIONAL REVIEW</span></td><td>Check if applicable this year; last year zero except 80G/80C/80TTA/80CCD(2).</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" id="risks">
+    <h2>4. Potential Missing Areas / Risks</h2>
+    <div class="grid">
+      <div class="mini-card"><strong>80D possibly missed</strong><br>Last year 80D was ₹0. Check health insurance and preventive health checkup payments.</div>
+      <div class="mini-card"><strong>Foreign assets risk</strong><br>Schedule FA exists. Non-disclosure or wrong reporting period can be high-risk for resident taxpayers.</div>
+      <div class="mini-card"><strong>Foreign tax credit</strong><br>USA income and tax relief were claimed. Confirm Form 67 and proof timelines for this year.</div>
+      <div class="mini-card"><strong>80G high-value donation</strong><br>₹4,00,000 donation should be cross-checked with receipt, donee validity, AIS and payment proof.</div>
+      <div class="mini-card"><strong>Capital gains zero last year</strong><br>Still verify every broker, MF, RSU/ESOP sale and VDA/crypto transaction.</div>
+      <div class="mini-card"><strong>Interest income changes yearly</strong><br>Last year interest ₹89,892. AIS often captures bank interest; reconcile all accounts.</div>
+      <div class="mini-card"><strong>Old vs new regime</strong><br>Old regime used last year with large deductions. Recalculate both regimes for current year.</div>
+      <div class="mini-card"><strong>Perquisites / stock compensation</strong><br>Perquisites ₹7,97,555 last year. Verify Form 12BA and foreign stock plan statements.</div>
+      <div class="mini-card"><strong>Schedule AL</strong><br>High income required asset/liability reporting last year. Update current year-end values.</div>
+    </div>
+  </section>
+
+  <section class="card" id="questions">
+    <h2>5. Minimum Follow-up Questions Needed</h2>
+    <ol>
+      <li><strong>Which current return year are you preparing?</strong> Example: FY 2025-26 / AY 2026-27.</li>
+      <li><strong>Did you have the same employer for the full year?</strong> If not, provide all Form 16s.</li>
+      <li><strong>Do you want old regime or new regime comparison?</strong> Based on last year, comparison is strongly recommended.</li>
+      <li><strong>Did you sell any shares, mutual funds, RSUs/ESOPs, foreign stocks, property, or crypto/VDA this year?</strong></li>
+      <li><strong>Do you still hold the Morgan Stanley foreign stock plan account or any other foreign asset/account?</strong></li>
+      <li><strong>Did you receive foreign income or pay foreign tax this year?</strong> If yes, Form 67/proof may be needed.</li>
+      <li><strong>What are current-year totals for salary, interest, dividend, home loan interest/principal, 80C, 80D, 80G, NPS/employer NPS, TDS/TCS/advance/self-assessment tax?</strong></li>
+      <li><strong>Which bank account should be used for refund and is it pre-validated on the income-tax portal?</strong></li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>6. Export Area</h2>
+    <p>After filling the update table, click <strong>Export Updated JSON</strong>. The generated file is a working data-collection summary, not an ITR utility JSON.</p>
+    <textarea id="exportPreview" aria-label="Export preview" placeholder="Export preview will appear here..."></textarea>
+  </section>
+</div>
+
+<footer>Local helper file only • Review with AIS/TIS/Form 26AS/Form 16 before filing</footer>
+
+<script>
+  const STORAGE_KEY = 'taxProfileUpdate_Rahul_AY_Update';
+
+  const baseline = {
+    sourceFile: '995673370140925.json',
+    lastFiledForm: 'ITR-2',
+    lastAssessmentYear: 'AY 2025-26',
+    taxpayer: {
+      name: 'Rahul Sansthan Yewale',
+      pan: 'ADEPY8899C',
+      dob: '1986-06-23',
+      status: 'Individual',
+      residentialStatus: 'Resident',
+      city: 'RAIGARH(MH)',
+      pin: 410206
+    },
+    lastYearValues: {
+      grossSalary: 7427332,
+      salaryIncome: 7374832,
+      housePropertyInterest: 195000,
+      otherSources: 89975,
+      savingsInterest: 24810,
+      termDepositInterest: 65082,
+      dividend: 83,
+      capitalGains: 0,
+      totalIncome: 6542060,
+      chapterVIADeductions: 727751,
+      taxPaid: 2029918,
+      refundDue: 10,
+      foreignIncomeUSA: 14310,
+      foreignTaxRelief: 3580
+    }
+  };
+
+  function collectUpdates() {
+    const rows = Array.from(document.querySelectorAll('#updateTable tbody tr'));
+    const updates = {};
+    rows.forEach(row => {
+      const key = row.dataset.key;
+      updates[key] = {};
+      row.querySelectorAll('[data-field]').forEach(input => {
+        updates[key][input.dataset.field] = input.value;
+      });
+    });
+    return {
+      generatedAt: new Date().toISOString(),
+      baseline,
+      updates
+    };
+  }
+
+  function saveData() {
+    const data = collectUpdates();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data, null, 2));
+    alert('Updates saved locally in this browser.');
+  }
+
+  function loadData() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return;
+    try {
+      const data = JSON.parse(saved);
+      const updates = data.updates || {};
+      Object.keys(updates).forEach(key => {
+        const row = document.querySelector(`#updateTable tr[data-key="${key}"]`);
+        if (!row) return;
+        Object.keys(updates[key]).forEach(field => {
+          const input = row.querySelector(`[data-field="${field}"]`);
+          if (input) input.value = updates[key][field];
+        });
+      });
+    } catch (err) {
+      console.warn('Could not load saved tax update data', err);
+    }
+  }
+
+  function exportJSON() {
+    const data = collectUpdates();
+    const json = JSON.stringify(data, null, 2);
+    document.getElementById('exportPreview').value = json;
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'current-year-tax-update-summary.json';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
+  function clearSavedData() {
+    if (!confirm('Clear locally saved update values?')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    document.querySelectorAll('#updateTable input, #updateTable textarea, #updateTable select').forEach(input => {
+      if (input.tagName === 'TEXTAREA' && input.dataset.field === 'notes') return;
+      input.value = '';
+    });
+    alert('Saved updates cleared.');
+  }
+
+  loadData();
+</script>
+</body>
+</html>

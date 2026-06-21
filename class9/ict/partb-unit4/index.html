@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Part B – Unit 4: Electronic Spreadsheet | Class 9 ICT (402)</title>
+  <style>
+    :root{--primary:#00695c;--primary-light:#00897b;--accent:#e65100;--bg:#f0fdf8;--white:#ffffff;--border:#b2dfdb}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#222;line-height:1.7}
+    header{background:linear-gradient(135deg,#00695c,#26a69a);color:white;padding:28px 20px 18px;text-align:center}
+    header h1{font-size:1.7rem;margin-bottom:4px}
+    header p{font-size:0.95rem;opacity:0.9}
+    nav{background:var(--primary);display:flex;flex-wrap:wrap;gap:6px;padding:10px 20px;position:sticky;top:0;z-index:100}
+    nav a{color:#b2ffe8;text-decoration:none;font-size:0.82rem;padding:4px 10px;border-radius:12px;background:rgba(255,255,255,0.12)}
+    nav a:hover{background:rgba(255,255,255,0.28);color:#fff}
+    .container{max-width:1050px;margin:auto;padding:22px 16px 40px}
+    .section{background:var(--white);border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:24px;margin-bottom:24px}
+    h2{background:var(--primary-light);color:white;padding:10px 16px;border-radius:6px;margin-bottom:16px;font-size:1.15rem}
+    h3{color:var(--primary);margin:18px 0 8px;font-size:1rem}
+    p{margin-bottom:10px}
+    ul,ol{padding-left:22px;margin-bottom:10px}
+    li{margin-bottom:4px}
+    table{width:100%;border-collapse:collapse;margin:14px 0;font-size:0.92rem}
+    th{background:var(--primary-light);color:white;padding:9px 12px;text-align:left}
+    td{padding:8px 12px;border:1px solid var(--border)}
+    tr:nth-child(even) td{background:#f0fdf8}
+    .tip{background:#fffde7;border-left:5px solid #f9a825;padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:0.93rem}
+    .tip strong{color:#e65100}
+    .keyterm{display:inline-block;background:#e0f2f1;color:#004d40;border-radius:4px;padding:1px 8px;font-weight:600;font-size:0.9rem}
+    .formula{font-family:Consolas,monospace;background:#e8f5e9;border:1px solid #a5d6a7;border-radius:4px;padding:2px 10px;font-size:0.92rem;color:#1b5e20}
+    .q-block{background:#f9fffc;border:1px solid var(--border);border-radius:8px;margin-bottom:16px;overflow:hidden}
+    .q-header{background:#e0f2f1;padding:10px 16px;font-weight:600;font-size:0.93rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .q-body{padding:12px 16px;font-size:0.93rem;display:none}
+    .marks{background:#00695c;color:#fff;border-radius:10px;padding:1px 8px;font-size:0.78rem;font-weight:700;margin-left:8px}
+    footer{text-align:center;color:#666;font-size:0.82rem;padding:18px;background:#e0f2f1;margin-top:10px}
+  </style>
+</head>
+<body>
+<header>
+  <h1>📊 Part B – Unit 4: Electronic Spreadsheet (LibreOffice Calc)</h1>
+  <p>Class 9 ICT (Code 402) | NCERT Study Notes • Formulas • Exam Q&A</p>
+</header>
+<nav>
+  <a href="#intro">Introduction</a>
+  <a href="#interface">Interface</a>
+  <a href="#data">Entering Data</a>
+  <a href="#formulas">Formulas</a>
+  <a href="#functions">Functions</a>
+  <a href="#formatting">Formatting</a>
+  <a href="#charts">Charts</a>
+  <a href="#questions">Questions</a>
+  <a href="../../../index.html">🏠 Home</a>
+</nav>
+<div class="container">
+
+  <div class="section" id="intro">
+    <h2>1. What is an Electronic Spreadsheet?</h2>
+    <p>An <span class="keyterm">Electronic Spreadsheet</span> is a software application used to organise, calculate, and analyse data in rows and columns. <strong>LibreOffice Calc</strong> is the free, open-source spreadsheet included with the LibreOffice suite (default tool used in CBSE schools).</p>
+    <table>
+      <tr><th>Term</th><th>Meaning</th></tr>
+      <tr><td>Workbook</td><td>A Calc file that contains one or more sheets</td></tr>
+      <tr><td>Worksheet / Sheet</td><td>A single page of rows and columns within a workbook</td></tr>
+      <tr><td>Cell</td><td>The intersection of a row and a column (e.g., A1, B3)</td></tr>
+      <tr><td>Row</td><td>Horizontal arrangement of cells (numbered 1, 2, 3…)</td></tr>
+      <tr><td>Column</td><td>Vertical arrangement of cells (named A, B, C…)</td></tr>
+      <tr><td>Cell Address / Reference</td><td>The name of a cell, e.g., C5 means column C, row 5</td></tr>
+      <tr><td>Cell Range</td><td>A group of cells, e.g., A1:A10</td></tr>
+    </table>
+    <div class="tip"><strong>Remember:</strong> File extension for LibreOffice Calc is <strong>.ods</strong>; it can also save as <strong>.xlsx</strong> (Excel format).</div>
+  </div>
+
+  <div class="section" id="interface">
+    <h2>2. LibreOffice Calc Interface</h2>
+    <table>
+      <tr><th>Component</th><th>Description</th></tr>
+      <tr><td>Title Bar</td><td>Shows file name and application name</td></tr>
+      <tr><td>Menu Bar</td><td>Contains File, Edit, View, Insert, Format, Sheet, Data, Tools, Help</td></tr>
+      <tr><td>Toolbar</td><td>Icons for common actions (Save, Print, Bold, etc.)</td></tr>
+      <tr><td>Name Box</td><td>Shows the current cell address (e.g., B3)</td></tr>
+      <tr><td>Formula Bar</td><td>Shows / allows editing of cell content or formula</td></tr>
+      <tr><td>Column Headers</td><td>Letters A, B, C… identifying columns</td></tr>
+      <tr><td>Row Headers</td><td>Numbers 1, 2, 3… identifying rows</td></tr>
+      <tr><td>Sheet Tab</td><td>Tabs at the bottom to switch between sheets (Sheet1, Sheet2…)</td></tr>
+      <tr><td>Status Bar</td><td>Shows Sum, Average, Count for selected cells</td></tr>
+    </table>
+  </div>
+
+  <div class="section" id="data">
+    <h2>3. Entering and Editing Data</h2>
+    <h3>Types of Data</h3>
+    <table>
+      <tr><th>Type</th><th>Meaning</th><th>Alignment in Cell</th></tr>
+      <tr><td>Number</td><td>Numeric values (123, 3.14)</td><td>Right-aligned</td></tr>
+      <tr><td>Text / Label</td><td>Words, names, headings</td><td>Left-aligned</td></tr>
+      <tr><td>Date / Time</td><td>27/06/2026, 09:30 AM</td><td>Right-aligned</td></tr>
+      <tr><td>Formula</td><td>Starts with = sign</td><td>Shows result</td></tr>
+    </table>
+    <h3>Editing Cells</h3>
+    <ul>
+      <li>Click cell → type to enter data → press Enter to confirm</li>
+      <li>Press F2 or double-click cell to edit existing content</li>
+      <li>Press Delete to clear cell contents</li>
+      <li>Press Esc to cancel current entry</li>
+    </ul>
+    <div class="tip"><strong>AutoFill:</strong> Select cells with a pattern and drag the fill handle (small square at corner) to extend the series automatically.</div>
+  </div>
+
+  <div class="section" id="formulas">
+    <h2>4. Formulas in Calc</h2>
+    <p>A <span class="keyterm">Formula</span> always starts with the <strong>=</strong> sign and performs calculations using cell references, values, and operators.</p>
+    <h3>Arithmetic Operators</h3>
+    <table>
+      <tr><th>Operator</th><th>Operation</th><th>Example</th></tr>
+      <tr><td>+</td><td>Addition</td><td>=A1+B1</td></tr>
+      <tr><td>-</td><td>Subtraction</td><td>=A1-B1</td></tr>
+      <tr><td>*</td><td>Multiplication</td><td>=A1*B1</td></tr>
+      <tr><td>/</td><td>Division</td><td>=A1/B1</td></tr>
+      <tr><td>^</td><td>Exponentiation (power)</td><td>=A1^2</td></tr>
+    </table>
+    <h3>Cell References</h3>
+    <table>
+      <tr><th>Type</th><th>Example</th><th>Meaning</th></tr>
+      <tr><td>Relative</td><td>A1</td><td>Changes when copied to another cell</td></tr>
+      <tr><td>Absolute</td><td>$A$1</td><td>Fixed – does not change when copied</td></tr>
+      <tr><td>Mixed</td><td>$A1 or A$1</td><td>One part fixed, one part changes</td></tr>
+    </table>
+    <div class="tip"><strong>Tip:</strong> Press <strong>F4</strong> to toggle between relative and absolute reference while typing a formula.</div>
+  </div>
+
+  <div class="section" id="functions">
+    <h2>5. Common Functions</h2>
+    <table>
+      <tr><th>Function</th><th>Syntax</th><th>What it does</th></tr>
+      <tr><td>SUM</td><td><span class="formula">=SUM(A1:A10)</span></td><td>Adds all values in the range</td></tr>
+      <tr><td>AVERAGE</td><td><span class="formula">=AVERAGE(B1:B5)</span></td><td>Calculates the mean</td></tr>
+      <tr><td>MIN</td><td><span class="formula">=MIN(C1:C10)</span></td><td>Returns the smallest value</td></tr>
+      <tr><td>MAX</td><td><span class="formula">=MAX(C1:C10)</span></td><td>Returns the largest value</td></tr>
+      <tr><td>COUNT</td><td><span class="formula">=COUNT(A1:A10)</span></td><td>Counts cells with numbers</td></tr>
+      <tr><td>COUNTA</td><td><span class="formula">=COUNTA(A1:A10)</span></td><td>Counts all non-empty cells</td></tr>
+      <tr><td>IF</td><td><span class="formula">=IF(A1>50,"Pass","Fail")</span></td><td>Returns value based on condition</td></tr>
+      <tr><td>ROUND</td><td><span class="formula">=ROUND(A1,2)</span></td><td>Rounds to specified decimal places</td></tr>
+      <tr><td>TODAY</td><td><span class="formula">=TODAY()</span></td><td>Returns today's date</td></tr>
+      <tr><td>NOW</td><td><span class="formula">=NOW()</span></td><td>Returns current date and time</td></tr>
+    </table>
+    <div class="tip"><strong>IF function:</strong> =IF(condition, value_if_true, value_if_false) — e.g., =IF(B2>=35,"Pass","Fail")</div>
+  </div>
+
+  <div class="section" id="formatting">
+    <h2>6. Formatting Cells and Sheets</h2>
+    <h3>Cell Formatting Options</h3>
+    <ul>
+      <li><strong>Number format:</strong> Currency, Percentage, Date, General</li>
+      <li><strong>Font:</strong> Bold, Italic, Underline, Font size, Font colour</li>
+      <li><strong>Alignment:</strong> Left, Centre, Right, Wrap text, Merge cells</li>
+      <li><strong>Borders:</strong> Add/remove borders around cells</li>
+      <li><strong>Background colour:</strong> Highlight cells</li>
+    </ul>
+    <h3>Row/Column Operations</h3>
+    <table>
+      <tr><th>Operation</th><th>How to do it</th></tr>
+      <tr><td>Insert Row</td><td>Right-click row number → Insert Rows Above/Below</td></tr>
+      <tr><td>Delete Row</td><td>Right-click row number → Delete Rows</td></tr>
+      <tr><td>Adjust Column Width</td><td>Drag column border or double-click for best fit</td></tr>
+      <tr><td>Freeze Rows/Columns</td><td>View → Freeze Rows and Columns</td></tr>
+      <tr><td>Sort Data</td><td>Data → Sort → choose column and order</td></tr>
+      <tr><td>Filter Data</td><td>Data → AutoFilter → select filter criteria</td></tr>
+    </table>
+  </div>
+
+  <div class="section" id="charts">
+    <h2>7. Creating Charts</h2>
+    <p>Charts help present data visually. To insert a chart: select data → Insert → Chart → choose chart type → Finish.</p>
+    <table>
+      <tr><th>Chart Type</th><th>Best Used For</th></tr>
+      <tr><td>Bar / Column Chart</td><td>Comparing values across categories</td></tr>
+      <tr><td>Line Chart</td><td>Showing trends over time</td></tr>
+      <tr><td>Pie Chart</td><td>Showing proportions / percentages</td></tr>
+      <tr><td>Area Chart</td><td>Showing cumulative data over time</td></tr>
+    </table>
+  </div>
+
+  <div class="section" id="questions">
+    <h2>8. Sample Questions with Answers</h2>
+
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q1. What is a cell in a spreadsheet? <span class="marks">1 Mark</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> A cell is the intersection of a row and a column in a spreadsheet. It is identified by a cell address like A1 or C3.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q2. How does a formula begin in Calc? Write a formula to add A1 and B1. <span class="marks">2 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> A formula in Calc always begins with the = (equals) sign. Formula to add A1 and B1: <span class="formula">=A1+B1</span></div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q3. Differentiate between relative and absolute cell reference. <span class="marks">2 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> Relative reference (e.g., A1) changes when copied to another cell. Absolute reference (e.g., $A$1) remains fixed and does not change when the formula is copied.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q4. Write the syntax and purpose of IF, SUM, and AVERAGE functions. <span class="marks">3 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> SUM: <span class="formula">=SUM(A1:A5)</span> – adds all values; AVERAGE: <span class="formula">=AVERAGE(A1:A5)</span> – finds mean; IF: <span class="formula">=IF(A1>50,"Pass","Fail")</span> – returns value based on condition.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q5. Name the file extension for LibreOffice Calc. What are the parts of the Calc interface? <span class="marks">3 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> File extension: .ods. Interface parts: Title Bar, Menu Bar, Toolbar, Name Box, Formula Bar, Column/Row headers, Sheet Tabs, Status Bar.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q6. What are the different types of charts in Calc? When is a pie chart used? <span class="marks">3 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> Types: Bar, Column, Line, Pie, Area. Pie chart is used to show proportions or percentage shares of a whole.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q7. How do you sort and filter data in LibreOffice Calc? <span class="marks">4 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> To Sort: select data → Data → Sort → choose column and ascending/descending order. To Filter: select data → Data → AutoFilter → click dropdown arrow on column header → select filter criteria.</div>
+    </div>
+
+    <div class="tip"><strong>Quick revision:</strong> Calc = spreadsheet; cell = row+column intersection; formula starts with =; SUM, AVERAGE, MAX, MIN, COUNT, IF are key functions; .ods file format; charts: Bar, Line, Pie.</div>
+  </div>
+</div>
+<footer>CBSE Class 9 ICT Code 402 | Part B Unit 4 | NCERT-aligned study material</footer>
+<script>
+  function toggle(header) {
+    const body = header.nextElementSibling;
+    const arrow = header.querySelector('span:last-child');
+    body.style.display = body.style.display === 'block' ? 'none' : 'block';
+    arrow.textContent = body.style.display === 'block' ? '▲' : '▼';
+  }
+</script>
+</body>
+</html>
+

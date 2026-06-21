@@ -29,7 +29,12 @@
           { "name": "Unit 1 – Communication Skills", "path": "class9/ict/parta-unit1/" }
         ],
         "Part B": [
-          { "name": "Unit 3 – Digital Communication", "path": "class9/ict/partb-unit3/" }
+          { "name": "Unit 1 – Introduction to IT-ITeS Industry", "path": "class9/ict/partb-unit1/" },
+          { "name": "Unit 2 – Data Entry and Keyboarding Skills", "path": "class9/ict/partb-unit2/" },
+          { "name": "Unit 3 – Digital Documentation (Writer)", "path": "class9/ict/partb-unit3/" },
+          { "name": "Unit 4 – Electronic Spreadsheet (Calc)", "path": "class9/ict/partb-unit4/" },
+          { "name": "Unit 5 – Digital Presentation (Impress)", "path": "class9/ict/partb-unit5/" },
+          { "name": "Unit 6 – Web Application and Security", "path": "class9/ict/partb-unit6/" }
         ],
         "Combined Notes": [
           { "name": "Part A + Part B Revision", "path": "class9/ict/partab/" }

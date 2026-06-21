@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Part B – Unit 5: Digital Presentation | Class 9 ICT (402)</title>
+  <style>
+    :root{--primary:#00695c;--primary-light:#00897b;--accent:#e65100;--bg:#f0fdf8;--white:#ffffff;--border:#b2dfdb}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#222;line-height:1.7}
+    header{background:linear-gradient(135deg,#00695c,#26a69a);color:white;padding:28px 20px 18px;text-align:center}
+    header h1{font-size:1.7rem;margin-bottom:4px}
+    header p{font-size:0.95rem;opacity:0.9}
+    nav{background:var(--primary);display:flex;flex-wrap:wrap;gap:6px;padding:10px 20px;position:sticky;top:0;z-index:100}
+    nav a{color:#b2ffe8;text-decoration:none;font-size:0.82rem;padding:4px 10px;border-radius:12px;background:rgba(255,255,255,0.12)}
+    nav a:hover{background:rgba(255,255,255,0.28);color:#fff}
+    .container{max-width:1050px;margin:auto;padding:22px 16px 40px}
+    .section{background:var(--white);border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:24px;margin-bottom:24px}
+    h2{background:var(--primary-light);color:white;padding:10px 16px;border-radius:6px;margin-bottom:16px;font-size:1.15rem}
+    h3{color:var(--primary);margin:18px 0 8px;font-size:1rem}
+    p{margin-bottom:10px}
+    ul,ol{padding-left:22px;margin-bottom:10px}
+    li{margin-bottom:4px}
+    table{width:100%;border-collapse:collapse;margin:14px 0;font-size:0.92rem}
+    th{background:var(--primary-light);color:white;padding:9px 12px;text-align:left}
+    td{padding:8px 12px;border:1px solid var(--border)}
+    tr:nth-child(even) td{background:#f0fdf8}
+    .tip{background:#fffde7;border-left:5px solid #f9a825;padding:12px 16px;margin:14px 0;border-radius:0 6px 6px 0;font-size:0.93rem}
+    .tip strong{color:#e65100}
+    .keyterm{display:inline-block;background:#e0f2f1;color:#004d40;border-radius:4px;padding:1px 8px;font-weight:600;font-size:0.9rem}
+    .q-block{background:#f9fffc;border:1px solid var(--border);border-radius:8px;margin-bottom:16px;overflow:hidden}
+    .q-header{background:#e0f2f1;padding:10px 16px;font-weight:600;font-size:0.93rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .q-body{padding:12px 16px;font-size:0.93rem;display:none}
+    .marks{background:#00695c;color:#fff;border-radius:10px;padding:1px 8px;font-size:0.78rem;font-weight:700;margin-left:8px}
+    footer{text-align:center;color:#666;font-size:0.82rem;padding:18px;background:#e0f2f1;margin-top:10px}
+  </style>
+</head>
+<body>
+<header>
+  <h1>🎞️ Part B – Unit 5: Digital Presentation (LibreOffice Impress)</h1>
+  <p>Class 9 ICT (Code 402) | NCERT Study Notes • Slides • Exam Q&A</p>
+</header>
+<nav>
+  <a href="#intro">Introduction</a>
+  <a href="#interface">Interface</a>
+  <a href="#slides">Creating Slides</a>
+  <a href="#design">Design & Layout</a>
+  <a href="#effects">Animations</a>
+  <a href="#views">Views</a>
+  <a href="#questions">Questions</a>
+  <a href="../../../index.html">🏠 Home</a>
+</nav>
+<div class="container">
+
+  <div class="section" id="intro">
+    <h2>1. What is a Digital Presentation?</h2>
+    <p>A <span class="keyterm">Digital Presentation</span> is a collection of slides displayed on screen to communicate information visually. <strong>LibreOffice Impress</strong> is the free presentation software in the LibreOffice suite.</p>
+    <table>
+      <tr><th>Term</th><th>Meaning</th></tr>
+      <tr><td>Slide</td><td>A single page in a presentation</td></tr>
+      <tr><td>Presentation / Slideshow</td><td>A collection of slides shown in sequence</td></tr>
+      <tr><td>Slide Layout</td><td>Pre-arranged positions for text/images on a slide</td></tr>
+      <tr><td>Slide Transition</td><td>Animation effect when moving from one slide to the next</td></tr>
+      <tr><td>Animation</td><td>Effect applied to individual objects on a slide</td></tr>
+      <tr><td>Template / Master Slide</td><td>Pre-designed slide style applied to all slides</td></tr>
+      <tr><td>Placeholder</td><td>Dotted box where title, content, or image goes</td></tr>
+    </table>
+    <div class="tip"><strong>File format:</strong> LibreOffice Impress saves as <strong>.odp</strong>. It can also save as <strong>.pptx</strong> (PowerPoint format).</div>
+  </div>
+
+  <div class="section" id="interface">
+    <h2>2. LibreOffice Impress Interface</h2>
+    <table>
+      <tr><th>Component</th><th>Description</th></tr>
+      <tr><td>Title Bar</td><td>Shows file name and application name</td></tr>
+      <tr><td>Menu Bar</td><td>File, Edit, View, Insert, Format, Slide, Slideshow, Tools, Help</td></tr>
+      <tr><td>Toolbar</td><td>Icons for common actions</td></tr>
+      <tr><td>Slide Panel (left)</td><td>Thumbnail view of all slides; drag to reorder</td></tr>
+      <tr><td>Editing Area (centre)</td><td>Main area to design/edit the current slide</td></tr>
+      <tr><td>Properties Panel (right)</td><td>Layouts, master pages, animation options</td></tr>
+      <tr><td>Status Bar (bottom)</td><td>Shows current slide number and total slides</td></tr>
+    </table>
+  </div>
+
+  <div class="section" id="slides">
+    <h2>3. Creating and Managing Slides</h2>
+    <h3>Adding and deleting slides</h3>
+    <ul>
+      <li><strong>Add slide:</strong> Right-click in slide panel → Insert Slide; or use Outline view → press Enter</li>
+      <li><strong>Delete slide:</strong> Right-click slide thumbnail → Delete Slide</li>
+      <li><strong>Duplicate slide:</strong> Right-click → Duplicate Slide</li>
+      <li><strong>Reorder slides:</strong> Drag slide thumbnail in slide panel</li>
+      <li><strong>Move slide:</strong> Cut (Ctrl+X) → click target position → Paste (Ctrl+V)</li>
+    </ul>
+    <h3>Adding content to slides</h3>
+    <ul>
+      <li>Click placeholder boxes to type text</li>
+      <li>Insert → Image to add pictures</li>
+      <li>Insert → Table to add a table</li>
+      <li>Insert → Chart to embed a chart</li>
+      <li>Insert → Media → Audio/Video to add media</li>
+    </ul>
+    <h3>Slide Layouts</h3>
+    <p>Layouts define where content appears on a slide. Examples: Blank, Title Only, Title + Content, Two Content.</p>
+  </div>
+
+  <div class="section" id="design">
+    <h2>4. Design, Themes, and Master Slides</h2>
+    <p>A <span class="keyterm">Master Slide</span> sets the background, font, colour scheme, and position of elements for all slides in a presentation.</p>
+    <ul>
+      <li>View → Master → Slide Master to edit master slide</li>
+      <li>Apply pre-designed themes from the Properties panel (Master Pages)</li>
+      <li>Use consistent colours and fonts for professionalism</li>
+    </ul>
+    <h3>Design guidelines for good presentations</h3>
+    <ul>
+      <li>Keep text minimal — use bullet points, not paragraphs</li>
+      <li>Use font size 24 or larger for body text; 36+ for headings</li>
+      <li>Use high contrast between text and background</li>
+      <li>Limit one slide to one main idea</li>
+      <li>Use images and diagrams to illustrate points</li>
+      <li>Avoid overcrowding slides with too much content</li>
+    </ul>
+    <div class="tip"><strong>Rule of thumb:</strong> Follow the 6×6 rule — no more than 6 bullet points per slide, no more than 6 words per bullet point.</div>
+  </div>
+
+  <div class="section" id="effects">
+    <h2>5. Animations and Slide Transitions</h2>
+    <h3>Slide Transitions</h3>
+    <p>Transitions are effects shown while moving from one slide to the next.</p>
+    <ul>
+      <li>Select a slide → Slideshow → Slide Transitions</li>
+      <li>Choose type: Fade, Wipe, Dissolve, Push, etc.</li>
+      <li>Set speed and auto-advance time</li>
+    </ul>
+    <h3>Object Animations</h3>
+    <p>Animations are effects applied to individual objects (text, image, shape) on a slide.</p>
+    <ul>
+      <li>Select object → Slideshow → Animation</li>
+      <li>Add Effect: Entrance, Emphasis, Exit</li>
+      <li>Set trigger: On Click / After Previous / With Previous</li>
+      <li>Set duration and delay</li>
+    </ul>
+    <table>
+      <tr><th>Animation Category</th><th>Purpose</th><th>Example</th></tr>
+      <tr><td>Entrance</td><td>Object appears on slide</td><td>Fly In, Fade In</td></tr>
+      <tr><td>Emphasis</td><td>Object draws attention while on slide</td><td>Spin, Pulse</td></tr>
+      <tr><td>Exit</td><td>Object disappears from slide</td><td>Fly Out, Fade Out</td></tr>
+    </table>
+  </div>
+
+  <div class="section" id="views">
+    <h2>6. Presentation Views</h2>
+    <table>
+      <tr><th>View</th><th>Purpose</th></tr>
+      <tr><td>Normal View</td><td>Default editing view; shows single slide for design</td></tr>
+      <tr><td>Outline View</td><td>Shows all slide text in outline format; good for writing content</td></tr>
+      <tr><td>Slide Sorter View</td><td>Shows all slide thumbnails; easy to reorder slides</td></tr>
+      <tr><td>Notes View</td><td>Add speaker notes below the slide</td></tr>
+      <tr><td>Slideshow / Presentation View</td><td>Full-screen display mode for the audience</td></tr>
+    </table>
+    <h3>Running the presentation</h3>
+    <ul>
+      <li>Press <strong>F5</strong> to start slideshow from the beginning</li>
+      <li>Press <strong>Shift+F5</strong> to start from the current slide</li>
+      <li>Press <strong>Esc</strong> to exit slideshow</li>
+      <li>Click mouse or press → (arrow key) to advance slides</li>
+    </ul>
+  </div>
+
+  <div class="section" id="questions">
+    <h2>7. Sample Questions with Answers</h2>
+
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q1. What is a slide transition? <span class="marks">1 Mark</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> A slide transition is the animation effect that appears when moving from one slide to the next during a presentation.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q2. What is the file extension for LibreOffice Impress? <span class="marks">1 Mark</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> The file extension is <strong>.odp</strong> (OpenDocument Presentation). It can also be saved as .pptx.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q3. What are the three types of animation effects in Impress? <span class="marks">2 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> (1) Entrance – object appears on the slide; (2) Emphasis – object draws attention while visible; (3) Exit – object leaves the slide.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q4. Name and describe any four views available in LibreOffice Impress. <span class="marks">4 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> (1) Normal – editing single slide. (2) Outline – shows text outline of all slides. (3) Slide Sorter – shows all thumbnails for reordering. (4) Slideshow – full-screen presentation mode.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q5. What is a Master Slide? How is it useful? <span class="marks">2 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> A Master Slide is a template that defines the background, colours, fonts and layout for all slides. It ensures a consistent look throughout the presentation.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q6. List any four good design rules for creating presentations. <span class="marks">4 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> (1) Use bullet points, not paragraphs. (2) Keep font size 24+ for body. (3) Maintain contrast between text and background. (4) One main idea per slide. (5) Follow 6×6 rule.</div>
+    </div>
+    <div class="q-block">
+      <div class="q-header" onclick="toggle(this)">Q7. How do you start a slideshow? How do you advance to the next slide? <span class="marks">2 Marks</span><span>▼</span></div>
+      <div class="q-body"><strong>Answer:</strong> Press F5 to start from beginning. Press Shift+F5 to start from current slide. Press the right arrow key or click mouse to advance slides. Press Esc to exit.</div>
+    </div>
+
+    <div class="tip"><strong>Quick revision:</strong> Impress = presentation; .odp format; Slide transition = between slides; Animation = on objects; Master Slide = common design; F5 = start slideshow; Views: Normal, Outline, Sorter, Notes, Slideshow.</div>
+  </div>
+</div>
+<footer>CBSE Class 9 ICT Code 402 | Part B Unit 5 | NCERT-aligned study material</footer>
+<script>
+  function toggle(header) {
+    const body = header.nextElementSibling;
+    const arrow = header.querySelector('span:last-child');
+    body.style.display = body.style.display === 'block' ? 'none' : 'block';
+    arrow.textContent = body.style.display === 'block' ? '▲' : '▼';
+  }
+</script>
+</body>
+</html>
+
