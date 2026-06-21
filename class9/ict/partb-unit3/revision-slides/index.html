@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Part B Unit 3 – Animated Revision | Class 9 ICT</title>
+<style>
+  :root {
+    --g: #00695c; --gl: #00897b; --gp: #e0f2f1;
+    --yellow: #f9a825; --red: #c62828; --orange: #e65100;
+    --white: #fff; --dark: #0d1f1c;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--dark);
+    color: var(--white);
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+  }
+  #topbar {
+    position: fixed; top: 0; left: 0; right: 0; height: 54px;
+    background: rgba(0,0,0,.65); backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 18px; z-index: 100;
+  }
+  #topbar .title { font-size: .9rem; opacity: .85; }
+  #topbar .controls { display: flex; gap: 10px; align-items: center; }
+  #topbar button {
+    background: rgba(255,255,255,.15); border: none; color: #fff;
+    padding: 5px 12px; border-radius: 20px; cursor: pointer; font-size: .8rem;
+  }
+  #topbar button:hover { background: rgba(255,255,255,.3); }
+  #topbar button.active { background: var(--g); }
+  #slide-info { font-size: .82rem; opacity: .7; }
+  #progress-wrap {
+    position: fixed; top: 54px; left: 0; right: 0; height: 4px;
+    background: rgba(255,255,255,.1); z-index: 100;
+  }
+  #progress-bar {
+    height: 100%; background: linear-gradient(90deg, #26a69a, #00695c);
+    transition: width .4s ease;
+  }
+  #chapter-dots {
+    position: fixed; top: 62px; left: 0; right: 0;
+    display: flex; justify-content: center; gap: 6px; padding: 6px 0; z-index: 99;
+  }
+  .ch-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,.2); cursor: pointer; transition: all .2s;
+  }
+  .ch-dot.active { background: #26a69a; transform: scale(1.5); }
+  #stage {
+    position: fixed; top: 94px; bottom: 80px; left: 0; right: 0;
+    display: flex; align-items: center; justify-content: center;
+    perspective: 1200px;
+  }
+  .slide {
+    position: absolute;
+    width: min(92vw, 860px);
+    background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 20px;
+    padding: 34px 40px;
+    backdrop-filter: blur(4px);
+    opacity: 0; pointer-events: none;
+    transform: translateX(80px) scale(.96);
+    transition: opacity .45s ease, transform .45s ease;
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+  }
+  .slide.active { opacity: 1; pointer-events: auto; transform: none; }
+  .slide.exit { opacity: 0; pointer-events: none; transform: translateX(-80px) scale(.96); }
+  .slide-tag {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: .1em;
+    padding: 3px 10px; border-radius: 12px; display: inline-block;
+    margin-bottom: 14px; font-weight: 700;
+  }
+  .tag-ch4 { background: #004d40; }
+  .tag-ch5 { background: #1a237e; }
+  .tag-ch6 { background: #4a148c; }
+  .tag-ch7 { background: #b71c1c; }
+  .tag-ch8 { background: #e65100; }
+  .tag-ch9 { background: #1b5e20; }
+  .tag-quiz { background: #795548; }
+  .tag-intro { background: #37474f; }
+  .slide .big-icon { font-size: 3rem; margin-bottom: 12px; display: block; }
+  .slide h2 {
+    font-size: 1.7rem; line-height: 1.25; margin-bottom: 16px;
+    background: linear-gradient(135deg, #fff, #80cbc4);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .slide p { font-size: .98rem; line-height: 1.7; opacity: .9; margin-bottom: 12px; }
+  .slide ul { padding-left: 0; list-style: none; }
+  .slide ul li {
+    padding: 8px 0 8px 28px; position: relative;
+    font-size: .96rem; border-bottom: 1px solid rgba(255,255,255,.06);
+    opacity: 0; animation: fadeUp .5s forwards;
+  }
+  .slide.active ul li:nth-child(1){animation-delay:.1s}
+  .slide.active ul li:nth-child(2){animation-delay:.2s}
+  .slide.active ul li:nth-child(3){animation-delay:.3s}
+  .slide.active ul li:nth-child(4){animation-delay:.4s}
+  .slide.active ul li:nth-child(5){animation-delay:.5s}
+  .slide.active ul li:nth-child(6){animation-delay:.6s}
+  .slide.active ul li:nth-child(7){animation-delay:.7s}
+  .slide.active ul li:nth-child(8){animation-delay:.8s}
+  .slide ul li::before { content:'▶'; position:absolute; left:6px; color:#26a69a; font-size:.7rem; top:12px; }
+  .pill {
+    display:inline-block; background:rgba(255,255,255,.1);
+    border-radius:6px; padding:3px 9px; margin:3px 2px;
+    font-size:.87rem; border:1px solid rgba(255,255,255,.18);
+  }
+  .pill.green { background:rgba(0,105,92,.4); border-color:#26a69a; }
+  .pill.blue { background:rgba(26,35,126,.4); border-color:#5c6bc0; }
+  .pill.red { background:rgba(183,28,28,.4); border-color:#ef5350; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:10px; }
+  .box {
+    background:rgba(255,255,255,.07); border-radius:10px; padding:14px;
+    border:1px solid rgba(255,255,255,.1); font-size:.9rem;
+  }
+  .box h4 { color:#80cbc4; margin-bottom:6px; font-size:.95rem; }
+  .kbd {
+    display:inline-block; background:#1a2a29; border:1px solid #26a69a;
+    color:#80cbc4; border-radius:5px; padding:2px 9px;
+    font-family:Consolas,monospace; font-size:.85rem;
+  }
+  .flow {
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
+    gap:8px; margin:14px 0;
+  }
+  .flow-step {
+    background:rgba(0,105,92,.3); border:1px solid #26a69a;
+    border-radius:8px; padding:8px 12px; font-size:.85rem; text-align:center; min-width:80px;
+  }
+  .flow-arr { color:#26a69a; font-size:1.1rem; }
+  .quiz-q { font-size:1.15rem; margin-bottom:18px; line-height:1.5; }
+  .quiz-options { display:flex; flex-direction:column; gap:10px; }
+  .quiz-opt {
+    background:rgba(255,255,255,.08); border:2px solid rgba(255,255,255,.18);
+    border-radius:10px; padding:11px 16px; cursor:pointer; font-size:.94rem;
+    transition:all .2s; text-align:left;
+  }
+  .quiz-opt:hover { background:rgba(255,255,255,.16); }
+  .quiz-opt.correct { background:rgba(46,125,50,.4); border-color:#66bb6a; }
+  .quiz-opt.wrong { background:rgba(198,40,40,.4); border-color:#ef5350; }
+  .quiz-result { margin-top:12px; font-size:.93rem; min-height:24px; }
+  #bottomnav {
+    position:fixed; bottom:0; left:0; right:0; height:72px;
+    background:rgba(0,0,0,.6); backdrop-filter:blur(8px);
+    display:flex; align-items:center; justify-content:center; gap:14px;
+  }
+  #bottomnav button {
+    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2);
+    color:#fff; padding:10px 22px; border-radius:24px;
+    cursor:pointer; font-size:.9rem; transition:all .2s;
+  }
+  #bottomnav button:hover { background:rgba(255,255,255,.22); }
+  #btn-play { background:var(--g)!important; border-color:#26a69a!important; padding:10px 28px!important; }
+  #timer-ring { width:36px; height:36px; }
+  #timer-ring svg { transform:rotate(-90deg); }
+  #timer-ring circle {
+    fill:none; stroke:#26a69a; stroke-width:3;
+    stroke-dasharray:100; stroke-dashoffset:100;
+    transition:stroke-dashoffset 1s linear;
+  }
+  #narration {
+    position:fixed; bottom:76px; left:0; right:0;
+    text-align:center; font-size:.76rem; opacity:.45;
+    padding:4px 20px; pointer-events:none;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(12px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .slide::-webkit-scrollbar { width:4px; }
+  .slide::-webkit-scrollbar-thumb { background:rgba(255,255,255,.2); border-radius:2px; }
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <div class="title">📄 Part B – Unit 3: Digital Documentation | Class 9 ICT (402) | KIPS | LibreOffice Writer</div>
+  <div class="controls">
+    <span id="slide-info">Slide 1 / 48</span>
+    <button onclick="location.href='../index.html'">🏠 Hub</button>
+    <button onclick="toggleFS()">⛶ Full</button>
+    <button id="btn-autoplay" onclick="toggleAuto()">▶ Auto</button>
+  </div>
+</div>
+
+<div id="progress-wrap"><div id="progress-bar" style="width:2%"></div></div>
+<div id="chapter-dots"></div>
+<div id="stage"></div>
+<div id="narration">Use ← → arrow keys or buttons below to navigate</div>
+<div id="bottomnav">
+  <button onclick="go(-1)">← Prev</button>
+  <div id="timer-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9"/></svg></div>
+  <button id="btn-play" onclick="go(1)">Next →</button>
+  <button onclick="go(1)">Skip ▶▶</button>
+</div>
+
+<script>
+const slides = [
+  // INTRO
+  {tag:'intro',icon:'🚀',h:'Digital Documentation – Animated Revision',body:`
+    <p>Welcome to your <strong>animated revision session</strong> for <strong>Part B – Unit 3: Digital Documentation</strong> using LibreOffice Writer.</p>
+    <p>We cover all <strong>6 chapters</strong> from the KIPS syllabus:</p>
+    <ul>
+      <li>📄 Ch4 – Getting Started with Word Processor</li>
+      <li>✏️ Ch5 – Editing a Document</li>
+      <li>🎨 Ch6 – Formatting a Document</li>
+      <li>📋 Ch7 – Creating and Using Tables</li>
+      <li>🖨️ Ch8 – Printing a Document</li>
+      <li>📬 Ch9 – Using Mail Merge</li>
+    </ul>
+    <p>Press <strong>→</strong> or click <strong>Next</strong> to begin. Enable <strong>Auto</strong> for hands-free mode!</p>`,ch:0},
+
+  // CH4
+  {tag:'ch4',icon:'📄',h:'Ch 4 – Getting Started with Word Processor',body:`
+    <p>A <strong>Word Processor</strong> is software used to create, edit, format, store and print documents.</p>
+    <p><strong>LibreOffice Writer</strong> is the free, open-source word processor used in CBSE schools.</p>
+    <div class="grid-2">
+      <div class="box"><h4>Typewriter</h4>No editing, no formatting, paper only</div>
+      <div class="box"><h4>Word Processor ✅</h4>Edit, format, save, print, spell check!</div>
+    </div>`,ch:1},
+
+  {tag:'ch4',icon:'🖥️',h:'LibreOffice Writer Window – Parts',body:`
+    <ul>
+      <li>Title Bar — shows document name (Untitled1 when unsaved)</li>
+      <li>Menu Bar — File, Edit, View, Insert, Format, Table, Tools, Help</li>
+      <li>Standard Toolbar — Save, Open, Print, Copy icons</li>
+      <li>Formatting Toolbar — Bold, Italic, Font, Size, Alignment</li>
+      <li>Ruler — shows margins, tab stops, indents</li>
+      <li>Work Area — white area where you type</li>
+      <li>Status Bar — page number, word count, zoom level</li>
+      <li>Scroll Bars — move through document (vertical + horizontal)</li>
+    </ul>`,ch:1},
+
+  {tag:'ch4',icon:'💾',h:'File Operations',body:`
+    <ul>
+      <li><span class="kbd">Ctrl+N</span> — New Document</li>
+      <li><span class="kbd">Ctrl+O</span> — Open existing document</li>
+      <li><span class="kbd">Ctrl+S</span> — Save (same location, same name)</li>
+      <li><span class="kbd">Ctrl+Shift+S</span> — Save As (new name, location or format)</li>
+      <li><span class="kbd">Ctrl+W</span> — Close document</li>
+      <li><span class="kbd">Ctrl+P</span> — Print</li>
+    </ul>
+    <div class="box" style="margin-top:12px"><h4>Save vs Save As</h4>
+    Save = updates same file | Save As = creates a new copy with different name/format</div>`,ch:1},
+
+  {tag:'ch4',icon:'📁',h:'File Formats',body:`
+    <div class="grid-2">
+      <div class="box"><h4>.odt</h4>Default LibreOffice format (open standard)</div>
+      <div class="box"><h4>.docx</h4>Microsoft Word format</div>
+      <div class="box"><h4>.pdf</h4>Read-only, portable, universally accepted</div>
+      <div class="box"><h4>.rtf / .txt</h4>Rich Text / Plain text — no or basic formatting</div>
+    </div>
+    <p style="margin-top:12px"><strong>Export to PDF:</strong> File → Export as PDF</p>`,ch:1},
+
+  {tag:'quiz',icon:'❓',h:'Quick Quiz – Chapter 4',body:`
+    <p class="quiz-q">Which component of the Writer window shows the document name and application name?</p>
+    <div class="quiz-options">
+      <button class="quiz-opt" onclick="answer(this,false)">A) Status Bar</button>
+      <button class="quiz-opt" onclick="answer(this,true)">B) Title Bar</button>
+      <button class="quiz-opt" onclick="answer(this,false)">C) Menu Bar</button>
+      <button class="quiz-opt" onclick="answer(this,false)">D) Ruler</button>
+    </div>
+    <div class="quiz-result" id="qr"></div>`,ch:1},
+
+  // CH5
+  {tag:'ch5',icon:'✏️',h:'Ch 5 – Editing a Document',body:`
+    <div class="grid-2">
+      <div class="box"><h4>Insert Mode (Default)</h4>New text inserts at cursor — existing text shifts right</div>
+      <div class="box"><h4>Overtype Mode</h4>New text OVERWRITES existing — toggle with Insert key</div>
+    </div>
+    <p style="margin-top:12px">Deleting text:</p>
+    <ul>
+      <li><span class="kbd">Backspace</span> — deletes to the LEFT of cursor</li>
+      <li><span class="kbd">Delete</span> — deletes to the RIGHT of cursor</li>
+      <li><span class="kbd">Ctrl+Backspace</span> — deletes one whole word to left</li>
+    </ul>`,ch:2},
+
+  {tag:'ch5',icon:'🖱️',h:'Selecting Text',body:`
+    <ul>
+      <li>Click and drag — select any portion</li>
+      <li>Double-click — select a word</li>
+      <li>Triple-click — select entire paragraph</li>
+      <li><span class="kbd">Ctrl+A</span> — select ALL text</li>
+      <li><span class="kbd">Shift+→←</span> — select character by character</li>
+      <li><span class="kbd">Shift+Home/End</span> — select to line start/end</li>
+    </ul>
+    <p><strong>Remember:</strong> Selected text is highlighted. Any key typed will REPLACE the selection!</p>`,ch:2},
+
+  {tag:'ch5',icon:'✂️',h:'Cut, Copy, Paste & Clipboard',body:`
+    <ul>
+      <li><span class="kbd">Ctrl+C</span> — Copy (original stays; copy goes to Clipboard)</li>
+      <li><span class="kbd">Ctrl+X</span> — Cut (original REMOVED; goes to Clipboard)</li>
+      <li><span class="kbd">Ctrl+V</span> — Paste (insert from Clipboard at cursor)</li>
+      <li><span class="kbd">Ctrl+Z</span> — Undo (reverse last action)</li>
+      <li><span class="kbd">Ctrl+Y</span> — Redo (restore undone action)</li>
+    </ul>
+    <p><strong>Clipboard</strong> = temporary memory holding cut/copied content. Lost when PC restarts.</p>
+    <p>Cut+Paste = MOVE text | Copy+Paste = DUPLICATE text</p>`,ch:2},
+
+  {tag:'ch5',icon:'🔍',h:'Find and Replace',body:`
+    <ul>
+      <li><span class="kbd">Ctrl+F</span> — Find a word in the document</li>
+      <li><span class="kbd">Ctrl+H</span> — Find and Replace</li>
+    </ul>
+    <p><strong>Steps for Find & Replace:</strong></p>
+    <div class="flow">
+      <div class="flow-step">Ctrl+H</div><span class="flow-arr">→</span>
+      <div class="flow-step">Type word to find</div><span class="flow-arr">→</span>
+      <div class="flow-step">Type replacement</div><span class="flow-arr">→</span>
+      <div class="flow-step">Replace or Replace All</div><span class="flow-arr">→</span>
+      <div class="flow-step">Close</div>
+    </div>`,ch:2},
+
+  {tag:'ch5',icon:'📗',h:'Spell Check & AutoCorrect',body:`
+    <div class="grid-2">
+      <div class="box"><h4>🔴 Red underline</h4>Spelling mistake</div>
+      <div class="box"><h4>🔵 Blue underline</h4>Grammar mistake</div>
+    </div>
+    <p style="margin-top:12px">Right-click underlined word → choose correct suggestion</p>
+    <p>Or press <span class="kbd">F7</span> for full Spell Check dialog</p>
+    <p><strong>AutoCorrect:</strong> Automatically fixes common mistakes as you type. "teh" → "the"</p>
+    <p>Access: Tools → AutoCorrect Options</p>`,ch:2},
+
+  {tag:'quiz',icon:'❓',h:'Quick Quiz – Chapter 5',body:`
+    <p class="quiz-q">What shortcut key opens the Find and Replace dialog in LibreOffice Writer?</p>
+    <div class="quiz-options">
+      <button class="quiz-opt" onclick="answer(this,false)">A) Ctrl+F</button>
+      <button class="quiz-opt" onclick="answer(this,true)">B) Ctrl+H</button>
+      <button class="quiz-opt" onclick="answer(this,false)">C) Ctrl+R</button>
+      <button class="quiz-opt" onclick="answer(this,false)">D) F7</button>
+    </div>
+    <div class="quiz-result" id="qr"></div>`,ch:2},
+
+  // CH6
+  {tag:'ch6',icon:'🎨',h:'Ch 6 – Formatting a Document',body:`
+    <p>Formatting changes the appearance of text and pages. Three levels:</p>
+    <div class="grid-2">
+      <div class="box"><h4>Character</h4>Individual text appearance — font, size, bold, colour</div>
+      <div class="box"><h4>Paragraph</h4>Whole paragraph — alignment, spacing, indent</div>
+      <div class="box"><h4>Page</h4>Overall page — margins, size, orientation</div>
+      <div class="box"><h4>Rule</h4>Select text FIRST, then apply formatting!</div>
+    </div>`,ch:3},
+
+  {tag:'ch6',icon:'🔤',h:'Character Formatting Shortcuts',body:`
+    <ul>
+      <li><span class="kbd">Ctrl+B</span> — Bold (make text thick)</li>
+      <li><span class="kbd">Ctrl+I</span> — Italic (slant text right)</li>
+      <li><span class="kbd">Ctrl+U</span> — Underline</li>
+      <li><span class="kbd">Ctrl+Shift+P</span> — Superscript (x²)</li>
+      <li><span class="kbd">Ctrl+Shift+B</span> — Subscript (H₂O)</li>
+      <li>Font Name, Font Size, Font Colour — via Formatting Toolbar</li>
+      <li>Strikethrough, Highlighting — via Format → Character</li>
+    </ul>`,ch:3},
+
+  {tag:'ch6',icon:'↔️',h:'Paragraph Formatting – Alignment',body:`
+    <ul>
+      <li><span class="kbd">Ctrl+L</span> — Left Align (default — text hugs left margin)</li>
+      <li><span class="kbd">Ctrl+E</span> — Centre Align (centred between margins)</li>
+      <li><span class="kbd">Ctrl+R</span> — Right Align (text hugs right margin)</li>
+      <li><span class="kbd">Ctrl+J</span> — Justify (spreads evenly to both margins)</li>
+    </ul>
+    <p>Other paragraph settings: Line Spacing (1, 1.5, 2), Indentation (Left/Right/First Line/Hanging), Spacing Before/After</p>`,ch:3},
+
+  {tag:'ch6',icon:'📐',h:'Page Formatting',body:`
+    <div class="grid-2">
+      <div class="box"><h4>Page Size</h4>A4 = 210×297mm (standard) | Letter = 8.5×11"</div>
+      <div class="box"><h4>Orientation</h4>Portrait = tall (default) | Landscape = wide</div>
+      <div class="box"><h4>Margins</h4>Space around page edges. Default = 2.54cm on all sides</div>
+      <div class="box"><h4>Header/Footer</h4>Text at top/bottom of every page (page numbers, title)</div>
+    </div>
+    <p style="margin-top:12px">Access: Format → Page Style</p>`,ch:3},
+
+  {tag:'ch6',icon:'📋',h:'Lists, Styles & Format Painter',body:`
+    <div class="grid-2">
+      <div class="box"><h4>Unordered List</h4>Bullets (•) — no specific order</div>
+      <div class="box"><h4>Ordered List</h4>Numbers/letters — sequential steps</div>
+      <div class="box"><h4>Styles</h4>Saved formatting sets — apply in one click (Heading 1, Body Text)</div>
+      <div class="box"><h4>Format Painter</h4>Copy formatting from one place → apply elsewhere. Double-click for multiple uses!</div>
+    </div>
+    <p style="margin-top:10px">Tab = go deeper in multilevel list | Shift+Tab = go back up</p>`,ch:3},
+
+  {tag:'quiz',icon:'❓',h:'Quick Quiz – Chapter 6',body:`
+    <p class="quiz-q">Which shortcut centres text between the left and right margins?</p>
+    <div class="quiz-options">
+      <button class="quiz-opt" onclick="answer(this,false)">A) Ctrl+L</button>
+      <button class="quiz-opt" onclick="answer(this,true)">B) Ctrl+E</button>
+      <button class="quiz-opt" onclick="answer(this,false)">C) Ctrl+R</button>
+      <button class="quiz-opt" onclick="answer(this,false)">D) Ctrl+J</button>
+    </div>
+    <div class="quiz-result" id="qr"></div>`,ch:3},
+
+  // CH7
+  {tag:'ch7',icon:'📋',h:'Ch 7 – Creating and Using Tables',body:`
+    <p>A Table organises data in <strong>rows and columns</strong>.</p>
+    <div class="grid-2">
+      <div class="box"><h4>Row</h4>Horizontal — runs left to right</div>
+      <div class="box"><h4>Column</h4>Vertical — runs top to bottom</div>
+      <div class="box"><h4>Cell</h4>Intersection of row and column — where data goes</div>
+      <div class="box"><h4>Insert</h4>Table → Insert Table (or <span class="kbd">Ctrl+F12</span>)</div>
+    </div>`,ch:4},
+
+  {tag:'ch7',icon:'⌨️',h:'Navigating in a Table',body:`
+    <ul>
+      <li><span class="kbd">Tab</span> — move to NEXT cell</li>
+      <li><span class="kbd">Shift+Tab</span> — move to PREVIOUS cell</li>
+      <li>Tab in last cell of last row → adds NEW row automatically!</li>
+      <li><span class="kbd">Alt+Home</span> — first cell of row</li>
+      <li><span class="kbd">Alt+End</span> — last cell of row</li>
+    </ul>`,ch:4},
+
+  {tag:'ch7',icon:'➕',h:'Modify Rows, Columns & Cells',body:`
+    <ul>
+      <li>Insert Row: Table → Insert Rows Above/Below (or right-click)</li>
+      <li>Insert Column: Table → Insert Columns Before/After</li>
+      <li>Delete: Table → Delete → Rows/Columns</li>
+      <li>Adjust width: drag the column border</li>
+      <li>AutoFit: Table → Size → Optimal Width</li>
+    </ul>`,ch:4},
+
+  {tag:'ch7',icon:'🔀',h:'Merge, Split & Sort',body:`
+    <div class="grid-2">
+      <div class="box"><h4>Merge Cells</h4>Select cells → Table → Merge Cells<br>Combines multiple cells into ONE</div>
+      <div class="box"><h4>Split Cells</h4>Click cell → Table → Split Cells<br>Divides ONE cell into multiple</div>
+      <div class="box"><h4>AutoFormat</h4>Table → AutoFormat Styles<br>Apply pre-designed table look in one click</div>
+      <div class="box"><h4>Sort</h4>Table → Sort<br>Ascending (A→Z) or Descending (Z→A)</div>
+    </div>`,ch:4},
+
+  {tag:'quiz',icon:'❓',h:'Quick Quiz – Chapter 7',body:`
+    <p class="quiz-q">What happens when you press Tab in the LAST cell of the LAST row of a table?</p>
+    <div class="quiz-options">
+      <button class="quiz-opt" onclick="answer(this,false)">A) Cursor moves outside the table</button>
+      <button class="quiz-opt" onclick="answer(this,false)">B) Nothing happens</button>
+      <button class="quiz-opt" onclick="answer(this,true)">C) A new row is added at the bottom</button>
+      <button class="quiz-opt" onclick="answer(this,false)">D) Table is deleted</button>
+    </div>
+    <div class="quiz-result" id="qr"></div>`,ch:4},
+
+  // CH8
+  {tag:'ch8',icon:'🖨️',h:'Ch 8 – Printing a Document',body:`
+    <p><strong>Print Preview</strong> shows exactly how the document will look when printed.</p>
+    <p>Always use Print Preview before printing to avoid wasted paper!</p>
+    <p>Open Print Preview: File → Print Preview</p>
+    <p>Open Print Dialog: <span class="kbd">Ctrl+P</span> or File → Print</p>`,ch:5},
+
+  {tag:'ch8',icon:'🔧',h:'Print Dialog – Key Options',body:`
+    <ul>
+      <li><strong>Printer Name</strong> — select the connected printer</li>
+      <li><strong>All Pages</strong> — print entire document</li>
+      <li><strong>Current Page</strong> — print only the visible page</li>
+      <li><strong>Pages</strong> — specify page numbers (e.g., 1-3, 5, 8)</li>
+      <li><strong>Selection</strong> — print only selected text</li>
+      <li><strong>Number of Copies</strong> — how many copies</li>
+      <li><strong>Collate</strong> — prints full sets: 1,2,3 then 1,2,3 (not all of page 1 first)</li>
+    </ul>`,ch:5},
+
+  {tag:'ch8',icon:'📄',h:'Export to PDF',body:`
+    <p>PDF = Portable Document Format — read-only, looks the same on any device.</p>
+    <p><strong>Why PDF?</strong></p>
+    <ul>
+      <li>Exact formatting preserved on all devices</li>
+      <li>Cannot be easily edited</li>
+      <li>Universally accepted for sharing official documents</li>
+    </ul>
+    <p><strong>Steps:</strong> File → Export as PDF → set options → Export → choose file name → Save</p>
+    <p><strong>Quick export:</strong> File → Export Directly as PDF</p>`,ch:5},
+
+  {tag:'quiz',icon:'❓',h:'Quick Quiz – Chapter 8',body:`
+    <p class="quiz-q">The Collate option in the Print dialog box means:</p>
+    <div class="quiz-options">
+      <button class="quiz-opt" onclick="answer(this,false)">A) Print all copies of page 1, then all of page 2</button>
+      <button class="quiz-opt" onclick="answer(this,true)">B) Print complete sets: 1,2,3 then 1,2,3 again</button>
+      <button class="quiz-opt" onclick="answer(this,false)">C) Print only one page at a time</button>
+      <button class="quiz-opt" onclick="answer(this,false)">D) Print in black and white</button>
+    </div>
+    <div class="quiz-result" id="qr"></div>`,ch:5},
+
+  // CH9
+  {tag:'ch9',icon:'📬',h:'Ch 9 – Using Mail Merge',body:`
+    <p><strong>Mail Merge</strong> combines a single template document with a list of data to automatically create personalised documents for many recipients.</p>
+    <p><strong>Example:</strong> Send 500 personalised invitation letters to parents — write once, merge automatically!</p>
+    <p>Access: Tools → Mail Merge Wizard</p>`,ch:6},
+
+  {tag:'ch9',icon:'🔺',h:'3 Components of Mail Merge',body:`
+    <div class="flow">
+      <div class="flow-step">Main Document<br><small>(template)</small></div>
+      <span class="flow-arr">+</span>
+      <div class="flow-step">Data Source<br><small>(list/database)</small></div>
+      <span class="flow-arr">→</span>
+      <div class="flow-step">MAIL MERGE</div>
+      <span class="flow-arr">→</span>
+      <div class="flow-step">Merged Documents<br><small>(personalised)</small></div>
+    </div>
+    <div class="grid-2" style="margin-top:12px">
+      <div class="box"><h4>Main Document</h4>Template with common text and «merge field» placeholders</div>
+      <div class="box"><h4>Data Source</h4>Spreadsheet/database with names, addresses etc. First row = HEADERS</div>
+    </div>`,ch:6},
+
+  {tag:'ch9',icon:'«»',h:'Merge Fields',body:`
+    <p><strong>Merge Fields</strong> are placeholders in the main document shown as <strong>«FieldName»</strong></p>
+    <p>During merge, «Name» → "Rahul Sharma", «Class» → "9A" etc.</p>
+    <p><strong>Sample main document:</strong></p>
+    <div class="box">
+      Dear <strong>«Name»</strong>,<br>
+      Your ward in Class <strong>«Class»</strong>, Roll No. <strong>«Roll_No»</strong> has been selected for the prize ceremony.<br>
+      — The Principal
+    </div>
+    <p>Insert merge fields via: Insert → Field → More Fields → Database tab</p>`,ch:6},
+
+  {tag:'ch9',icon:'📤',h:'Mail Merge – 3 Output Options',body:`
+    <div class="grid-2">
+      <div class="box"><h4>📄 New Document</h4>Creates a new Writer file with ALL personalised letters. Can edit before printing.</div>
+      <div class="box"><h4>🖨️ Printer</h4>Sends directly to printer — fast but cannot edit.</div>
+      <div class="box"><h4>📧 Email</h4>Sends personalised emails to each recipient via email client.</div>
+      <div class="box"><h4>💡 Steps</h4>Tools → Mail Merge Wizard → 8 steps → set output option → Finish</div>
+    </div>
+    <p style="margin-top:12px"><strong>Data source first row = field names (headers)</strong> — actual data from row 2 onwards!</p>`,ch:6},
+
+  {tag:'quiz',icon:'❓',h:'Quick Quiz – Chapter 9',body:`
+    <p class="quiz-q">In Mail Merge, the file containing names, addresses and other variable data is called the:</p>
+    <div class="quiz-options">
+      <button class="quiz-opt" onclick="answer(this,false)">A) Main Document</button>
+      <button class="quiz-opt" onclick="answer(this,false)">B) Merged Document</button>
+      <button class="quiz-opt" onclick="answer(this,true)">C) Data Source</button>
+      <button class="quiz-opt" onclick="answer(this,false)">D) Template</button>
+    </div>
+    <div class="quiz-result" id="qr"></div>`,ch:6},
+
+  // FINAL
+  {tag:'intro',icon:'⌨️',h:'Master Shortcuts – All Chapters',body:`
+    <div class="grid-2">
+      <div class="box"><h4>File Operations</h4>N=New O=Open S=Save P=Print</div>
+      <div class="box"><h4>Editing</h4>C=Copy X=Cut V=Paste Z=Undo Y=Redo A=Select All</div>
+      <div class="box"><h4>Find</h4>F=Find H=Find&Replace F7=SpellCheck</div>
+      <div class="box"><h4>Format</h4>B=Bold I=Italic U=Underline L=Left E=Centre R=Right J=Justify</div>
+      <div class="box"><h4>Tables</h4>F12=Insert Table | Tab=next cell | Shift+Tab=prev cell</div>
+      <div class="box"><h4>Other</h4>Insert=toggle Overtype | Home/End=line start/end</div>
+    </div>
+    <p style="margin-top:8px">All shortcuts use <strong>Ctrl+</strong> the letter shown</p>`,ch:0},
+
+  {tag:'intro',icon:'⭐',h:'Exam Tips – Part B Unit 3',body:`
+    <ul>
+      <li>Know all 8 parts of the LibreOffice Writer window</li>
+      <li>Know Save vs Save As — often a 1-mark question</li>
+      <li>Know all 4 alignment shortcuts (L/E/R/J)</li>
+      <li>Tab in last cell = new row — very common exam question</li>
+      <li>Mail Merge 3 components + 3 output options — 5-mark question</li>
+      <li>Know the difference between Merge and Split cells</li>
+      <li>Print Preview → always before printing (best practice)</li>
+      <li>Collate option — explain fully for 2-mark answers</li>
+    </ul>`,ch:0},
+
+  {tag:'intro',icon:'🎉',h:'Revision Complete! All Done! 🎉',body:`
+    <p>You have completed the animated revision for <strong>Part B – Unit 3: Digital Documentation</strong>!</p>
+    <p>Go back and open individual chapter pages for practice questions and deeper study.</p>
+    <p>Chapters available:</p>
+    <ul>
+      <li><a href="../ch4-word-processor/" style="color:#80cbc4">Ch 4 – Getting Started</a></li>
+      <li><a href="../ch5-editing/" style="color:#80cbc4">Ch 5 – Editing</a></li>
+      <li><a href="../ch6-formatting/" style="color:#80cbc4">Ch 6 – Formatting</a></li>
+      <li><a href="../ch7-tables/" style="color:#80cbc4">Ch 7 – Tables</a></li>
+      <li><a href="../ch8-printing/" style="color:#80cbc4">Ch 8 – Printing</a></li>
+      <li><a href="../ch9-mail-merge/" style="color:#80cbc4">Ch 9 – Mail Merge</a></li>
+    </ul>`,ch:0},
+];
+
+const CHAPTERS = ['Intro','Ch4 Writer','Ch5 Editing','Ch6 Format','Ch7 Tables','Ch8 Print','Ch9 Mail Merge'];
+const TAGS = {ch4:'tag-ch4',ch5:'tag-ch5',ch6:'tag-ch6',ch7:'tag-ch7',ch8:'tag-ch8',ch9:'tag-ch9',quiz:'tag-quiz',intro:'tag-intro'};
+
+let cur=0,autoplay=false,timer=null,timerSec=0;
+const AUTOSEC=10;
+
+function buildDots(){
+  const w=document.getElementById('chapter-dots');
+  CHAPTERS.forEach((n,i)=>{const d=document.createElement('div');d.className='ch-dot';d.title=n;d.onclick=()=>jumpCh(i);w.appendChild(d);});
+}
+function jumpCh(ch){const i=slides.findIndex(s=>s.ch===ch);if(i>=0){cur=i;render();}}
+function render(){
+  const stage=document.getElementById('stage');
+  stage.querySelectorAll('.slide.exit').forEach(el=>el.remove());
+  const old=stage.querySelector('.slide.active');
+  if(old){old.classList.remove('active');old.classList.add('exit');setTimeout(()=>old.remove(),500);}
+  const s=slides[cur];
+  const el=document.createElement('div');
+  el.className='slide';
+  el.innerHTML=`<span class="slide-tag ${TAGS[s.tag]||'tag-intro'}">${s.tag.toUpperCase()}</span><span class="big-icon">${s.icon}</span><h2>${s.h}</h2>${s.body}`;
+  stage.appendChild(el);
+  requestAnimationFrame(()=>el.classList.add('active'));
+  const pct=((cur+1)/slides.length*100).toFixed(1);
+  document.getElementById('progress-bar').style.width=pct+'%';
+  document.getElementById('slide-info').textContent=`Slide ${cur+1} / ${slides.length}`;
+  document.querySelectorAll('.ch-dot').forEach((d,i)=>d.classList.toggle('active',i===s.ch));
+  document.getElementById('narration').textContent=cur===0?'Use ← → arrow keys or buttons to navigate':`Slide ${cur+1} of ${slides.length} — ${CHAPTERS[s.ch]||''}`;
+  resetTimer();
+}
+function go(dir){const n=cur+dir;if(n<0||n>=slides.length)return;cur=n;render();}
+function toggleAuto(){autoplay=!autoplay;const b=document.getElementById('btn-autoplay');b.classList.toggle('active',autoplay);b.textContent=autoplay?'⏸ Pause':'▶ Auto';if(autoplay)tickTimer();else clearInterval(timer);}
+function resetTimer(){clearInterval(timer);timerSec=0;updateRing(0);if(autoplay)tickTimer();}
+function tickTimer(){timer=setInterval(()=>{timerSec++;updateRing(timerSec/AUTOSEC);if(timerSec>=AUTOSEC){clearInterval(timer);if(cur<slides.length-1)go(1);else toggleAuto();}},1000);}
+function updateRing(p){const c=document.querySelector('#timer-ring circle');if(c)c.style.strokeDashoffset=(100-p*100).toString();}
+function answer(btn,correct){const opts=btn.parentElement.querySelectorAll('.quiz-opt');opts.forEach(o=>o.disabled=true);btn.classList.add(correct?'correct':'wrong');if(!correct)opts.forEach(o=>{if(o.onclick.toString().includes('true'))o.classList.add('correct');});const res=btn.closest('.slide').querySelector('#qr');if(res)res.innerHTML=correct?'<span style="color:#66bb6a">✅ Correct! Well done!</span>':'<span style="color:#ef5350">❌ Wrong — highlighted in green is the correct answer.</span>';}
+function toggleFS(){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();go(1);}if(e.key==='ArrowLeft'){e.preventDefault();go(-1);}});
+buildDots();render();
+</script>
+</body>
+</html>
+

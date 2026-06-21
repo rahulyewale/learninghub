@@ -26,6 +26,7 @@
       "icon": "💻",
       "sections": {
         "Part A": [
+          { "name": "🎬 Animated Revision – Unit 1 (Ch1–4)", "path": "class9/ict/parta-unit1/revision-slides/" },
           { "name": "Unit 1 – Communication Skills (Ch 1–4)", "path": "class9/ict/parta-unit1/" },
           { "name": "Ch 1 – Methods of Communication", "path": "class9/ict/parta-unit1/ch1-methods/" },
           { "name": "Ch 2 – Communication Cycle", "path": "class9/ict/parta-unit1/ch2-communication-cycle/" },
@@ -35,6 +36,7 @@
         "Part B": [
           { "name": "Unit 1 – Introduction to IT-ITeS Industry", "path": "class9/ict/partb-unit1/" },
           { "name": "Unit 2 – Data Entry and Keyboarding Skills", "path": "class9/ict/partb-unit2/" },
+          { "name": "🎬 Animated Revision – Unit 3 (Ch4–9)", "path": "class9/ict/partb-unit3/revision-slides/" },
           { "name": "Unit 3 – Digital Documentation (Ch 4–9)", "path": "class9/ict/partb-unit3/" },
           { "name": "Ch 4 – Getting Started with Writer", "path": "class9/ict/partb-unit3/ch4-word-processor/" },
           { "name": "Ch 5 – Editing a Document", "path": "class9/ict/partb-unit3/ch5-editing/" },
